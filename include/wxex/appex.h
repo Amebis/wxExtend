@@ -19,10 +19,17 @@
 
 #pragma once
 
-#include "../include/wxex/appbar.h"
-#include "../include/wxex/appex.h"
+#include <wx/app.h>
 
-#include "../include/wxex/common.h"
 
-#include <Windowsx.h>
-#include <wx/msgdlg.h>
+///
+/// Extended application
+///
+class wxAppEx : public wxApp
+{
+public:
+    virtual bool OnInit();
+
+protected:
+    wxLocale m_locale;
+};

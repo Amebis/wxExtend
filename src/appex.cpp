@@ -17,12 +17,25 @@
     along with wxExtend. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#include "stdafx.h"
 
-#include "../include/wxex/appbar.h"
-#include "../include/wxex/appex.h"
 
-#include "../include/wxex/common.h"
+//////////////////////////////////////////////////////////////////////////
+// wxAppEx
+//////////////////////////////////////////////////////////////////////////
 
-#include <Windowsx.h>
-#include <wx/msgdlg.h>
+bool wxAppEx::OnInit()
+{
+    if (!wxApp::OnInit())
+        return false;
+
+    if (wxLocale::IsAvailable(wxLANGUAGE_SLOVENIAN)) {
+        wxString sPath(wxPathOnly(argv[0]));
+        sPath << wxT("\\..\\locale");
+        m_locale.AddCatalogLookupPathPrefix(sPath);
+        wxVERIFY(m_locale.Init(wxLANGUAGE_SLOVENIAN));
+        wxVERIFY(m_locale.AddCatalog(wxT("ZRCola")));
+    }
+
+    return true;
+}
