@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include "common.h"
+
 #include <wx/app.h>
 #include <wx/intl.h>
 
