@@ -19,10 +19,13 @@
 
 #pragma once
 
+// Since including <wx/app.h> introduces wrong include order in 3.0.2,
+// include the grand <wx/wx.h> at a cost of longer pre-compilation phase.
+#include <wx/wx.h>
+
 #include "../include/wxex/appbar.h"
 #include "../include/wxex/appex.h"
 
 #include "../include/wxex/common.h"
 
 #include <Windowsx.h>
-#include <wx/msgdlg.h>

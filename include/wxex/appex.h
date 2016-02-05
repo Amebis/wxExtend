@@ -20,6 +20,7 @@
 #pragma once
 
 #include <wx/app.h>
+#include <wx/intl.h>
 
 
 ///
@@ -28,8 +29,14 @@
 class wxAppEx : public wxApp
 {
 public:
+    ///
+    /// Called when application initializes.
+    ///
+    /// \returns
+    /// - true if initialization succeeded
+    /// - false otherwise
     virtual bool OnInit();
 
 protected:
-    wxLocale m_locale;
+    wxLocale m_locale; ///< Current locale
 };
