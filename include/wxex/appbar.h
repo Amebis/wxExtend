@@ -24,6 +24,7 @@
 #include <ShlObj.h>
 
 #include <wx/frame.h>
+#include <wx/string.h>
 
 
 #define wxABT_AUTOHIDETIMERID       1

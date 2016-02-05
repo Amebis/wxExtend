@@ -17,15 +17,25 @@
     along with wxExtend. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#include "stdafx.h"
 
-// Since including <wx/app.h> introduces wrong include order in 3.0.2,
-// include the grand <wx/wx.h> at a cost of longer pre-compilation phase.
-#include <wx/wx.h>
 
-#include "../include/wxex/appbar.h"
-#include "../include/wxex/appex.h"
+//////////////////////////////////////////////////////////////////////////
+// wxAppEx
+//////////////////////////////////////////////////////////////////////////
 
-#include "../include/wxex/common.h"
+bool wxAppEx::OnInit()
+{
+    if (!wxApp::OnInit())
+        return false;
 
-#include <Windowsx.h>
+    if (wxLocale::IsAvailable(wxLANGUAGE_SLOVENIAN)) {
+        wxString sPath(wxPathOnly(argv[0]));
+        sPath << wxT("\\..\\locale");
+        m_locale.AddCatalogLookupPathPrefix(sPath);
+        wxVERIFY(m_locale.Init(wxLANGUAGE_SLOVENIAN));
+        wxVERIFY(m_locale.AddCatalog(wxT("ZRCola")));
+    }
+
+    return true;
+}

@@ -19,13 +19,24 @@
 
 #pragma once
 
-// Since including <wx/app.h> introduces wrong include order in 3.0.2,
-// include the grand <wx/wx.h> at a cost of longer pre-compilation phase.
-#include <wx/wx.h>
+#include <wx/app.h>
+#include <wx/intl.h>
 
-#include "../include/wxex/appbar.h"
-#include "../include/wxex/appex.h"
 
-#include "../include/wxex/common.h"
+///
+/// Extended application
+///
+class wxAppEx : public wxApp
+{
+public:
+    ///
+    /// Called when application initializes.
+    ///
+    /// \returns
+    /// - true if initialization succeeded
+    /// - false otherwise
+    virtual bool OnInit();
 
-#include <Windowsx.h>
+protected:
+    wxLocale m_locale; ///< Current locale
+};
