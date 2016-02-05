@@ -27,5 +27,3 @@
 #include "../include/wxex/appex.h"
 
 #include "../include/wxex/common.h"
-
-#include <Windowsx.h>
