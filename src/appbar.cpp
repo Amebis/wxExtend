@@ -1,5 +1,5 @@
 /*
-    Copyright 2016 Amebis
+    Copyright 2015-2016 Amebis
     Based on code written by Jeffrey Richter.
 
     This file is part of wxExtend.
