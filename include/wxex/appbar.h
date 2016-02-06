@@ -404,9 +404,7 @@ inline WXHWND wxAppBarGetZWnd(wxAppBarState state, int flags)
     if (state == wxABS_FLOAT) {
         // When floating, decide according to the flags.
         return (flags & wxABF_ALWAYSONTOP) ? HWND_TOPMOST : HWND_NOTOPMOST;
-    }
-
-    if (wxAppBarIsDocked(state)) {
+    } else if (wxAppBarIsDocked(state)) {
         if (flags & wxABF_AUTOHIDE) {
             // Auto-hidden docked application bar is always on top.
             return HWND_TOPMOST;
@@ -430,7 +428,7 @@ inline WXHWND wxAppBarGetZWnd(wxAppBarState state, int flags)
         return HWND_NOTOPMOST;
     } else {
         // Unknown state. Do nothing.
-        wxFAIL;
+        wxFAIL_MSG(wxT("unknown application bar state"));
         return HWND_TOP;
     }
 }
@@ -524,7 +522,7 @@ void wxAppBar<W>::PreCreate(wxAppBarState& state, int& flags, const wxSize& size
         }
     } else {
         // Unknown state.
-        wxFAIL;
+        wxFAIL_MSG(wxT("unknown application bar state"));
     }
 }
 
@@ -938,7 +936,7 @@ void wxAppBar<W>::OnChangeState(wxAppBarState stateNew)
         }
     } else {
         // Unknown state.
-        wxFAIL;
+        wxFAIL_MSG(wxT("unknown application bar state"));
     }
 }
 
@@ -1009,7 +1007,7 @@ WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM l
     }
 
     case WM_DESTROY: {
-        wxASSERT(m_timerID == 0);
+        wxASSERT_MSG(m_timerID == 0, wxT("timer still active"));
 
         // Remove the application bar.
         APPBARDATA abd = { sizeof(abd), m_hWnd };
@@ -1167,8 +1165,7 @@ WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM l
             }
         }
 
-        // We must had come up with some useful state.
-        wxASSERT(m_stateDesired != wxABS_UNKNOWN);
+        wxASSERT_MSG(m_stateDesired != wxABS_UNKNOWN, wxT("undetermined application bar state"));
 
         // Phase 2. - Calculate the desired rectangle, according to the desired state.
 
@@ -1192,7 +1189,7 @@ WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM l
             }
         } else {
             // Window is not floating. It's not docked either. Then what?
-            wxFAIL;
+            wxFAIL_MSG(wxT("unknown application bar state"));
         }
 
         if (m_stateDesired != uStateDesiredPrev) {
@@ -1219,7 +1216,7 @@ WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM l
                 m_sizeDocked.cy = lpRect->bottom - lpRect->top;
         } else {
             // Unknown state.
-            wxFAIL;
+            wxFAIL_MSG(wxT("unknown application bar state"));
         }
 
         return W::MSWWindowProc(message, wParam, lParam);
@@ -1366,7 +1363,7 @@ WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM l
 
             default:
                 // Unknown message.
-                wxFAIL;
+                wxFAIL_MSG(wxString::Format(wxT("unknown application bar notification 0x%x"), wParam));
                 break;
         }
 
@@ -1460,8 +1457,8 @@ inline bool wxAppBar<W>::UnregisterAutoHide(wxAppBarState state)
 template <class W>
 inline bool wxAppBar<W>::GetDockedRect(wxAppBarState state, LPRECT rect) const
 {
-    wxASSERT(rect);
     wxASSERT(wxAppBarIsDocked(state));
+    wxASSERT(rect);
 
     // Set dimensions to full screen.
     APPBARDATA abd = { sizeof(abd), m_hWnd, 0, state, { 0, 0, ::GetSystemMetrics(SM_CXSCREEN), ::GetSystemMetrics(SM_CYSCREEN) } };
@@ -1499,7 +1496,7 @@ inline bool wxAppBar<W>::GetDockedRect(wxAppBarState state, LPRECT rect) const
 
         default:
             // Unknown state.
-            wxFAIL;
+            wxFAIL_MSG(wxT("unsupported application bar state"));
             return false;
     }
 
@@ -1510,8 +1507,8 @@ inline bool wxAppBar<W>::GetDockedRect(wxAppBarState state, LPRECT rect) const
 template <class W>
 inline bool wxAppBar<W>::GetAutoHideRect(wxAppBarState state, bool bAutoHidden, LPRECT rect) const
 {
-    wxASSERT(rect);
     wxASSERT(wxAppBarIsDocked(state));
+    wxASSERT(rect);
 
     // Keep a part of the application bar visible at all times
     const int iBorder = ::GetSystemMetrics(wxAppBarIsDockedVert(state) ? SM_CXBORDER : SM_CYBORDER) * 2;
@@ -1554,7 +1551,7 @@ inline bool wxAppBar<W>::GetAutoHideRect(wxAppBarState state, bool bAutoHidden, 
 
         default:
             // Unknown state.
-            wxFAIL;
+            wxFAIL_MSG(wxT("unsupported application bar state"));
             return false;
     }
 
