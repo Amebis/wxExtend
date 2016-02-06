@@ -456,18 +456,7 @@ inline UINT_PTR wxAppBarGetTaskBarState()
 template <class W>
 void wxAppBar<W>::Init()
 {
-    // Find the taskbar list's interface.
-    if (SUCCEEDED(::CoCreateInstance(CLSID_TaskbarList, NULL, CLSCTX_ALL, IID_ITaskbarList, (LPVOID*)&m_taskbarList))) {
-        if (FAILED(m_taskbarList->HrInit())) {
-            wxFAIL;
-            m_taskbarList->Release();
-            m_taskbarList = NULL;
-        }
-    } else {
-        wxFAIL;
-        m_taskbarList = NULL;
-    }
-
+    m_taskbarList = NULL;
     m_timerID = 0;
 }
 
@@ -490,6 +479,8 @@ wxAppBar<W>::~wxAppBar()
 template <class W>
 void wxAppBar<W>::PreCreate(wxAppBarState& state, int& flags, const wxSize& size, long& style)
 {
+    wxASSERT_MSG(!m_taskbarList || !m_timerID, wxT("application bar is already initialized"));
+
     // Save initial floating window size.
     m_sizeFloat.cx = size.x;
     m_sizeFloat.cy = size.y;
@@ -524,6 +515,18 @@ void wxAppBar<W>::PreCreate(wxAppBarState& state, int& flags, const wxSize& size
         // Unknown state.
         wxFAIL_MSG(wxT("unknown application bar state"));
     }
+
+    // Find the taskbar list's interface.
+    HRESULT hr = ::CoCreateInstance(CLSID_TaskbarList, NULL, CLSCTX_ALL, IID_ITaskbarList, (LPVOID*)&m_taskbarList);
+    if (SUCCEEDED(hr)) {
+        hr = m_taskbarList->HrInit();
+        if (FAILED(hr)) {
+            wxFAIL_MSG(wxString::Format(wxT("ITaskbarList::HrInit() failed 0x%x"), hr));
+            m_taskbarList->Release();
+            m_taskbarList = NULL;
+        }
+    } else
+        wxFAIL_MSG(wxString::Format(wxT("TaskbarList creation failed 0x%x"), hr));
 }
 
 
