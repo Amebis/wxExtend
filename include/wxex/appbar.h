@@ -978,7 +978,7 @@ void wxAppBar<W>::OnWindowsArrange(bool WXUNUSED(beginning))
 template <class W>
 void wxAppBar<W>::OnAutoHideDenied()
 {
-    wxMessageBox(wxT("There is already an auto hidden bar on this edge.\nOnly one auto hidden bar is allowed on each edge.\nAuto-hide feature is now off."), wxT("Warning"), wxOK | wxICON_WARNING, this);
+    wxMessageBox(_("There is already an auto hidden bar on this edge.\nOnly one auto hidden bar is allowed on each edge.\nAuto-hide feature is now off."), _("Warning"), wxOK | wxICON_WARNING, this);
 }
 
 

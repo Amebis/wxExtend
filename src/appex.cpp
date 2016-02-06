@@ -34,7 +34,7 @@ bool wxAppEx::OnInit()
         sPath << wxT("\\..\\locale");
         m_locale.AddCatalogLookupPathPrefix(sPath);
         wxVERIFY(m_locale.Init(wxLANGUAGE_SLOVENIAN));
-        wxVERIFY(m_locale.AddCatalog(wxT("ZRCola")));
+        wxVERIFY(m_locale.AddCatalog(wxT("wxExtend")));
     }
 
     return true;
