@@ -34,6 +34,10 @@
     <ClInclude Include="..\include\wxex\common.h" />
     <ClInclude Include="..\src\stdafx.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\locale\sl.po" />
+    <None Include="..\locale\wxExtend.pot" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A3A36689-AC35-4026-93DA-A3BA0C0E767C}</ProjectGuid>
     <RootNamespace>wxExtend</RootNamespace>
