@@ -24,9 +24,13 @@
 #include <wx/defs.h>
 
 
-//---------------------------------------------------------------------------
-// Usual debugging macros
-//---------------------------------------------------------------------------
+#ifdef WXEXTEND
+#define ZRCOLA_API  __declspec(dllexport)
+#else
+#define ZRCOLA_API  __declspec(dllimport)
+#endif
+
+
 #if wxDEBUG_LEVEL
 #define wxVERIFY(x) wxASSERT((x))
 #else

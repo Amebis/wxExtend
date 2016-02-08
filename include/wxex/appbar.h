@@ -279,7 +279,7 @@ protected:
 ///
 /// Dockable application bar frame
 ///
-class wxAppBarFrame : public wxAppBar<wxFrame>
+class ZRCOLA_API wxAppBarFrame : public wxAppBar<wxFrame>
 {
 public:
     wxAppBarFrame();
@@ -308,7 +308,7 @@ public:
 ///
 /// Dockable application bar dialog
 ///
-class wxAppBarDialog : public wxAppBar<wxDialog>
+class ZRCOLA_API wxAppBarDialog : public wxAppBar<wxDialog>
 {
 public:
     wxAppBarDialog();

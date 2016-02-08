@@ -28,7 +28,7 @@
 ///
 /// Extended application
 ///
-class wxAppEx : public wxApp
+class ZRCOLA_API wxAppEx : public wxApp
 {
 public:
     ///
