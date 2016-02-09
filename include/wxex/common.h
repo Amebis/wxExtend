@@ -17,13 +17,33 @@
     along with wxExtend. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#if !defined(__wxEXTEND_common_h__)
+#define __wxEXTEND_common_h__
+
+///
+/// wxExtend Version
+///
+#define wxEXTEND_VERSION        0x01000000
+
+#define wxEXTEND_VERSION_MAJ    1
+#define wxEXTEND_VERSION_MIN    0
+#define wxEXTEND_VERSION_REV    0
+#define wxEXTEND_VERSION_BUILD  0
+
+#define wxEXTEND_VERSION_STR    "1.0"
+#define wxEXTEND_BUILD_YEAR_STR "2016"
+
+
+#if !defined(RC_INVOKED) && !defined(MIDL_PASS)
 
 #include <Windows.h>
 #include <wx/debug.h>
 #include <wx/defs.h>
 
 
+///
+/// Public function calling convention
+///
 #ifdef WXEXTEND
 #define ZRCOLA_API  __declspec(dllexport)
 #else
@@ -31,6 +51,9 @@
 #endif
 
 
+///
+/// Debug macros
+///
 #if wxDEBUG_LEVEL
 #define wxVERIFY(x) wxASSERT((x))
 #else
@@ -79,3 +102,6 @@ inline bool wxModifyStyleEx(_In_ WXHWND hWnd, _In_ DWORD dwRemove, _In_ DWORD dw
 
     return true;
 }
+
+#endif // !defined(RC_INVOKED) && !defined(MIDL_PASS)
+#endif // !defined(__wxEXTEND_common_h__)
