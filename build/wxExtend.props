@@ -6,7 +6,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <OutDir>..\..\..\output\$(Platform).$(Configuration)\</OutDir>
-    <TargetName>$(ProjectName)$(wxExtendVersion)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
