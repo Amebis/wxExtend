@@ -17,14 +17,21 @@
     along with wxExtend. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#pragma once
+#include "stdafx.h"
 
-// Since including <wx/app.h> introduces wrong include order in 3.0.2,
-// include the grand <wx/wx.h> at a cost of longer pre-compilation phase.
-#include <wx/wx.h>
 
-#include "../include/wxex/appbar.h"
-#include "../include/wxex/appex.h"
-#include "../include/wxex/comutils.h"
+//////////////////////////////////////////////////////////////////////////
+// wxCoInitializer
+//////////////////////////////////////////////////////////////////////////
 
-#include "../include/wxex/common.h"
+wxCoInitializer::wxCoInitializer(DWORD dwCoInit)
+{
+    m_ok = SUCCEEDED(::CoInitializeEx(NULL, dwCoInit));
+}
+
+
+wxCoInitializer::~wxCoInitializer()
+{
+    if (m_ok)
+        ::CoUninitialize();
+}
