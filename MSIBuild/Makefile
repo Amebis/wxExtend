@@ -45,7 +45,7 @@ compwxExtend.dll.Win32	{CF0DA67E-4D98-4059-9ECA-CB0DE44E92EB}	$(WXEXTENDBINDIR)	
 !IF "$(PLAT)" == "x64"
 compwxExtend.dll.x64	{02F1022D-AA80-4FCA-A6F2-C576C405E1B2}	$(WXEXTENDBINDIR)	256		filewxExtend.dll.x64
 !ENDIF
-compwxExtend.mo.sl	{60770F71-A7B4-4B20-9535-726049A5D412}	WXEXTENDLOCSLSIDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.sl
+compwxExtend.mo.sl_SI	{60770F71-A7B4-4B20-9535-726049A5D412}	WXEXTENDLOCSLSIDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.sl_SI
 <<NOKEEP
 
 
@@ -60,7 +60,7 @@ All :: "$(LANG).$(PLAT).$(CFG).Directory-1.idt"
 Directory	Directory_Parent	DefaultDir
 s$(MSIBUILD_LENGTH_ID)	S$(MSIBUILD_LENGTH_ID)	l255
 Directory	Directory
-WXEXTENDLOCSLSIDIR	$(WXEXTENDLOCDIR)	sl
+WXEXTENDLOCSLSIDIR	$(WXEXTENDLOCDIR)	sl_SI
 <<NOKEEP
 
 
@@ -91,7 +91,7 @@ filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend10u_vc100_x64.dll
 filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend10ud_vc100_x64.dll	0		0	1536	1
 !ENDIF
 !ENDIF
-filewxExtend.mo.sl	compwxExtend.mo.sl	WXEXTE~1.MO|wxExtend.mo	0		0	0	1
+filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend.mo	0		0	0	1
 <<NOKEEP
 
 
