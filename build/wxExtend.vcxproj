@@ -35,7 +35,7 @@
     <ClInclude Include="..\src\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <POCompile Include="..\locale\sl.po" />
+    <POCompile Include="..\locale\sl_SI.po" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\locale\wxExtend.pot" />
