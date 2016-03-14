@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\appbar.cpp" />
-    <ClCompile Include="..\src\appex.cpp" />
     <ClCompile Include="..\src\comutils.cpp" />
     <ClCompile Include="..\src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -31,7 +30,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\wxex\appbar.h" />
-    <ClInclude Include="..\include\wxex\appex.h" />
     <ClInclude Include="..\include\wxex\common.h" />
     <ClInclude Include="..\include\wxex\comutils.h" />
     <ClInclude Include="..\src\stdafx.h" />

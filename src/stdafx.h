@@ -24,7 +24,6 @@
 #include <wx/wx.h>
 
 #include "../include/wxex/appbar.h"
-#include "../include/wxex/appex.h"
 #include "../include/wxex/comutils.h"
 
 #include "../include/wxex/common.h"
