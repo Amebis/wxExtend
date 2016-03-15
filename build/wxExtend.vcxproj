@@ -113,6 +113,5 @@
   <PropertyGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\..\include\xgettext.targets" />
   </ImportGroup>
 </Project>
