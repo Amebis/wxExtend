@@ -25,7 +25,7 @@
 ///
 /// Create an object of this class on stack to initialize/cleanup the COM automatically.
 ///
-class ZRCOLA_API wxCoInitializer
+class WXEXTEND_API wxCoInitializer
 {
 public:
     ///

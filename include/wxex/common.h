@@ -45,9 +45,9 @@
 /// Public function calling convention
 ///
 #ifdef WXEXTEND
-#define ZRCOLA_API  __declspec(dllexport)
+#define WXEXTEND_API    __declspec(dllexport)
 #else
-#define ZRCOLA_API  __declspec(dllimport)
+#define WXEXTEND_API    __declspec(dllimport)
 #endif
 
 
