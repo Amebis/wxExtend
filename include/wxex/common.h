@@ -79,10 +79,11 @@ inline bool wxGetDoWndAnimation()
 ///
 /// Modifies window extended style.
 ///
-/// \param[in] hWnd Handle of the window to modify.
-/// \param[in] dwRemove Set of extended styles to remove.
-/// \param[in] dwAdd Set of extended styles to add.
-/// \param[in] nFlags Additional SWP_ flags to pass to SetWindowPos(). If zero, SetWindowPos() is not called.
+/// \param[in] hWnd      Handle of the window to modify.
+/// \param[in] dwRemove  Set of extended styles to remove.
+/// \param[in] dwAdd     Set of extended styles to add.
+/// \param[in] nFlags    Additional SWP_ flags to pass to SetWindowPos(). If zero, SetWindowPos() is not called.
+///
 /// \returns
 /// - true when the window extended style was modified
 /// - false if the window extended style was not neccessary

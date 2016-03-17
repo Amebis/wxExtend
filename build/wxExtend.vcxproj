@@ -27,11 +27,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\src\xml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\wxex\appbar.h" />
     <ClInclude Include="..\include\wxex\common.h" />
     <ClInclude Include="..\include\wxex\comutils.h" />
+    <ClInclude Include="..\include\wxex\xml.h" />
     <ClInclude Include="..\src\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
