@@ -35,7 +35,7 @@ void WXEXTEND_API wxXmlHashNode(_In_ HCRYPTHASH hash, const wxXmlNode *node)
     case wxXML_ELEMENT_NODE:
         {
             {
-                static const BYTE element_in [] = "<";
+                static const BYTE element_in[] = "<";
 
                 // Hash the open tag.
                 wxVERIFY(::CryptHashData(hash, element_in, _countof(element_in) - 1, 0));
@@ -115,6 +115,11 @@ void WXEXTEND_API wxXmlHashNode(_In_ HCRYPTHASH hash, const wxXmlNode *node)
             // Hash the children.
             for (wxXmlNode *child = node->GetChildren(); child; child = child->GetNext())
                 wxXmlHashNode(hash, child);
+
+            break;
         }
+
+    default:
+        wxFAIL_MSG(wxT("unsupported XML node type"));
     }
 }
