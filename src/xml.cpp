@@ -20,14 +20,7 @@
 #include "stdafx.h"
 
 
-static inline BOOL CryptHashData(__in HCRYPTHASH hHash, __in const wxString &str, __in DWORD dwFlags)
-{
-    const wxScopedCharBuffer buf(str.ToUTF8());
-    return ::CryptHashData(hHash, (const BYTE*)buf.data(), buf.length(), dwFlags);
-}
-
-
-void WXEXTEND_API wxXmlHashNode(_In_ HCRYPTHASH hash, const wxXmlNode *node)
+bool WXEXTEND_API wxXmlHashNode(_In_ wxCryptoHash &hash, const wxXmlNode *node)
 {
     wxASSERT_MSG(node, wxT("invalid parameter"));
 
@@ -38,22 +31,22 @@ void WXEXTEND_API wxXmlHashNode(_In_ HCRYPTHASH hash, const wxXmlNode *node)
                 static const BYTE element_in[] = "<";
 
                 // Hash the open tag.
-                wxVERIFY(::CryptHashData(hash, element_in, _countof(element_in) - 1, 0));
-                wxVERIFY(::CryptHashData(hash, node->GetName(), 0));
+                wxCHECK(hash.Hash(element_in, _countof(element_in) - 1), false);
+                wxCHECK(hash.HashAsUTF8(node->GetName()), false);
                 for (wxXmlAttribute *attr = node->GetAttributes(); attr; attr = attr->GetNext()) {
                     static const BYTE attrib_sep[] = " ";
 
-                    wxVERIFY(::CryptHashData(hash, attrib_sep, _countof(attrib_sep) - 1, 0));
-                    wxVERIFY(::CryptHashData(hash, attr->GetName(), 0));
+                    wxCHECK(hash.Hash(attrib_sep, _countof(attrib_sep) - 1), false);
+                    wxCHECK(hash.HashAsUTF8(attr->GetName()), false);
                     wxString value = attr->GetValue();
                     if (!value.IsEmpty()) {
                         static const BYTE
                             attrval_in [] = "=\"",
                             attrval_out[] = "\"";
 
-                        wxVERIFY(::CryptHashData(hash, attrval_in, _countof(attrval_in) - 1, 0));
-                        wxVERIFY(::CryptHashData(hash, wxXmlEscapeAttr(value), 0));
-                        wxVERIFY(::CryptHashData(hash, attrval_out, _countof(attrval_out) - 1, 0));
+                        wxCHECK(hash.Hash(attrval_in, _countof(attrval_in) - 1), false);
+                        wxCHECK(hash.HashAsUTF8(wxXmlEscapeAttr(value)), false);
+                        wxCHECK(hash.Hash(attrval_out, _countof(attrval_out) - 1), false);
                     }
                 }
             }
@@ -65,21 +58,21 @@ void WXEXTEND_API wxXmlHashNode(_In_ HCRYPTHASH hash, const wxXmlNode *node)
                     elemclose_in[] = "</";
 
                 // Hash the open tag closing.
-                wxVERIFY(::CryptHashData(hash, element_out, _countof(element_out) - 1, 0));
+                wxCHECK(hash.Hash(element_out, _countof(element_out) - 1), false);
 
                 // Hash the children.
                 for (; child; child = child->GetNext())
-                    wxXmlHashNode(hash, child);
+                    wxCHECK(wxXmlHashNode(hash, child), false);
 
                 // Hash the closing tag.
-                wxVERIFY(::CryptHashData(hash, elemclose_in, _countof(elemclose_in) - 1, 0));
-                wxVERIFY(::CryptHashData(hash, node->GetName(), 0));
-                wxVERIFY(::CryptHashData(hash, element_out, _countof(element_out) - 1, 0));
+                wxCHECK(hash.Hash(elemclose_in, _countof(elemclose_in) - 1), false);
+                wxCHECK(hash.HashAsUTF8(node->GetName()), false);
+                wxCHECK(hash.Hash(element_out, _countof(element_out) - 1), false);
             } else {
                 static const BYTE element_out [] = "/>";
 
                 // Hash the childless element tag closing.
-                wxVERIFY(::CryptHashData(hash, element_out, _countof(element_out) - 1, 0));
+                wxCHECK(hash.Hash(element_out, _countof(element_out) - 1), false);
             }
 
             break;
@@ -87,7 +80,7 @@ void WXEXTEND_API wxXmlHashNode(_In_ HCRYPTHASH hash, const wxXmlNode *node)
 
     case wxXML_TEXT_NODE:
         {
-            wxVERIFY(::CryptHashData(hash, wxXmlEscapeText(node->GetContent()), 0));
+            wxCHECK(hash.HashAsUTF8(wxXmlEscapeText(node->GetContent())), false);
             break;
         }
 
@@ -97,16 +90,16 @@ void WXEXTEND_API wxXmlHashNode(_In_ HCRYPTHASH hash, const wxXmlNode *node)
                 cdata_in [] = "<![CDATA[",
                 cdata_out[] = "]]>";
 
-            wxVERIFY(::CryptHashData(hash, cdata_in, _countof(cdata_in) - 1, 0));
-            wxVERIFY(::CryptHashData(hash, node->GetContent(), 0));
-            wxVERIFY(::CryptHashData(hash, cdata_out, _countof(cdata_out) - 1, 0));
+            wxCHECK(hash.Hash(cdata_in, _countof(cdata_in) - 1), false);
+            wxCHECK(hash.HashAsUTF8(node->GetContent()), false);
+            wxCHECK(hash.Hash(cdata_out, _countof(cdata_out) - 1), false);
 
             break;
         }
 
     case wxXML_COMMENT_NODE:
         {
-            wxVERIFY(::CryptHashData(hash, node->GetContent(), 0));
+            wxCHECK(hash.HashAsUTF8(node->GetContent()), false);
             break;
         }
 
@@ -114,12 +107,15 @@ void WXEXTEND_API wxXmlHashNode(_In_ HCRYPTHASH hash, const wxXmlNode *node)
         {
             // Hash the children.
             for (wxXmlNode *child = node->GetChildren(); child; child = child->GetNext())
-                wxXmlHashNode(hash, child);
+                wxCHECK(wxXmlHashNode(hash, child), false);
 
             break;
         }
 
     default:
         wxFAIL_MSG(wxT("unsupported XML node type"));
+        return false;
     }
+
+    return true;
 }

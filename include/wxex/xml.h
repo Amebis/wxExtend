@@ -19,6 +19,7 @@
 
 #pragma once
 
+#include "crypto.h"
 #include "common.h"
 
 #include <wx/string.h>
@@ -113,4 +114,4 @@ inline wxString wxXmlEscapeAttr(_In_ const wxString& str)
 /// \param[in] node  Root node
 ///
 ///
-void WXEXTEND_API wxXmlHashNode(_In_ HCRYPTHASH hash, const wxXmlNode *node);
+bool WXEXTEND_API wxXmlHashNode(_In_ wxCryptoHash &hash, const wxXmlNode *node);
