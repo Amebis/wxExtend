@@ -43,7 +43,8 @@ wxCryptoSession::~wxCryptoSession()
 
 wxCryptoSessionRSAAES::wxCryptoSessionRSAAES()
 {
-    ::CryptAcquireContext(&m_h, NULL, NULL, PROV_RSA_AES, CRYPT_VERIFYCONTEXT);
+    if (!::CryptAcquireContext(&m_h, NULL, NULL, PROV_RSA_AES, CRYPT_VERIFYCONTEXT))
+        wxLogLastError(wxT("CryptAcquireContext(PROV_RSA_AES, CRYPT_VERIFYCONTEXT)"));
 }
 
 
@@ -68,7 +69,12 @@ bool wxCryptoHash::Hash(const void *data, size_t size)
     wxASSERT_MSG(m_h, wxT("object uninitialized"));
     wxASSERT_MSG(data || !size, wxT("invalid parameter"));
 
-    return ::CryptHashData(m_h, (const BYTE*)data, size, 0) ? true : false;
+    if (!::CryptHashData(m_h, (const BYTE*)data, size, 0)) {
+        wxLogLastError(wxT("CryptHashData"));
+        return false;
+    }
+
+    return true;
 }
 
 
@@ -80,13 +86,17 @@ bool wxCryptoHash::Sign(wxMemoryBuffer &signature)
     if (::CryptSignHash(m_h, AT_SIGNATURE, NULL, 0, data, &size)) {
         // The buffer was large enough. Set the actual size.
         signature.SetDataLen(size);
-    } else if (::GetLastError() == ERROR_MORE_DATA) {
-        // The buffer was not big enough. Variable size contains the actual required size. Realloc and retry one more time.
-        wxCHECK(::CryptSignHash(m_h, AT_SIGNATURE, NULL, 0, data = (BYTE*)signature.GetWriteBuf(size), &size), false);
-        signature.SetDataLen(size);
     } else {
-        signature.Clear();
-        return false;
+        DWORD dwError = ::GetLastError();
+        if (dwError == ERROR_MORE_DATA) {
+            // The buffer was not big enough. Variable size contains the actual required size. Realloc and retry one more time.
+            wxCHECK(::CryptSignHash(m_h, AT_SIGNATURE, NULL, 0, data = (BYTE*)signature.GetWriteBuf(size), &size), false);
+            signature.SetDataLen(size);
+        } else {
+            wxLogApiError(wxT("CryptSignHash"), dwError);
+            signature.Clear();
+            return false;
+        }
     }
 
     // Reverse byte order, for consistent OpenSSL experience.
@@ -103,7 +113,8 @@ bool wxCryptoHash::Sign(wxMemoryBuffer &signature)
 
 wxCryptoHashSHA1::wxCryptoHashSHA1(wxCryptoSession &session)
 {
-    ::CryptCreateHash(session, CALG_SHA1, 0, 0, &m_h);
+    if (!::CryptCreateHash(session, CALG_SHA1, 0, 0, &m_h))
+        wxLogLastError(wxT("CryptCreateHash(CALG_SHA1)"));
 }
 
 
@@ -131,13 +142,16 @@ bool wxCryptoKey::ImportPrivate(wxCryptoSession &session, const void *data, size
 
     PUBLICKEYSTRUC *key_data = NULL;
     DWORD key_size = 0;
-    if (!::CryptDecodeObjectEx(X509_ASN_ENCODING, PKCS_RSA_PRIVATE_KEY, (const BYTE*)data, size, CRYPT_DECODE_ALLOC_FLAG, NULL, &key_data, &key_size))
+    if (!::CryptDecodeObjectEx(X509_ASN_ENCODING, PKCS_RSA_PRIVATE_KEY, (const BYTE*)data, size, CRYPT_DECODE_ALLOC_FLAG, NULL, &key_data, &key_size)) {
+        wxLogLastError(wxT("CryptDecodeObjectEx(PKCS_RSA_PRIVATE_KEY)"));
         return false;
+    }
 
     // See: http://pumka.net/2009/12/16/rsa-encryption-cplusplus-delphi-cryptoapi-php-openssl-2/comment-page-1/#comment-429
     key_data->aiKeyAlg = CALG_RSA_SIGN;
 
     if (!::CryptImportKey(session, (const BYTE*)key_data, key_size, NULL, 0, &m_h)) {
+        wxLogLastError(wxT("CryptImportKey"));
         ::LocalFree(key_data);
         return false;
     }
@@ -155,10 +169,13 @@ bool wxCryptoKey::ImportPublic(wxCryptoSession &session, const void *data, size_
 
     CERT_PUBLIC_KEY_INFO *keyinfo_data = NULL;
     DWORD keyinfo_size = 0;
-    if (!::CryptDecodeObjectEx(X509_ASN_ENCODING, X509_PUBLIC_KEY_INFO, (const BYTE*)data, size, CRYPT_DECODE_ALLOC_FLAG, NULL, &keyinfo_data, &keyinfo_size))
+    if (!::CryptDecodeObjectEx(X509_ASN_ENCODING, X509_PUBLIC_KEY_INFO, (const BYTE*)data, size, CRYPT_DECODE_ALLOC_FLAG, NULL, &keyinfo_data, &keyinfo_size)) {
+        wxLogLastError(wxT("CryptDecodeObjectEx(X509_PUBLIC_KEY_INFO)"));
         return false;
+    }
 
     if (!::CryptImportPublicKeyInfo(session, X509_ASN_ENCODING, keyinfo_data, &m_h)) {
+        wxLogLastError(wxT("CryptImportPublicKeyInfo"));
         ::LocalFree(keyinfo_data);
         return false;
     }
@@ -184,5 +201,10 @@ bool WXEXTEND_API wxCryptoVerifySignature(const wxCryptoHash &hash, const void *
     for (size_t i = 0, j  = signature_size - 1; i < signature_size; i++, j--)
         data[i] = ((const BYTE*)signature_data)[j];
 
-    return ::CryptVerifySignature(hash, data, signature_size, key, NULL, 0) ? true : false;
+    if (!::CryptVerifySignature(hash, data, signature_size, key, NULL, 0)) {
+        wxLogLastError(wxT("CryptVerifySignature"));
+        return false;
+    }
+
+    return true;
 }
