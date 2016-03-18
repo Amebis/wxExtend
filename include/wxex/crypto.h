@@ -256,5 +256,5 @@ bool WXEXTEND_API wxCryptoVerifySignature(const wxCryptoHash &hash, const void *
 ///
 inline bool wxCryptoVerifySignature(const wxCryptoHash &hash, const wxMemoryBuffer &signature, const wxCryptoKey &key)
 {
-    return ::wxCryptoVerifySignature(hash, signature.GetData(), signature.GetDataLen(), key);
+    return wxCryptoVerifySignature(hash, signature.GetData(), signature.GetDataLen(), key);
 }
