@@ -91,7 +91,7 @@ filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend10u_vc100_x64.dll
 filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend10ud_vc100_x64.dll	0		0	1536	1
 !ENDIF
 !ENDIF
-filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend.mo	0		0	0	1
+filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend.mo	0		1060	0	1
 <<NOKEEP
 
 
