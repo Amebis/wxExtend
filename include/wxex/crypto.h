@@ -153,6 +153,18 @@ public:
 
 
     ///
+    /// Finish hashing and return hash data.
+    ///
+    /// \param[out] hash  Hash data
+    ///
+    /// \returns
+    /// - true if succeeded
+    /// - false otherwise
+    ///
+    virtual bool GetValue(wxMemoryBuffer &hash);
+
+
+    ///
     /// Signs the hash using session key
     ///
     /// \param[out] signature  Digital signature
@@ -185,6 +197,18 @@ class WXEXTEND_API wxCryptoHashSHA1 : public wxCryptoHash
 {
 public:
     wxCryptoHashSHA1(wxCryptoSession &session);
+
+
+    ///
+    /// Finish hashing and return hash data.
+    ///
+    /// \param[out] hash  Hash data
+    ///
+    /// \returns
+    /// - true if succeeded
+    /// - false otherwise
+    ///
+    virtual bool GetValue(wxMemoryBuffer &hash);
 };
 
 

@@ -78,6 +78,33 @@ bool wxCryptoHash::Hash(const void *data, size_t size)
 }
 
 
+bool wxCryptoHash::GetValue(wxMemoryBuffer &hash)
+{
+    wxASSERT_MSG(m_h, wxT("object uninitialized"));
+
+    // Query hash size first.
+    DWORD size, length = sizeof(size);
+    if (::CryptGetHashParam(m_h, HP_HASHSIZE, (BYTE*)&size, &length, 0)) {
+        wxASSERT(length == sizeof(size));
+
+        // Prepare buffer.
+        length = size;
+        hash.SetBufSize(length);
+
+        // Query hash value.
+        if (::CryptGetHashParam(m_h, HP_HASHVAL, (BYTE*)hash.GetData(), &length, 0)) {
+            hash.SetDataLen(length);
+            return true;
+        } else
+            wxLogLastError(wxT("CryptGetHashParam(HP_HASHVAL)"));
+    } else
+        wxLogLastError(wxT("CryptGetHashParam(HP_HASHSIZE)"));
+
+    hash.Clear();
+    return false;
+}
+
+
 bool wxCryptoHash::Sign(wxMemoryBuffer &signature)
 {
     // Try with the current buffer size first.
@@ -115,6 +142,26 @@ wxCryptoHashSHA1::wxCryptoHashSHA1(wxCryptoSession &session)
 {
     if (!::CryptCreateHash(session, CALG_SHA1, 0, 0, &m_h))
         wxLogLastError(wxT("CryptCreateHash(CALG_SHA1)"));
+}
+
+
+bool wxCryptoHashSHA1::GetValue(wxMemoryBuffer &hash)
+{
+    wxASSERT_MSG(m_h, wxT("object uninitialized"));
+
+    // Prepare buffer.
+    DWORD length = 20;
+    hash.SetBufSize(length);
+
+    // Query hash value.
+    if (::CryptGetHashParam(m_h, HP_HASHVAL, (BYTE*)hash.GetData(), &length, 0)) {
+        hash.SetDataLen(length);
+        return true;
+    } else
+        wxLogLastError(wxT("CryptGetHashParam(HP_HASHVAL)"));
+
+    hash.Clear();
+    return false;
 }
 
 
