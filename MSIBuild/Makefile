@@ -19,12 +19,12 @@
 
 !INCLUDE "..\..\..\MSI\include\MSIBuildCfg.mak"
 
-!IFNDEF WXEXTENDBINDIR
-!ERROR Parameter WXEXTENDBINDIR is undefined.
+!IFNDEF WXEXTEND_BIN_DIR
+!ERROR Parameter WXEXTEND_BIN_DIR is undefined.
 !ENDIF
 
-!IFNDEF WXEXTENDLOCDIR
-!ERROR Parameter WXEXTENDLOCDIR is undefined.
+!IFNDEF WXEXTEND_LOC_DIR
+!ERROR Parameter WXEXTEND_LOC_DIR is undefined.
 !ENDIF
 
 
@@ -40,10 +40,10 @@ Component	ComponentId	Directory_	Attributes	Condition	KeyPath
 s$(MSIBUILD_LENGTH_ID)	S38	s$(MSIBUILD_LENGTH_ID)	i2	S255	S$(MSIBUILD_LENGTH_ID)
 Component	Component
 !IF "$(PLAT)" == "Win32"
-compwxExtend.dll.Win32	{CF0DA67E-4D98-4059-9ECA-CB0DE44E92EB}	$(WXEXTENDBINDIR)	0		filewxExtend.dll.Win32
+compwxExtend.dll.Win32	{CF0DA67E-4D98-4059-9ECA-CB0DE44E92EB}	$(WXEXTEND_BIN_DIR)	0		filewxExtend.dll.Win32
 !ENDIF
 !IF "$(PLAT)" == "x64"
-compwxExtend.dll.x64	{02F1022D-AA80-4FCA-A6F2-C576C405E1B2}	$(WXEXTENDBINDIR)	256		filewxExtend.dll.x64
+compwxExtend.dll.x64	{02F1022D-AA80-4FCA-A6F2-C576C405E1B2}	$(WXEXTEND_BIN_DIR)	256		filewxExtend.dll.x64
 !ENDIF
 compwxExtend.mo.sl_SI	{60770F71-A7B4-4B20-9535-726049A5D412}	WXEXTENDLOCSLSIDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.sl_SI
 <<NOKEEP
@@ -60,7 +60,7 @@ All :: "$(LANG).$(PLAT).$(CFG).Directory-1.idt"
 Directory	Directory_Parent	DefaultDir
 s$(MSIBUILD_LENGTH_ID)	S$(MSIBUILD_LENGTH_ID)	l255
 Directory	Directory
-WXEXTENDLOCSLSIDIR	$(WXEXTENDLOCDIR)	sl_SI
+WXEXTENDLOCSLSIDIR	$(WXEXTEND_LOC_DIR)	sl_SI
 <<NOKEEP
 
 
