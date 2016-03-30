@@ -17,7 +17,7 @@
 #    along with ZRCola. If not, see <http://www.gnu.org/licenses/>.
 #
 
-!INCLUDE "..\..\..\MSI\include\MSIBuildCfg.mak"
+!INCLUDE "..\..\..\include\MSIBuildCfg.mak"
 
 !IFNDEF WXEXTEND_BIN_DIR
 !ERROR Parameter WXEXTEND_BIN_DIR is undefined.
@@ -33,7 +33,7 @@
 
 All :: "$(LANG).$(PLAT).$(CFG).Component-1.idt"
 
-"$(LANG).$(PLAT).$(CFG).Component-1.idt" : "Makefile" "..\..\..\MSI\include\MSIBuildCfg.mak"
+"$(LANG).$(PLAT).$(CFG).Component-1.idt" : "Makefile" "..\..\..\include\MSIBuildCfg.mak"
 	-if exist $@ del /f /q $@
 	move /y << $@ > NUL
 Component	ComponentId	Directory_	Attributes	Condition	KeyPath
@@ -54,7 +54,7 @@ compwxExtend.mo.sl_SI	{60770F71-A7B4-4B20-9535-726049A5D412}	WXEXTENDLOCSLSIDIR	
 
 All :: "$(LANG).$(PLAT).$(CFG).Directory-1.idt"
 
-"$(LANG).$(PLAT).$(CFG).Directory-1.idt" : "Makefile" "..\..\..\MSI\include\MSIBuildCfg.mak"
+"$(LANG).$(PLAT).$(CFG).Directory-1.idt" : "Makefile" "..\..\..\include\MSIBuildCfg.mak"
 	-if exist $@ del /f /q $@
 	move /y << $@ > NUL
 Directory	Directory_Parent	DefaultDir
@@ -69,7 +69,7 @@ WXEXTENDLOCSLSIDIR	$(WXEXTEND_LOC_DIR)	sl_SI
 
 All :: "$(LANG).$(PLAT).$(CFG).File-1.idt"
 
-"$(LANG).$(PLAT).$(CFG).File-1.idt" : "Makefile" "..\..\..\MSI\include\MSIBuildCfg.mak"
+"$(LANG).$(PLAT).$(CFG).File-1.idt" : "Makefile" "..\..\..\include\MSIBuildCfg.mak"
 	-if exist $@ del /f /q $@
 	move /y << $@ > NUL
 File	Component_	FileName	FileSize	Version	Language	Attributes	Sequence
