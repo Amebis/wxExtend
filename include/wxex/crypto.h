@@ -22,6 +22,7 @@
 #include "common.h"
 
 #include <wx/buffer.h>
+#include <wx/ffile.h>
 #include <wx/string.h>
 
 #include <Wincrypt.h>
@@ -149,6 +150,33 @@ public:
     {
         const wxScopedCharBuffer buf(str.ToUTF8());
         return Hash((const char*)buf.data(), buf.length());
+    }
+
+
+    ///
+    /// Hashes a file
+    ///
+    /// \param[in] fileName  The path of the file to calculate hash of
+    ///
+    /// \returns
+    /// - true if hashing succeeded
+    /// - false otherwise
+    ///
+    inline bool HashFile(const wxString &fileName)
+    {
+        wxFFile file(fileName, wxT("rb"));
+        if (file.IsOpened()) {
+            wxMemoryBuffer buf(4*1024);
+            char *data = (char*)buf.GetData();
+            size_t nBlock = buf.GetBufSize();
+            while (!file.Eof())
+                Hash(data, file.Read(data, nBlock));
+
+            return true;
+        } else {
+            wxLogError(wxT("Can not open %s file for reading."), fileName.c_str());
+            return false;
+        }
     }
 
 
