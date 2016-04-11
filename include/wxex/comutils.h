@@ -44,8 +44,8 @@ public:
     /// Has the initialization been successful? (explicit test)
     ///
     /// \returns
-    /// - true if initialization succeeded
-    /// - false otherwise
+    /// - \c true if initialization succeeded
+    /// - \c false otherwise
     ///
     bool IsOk() const { return m_ok; }
 
@@ -53,8 +53,8 @@ public:
     /// Has the initialization been successful? (implicit test)
     ///
     /// \returns
-    /// - true if initialization succeeded
-    /// - false otherwise
+    /// - \c true if initialization succeeded
+    /// - \c false otherwise
     ///
     operator bool() const { return m_ok; }
 

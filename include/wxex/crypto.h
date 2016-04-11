@@ -45,8 +45,8 @@ public:
     /// Has the session creation been successful?
     ///
     /// \returns
-    /// - true if creation succeeded
-    /// - false otherwise
+    /// - \c true if creation succeeded
+    /// - \c false otherwise
     ///
     inline bool IsOk() const
     {
@@ -91,8 +91,8 @@ public:
     /// Has the hash creation been successful?
     ///
     /// \returns
-    /// - true if creation succeeded
-    /// - false otherwise
+    /// - \c true if creation succeeded
+    /// - \c false otherwise
     ///
     inline bool IsOk() const
     {
@@ -116,8 +116,8 @@ public:
     /// \param[in] size  Size of memory block in bytes
     ///
     /// \returns
-    /// - true if hashing succeeded
-    /// - false otherwise
+    /// - \c true if hashing succeeded
+    /// - \c false otherwise
     ///
     bool Hash(const void *data, size_t size);
 
@@ -128,8 +128,8 @@ public:
     /// \param[in] data  Memory block
     ///
     /// \returns
-    /// - true if hashing succeeded
-    /// - false otherwise
+    /// - \c true if hashing succeeded
+    /// - \c false otherwise
     ///
     inline bool Hash(const wxMemoryBuffer &data)
     {
@@ -143,8 +143,8 @@ public:
     /// \param[in] str  String to hash
     ///
     /// \returns
-    /// - true if hashing succeeded
-    /// - false otherwise
+    /// - \c true if hashing succeeded
+    /// - \c false otherwise
     ///
     inline bool HashAsUTF8(const wxString &str)
     {
@@ -159,8 +159,8 @@ public:
     /// \param[in] fileName  The path of the file to calculate hash of
     ///
     /// \returns
-    /// - true if hashing succeeded
-    /// - false otherwise
+    /// - \c true if hashing succeeded
+    /// - \c false otherwise
     ///
     inline bool HashFile(const wxString &fileName)
     {
@@ -186,8 +186,8 @@ public:
     /// \param[out] hash  Hash data
     ///
     /// \returns
-    /// - true if succeeded
-    /// - false otherwise
+    /// - \c true if succeeded
+    /// - \c false otherwise
     ///
     virtual bool GetValue(wxMemoryBuffer &hash);
 
@@ -198,8 +198,8 @@ public:
     /// \param[out] signature  Digital signature
     ///
     /// \returns
-    /// - true if signing succeeded
-    /// - false otherwise
+    /// - \c true if signing succeeded
+    /// - \c false otherwise
     ///
     bool Sign(wxMemoryBuffer &signature);
 
@@ -233,8 +233,8 @@ public:
     /// \param[out] hash  Hash data
     ///
     /// \returns
-    /// - true if succeeded
-    /// - false otherwise
+    /// - \c true if succeeded
+    /// - \c false otherwise
     ///
     virtual bool GetValue(wxMemoryBuffer &hash);
 };
@@ -254,8 +254,8 @@ public:
     /// Has the key creation been successful?
     ///
     /// \returns
-    /// - true if creation succeeded
-    /// - false otherwise
+    /// - \c true if creation succeeded
+    /// - \c false otherwise
     ///
     inline bool IsOk() const
     {
@@ -289,8 +289,8 @@ protected:
 /// \param[in] key             Public key
 ///
 /// \returns
-/// - true if verification succeeded and the hash matches
-/// - false otherwise
+/// - \c true if verification succeeded and the hash matches
+/// - \c false otherwise
 ///
 bool WXEXTEND_API wxCryptoVerifySignature(const wxCryptoHash &hash, const void *signature_data, size_t signature_size, const wxCryptoKey &key);
 
@@ -303,8 +303,8 @@ bool WXEXTEND_API wxCryptoVerifySignature(const wxCryptoHash &hash, const void *
 /// \param[in] key        Public key
 ///
 /// \returns
-/// - true if verification succeeded and the hash matches
-/// - false otherwise
+/// - \c true if verification succeeded and the hash matches
+/// - \c false otherwise
 ///
 inline bool wxCryptoVerifySignature(const wxCryptoHash &hash, const wxMemoryBuffer &signature, const wxCryptoKey &key)
 {

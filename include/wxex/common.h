@@ -65,8 +65,8 @@
 /// Returns whether windows animation is enabled.
 ///
 /// \returns
-/// - true when window animation is enabled
-/// - false otherwise
+/// - \c true when window animation is enabled
+/// - \c false otherwise
 ///
 inline bool wxGetDoWndAnimation()
 {
@@ -85,8 +85,8 @@ inline bool wxGetDoWndAnimation()
 /// \param[in] nFlags    Additional SWP_ flags to pass to SetWindowPos(). If zero, SetWindowPos() is not called.
 ///
 /// \returns
-/// - true when the window extended style was modified
-/// - false if the window extended style was not neccessary
+/// - \c true when the window extended style was modified
+/// - \c false if the window extended style was not neccessary
 ///
 inline bool wxModifyStyleEx(_In_ WXHWND hWnd, _In_ DWORD dwRemove, _In_ DWORD dwAdd, _In_ UINT nFlags = 0)
 {

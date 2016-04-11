@@ -123,15 +123,15 @@ public:
     /// Returns whether application bar is displayed always on top.
     ///
     /// \returns
-    /// - true when application bar is always on top
-    /// - false otherwise
+    /// - \c true when application bar is always on top
+    /// - \c false otherwise
     ///
     inline bool IsAlwaysOnTop() const;
 
     ///
     /// Sets whether application bar is displayed always on top.
     ///
-    /// \param[in] alwaysOnTop Logical variable to control whether always-on-top behaviour is to be enabled (true) or disabled (false).
+    /// \param[in] alwaysOnTop Logical variable to control whether always-on-top behaviour is to be enabled (\c true) or disabled (\c false).
     ///
     inline bool SetAlwaysOnTop(bool alwaysOnTop = true);
 
@@ -139,15 +139,15 @@ public:
     /// Returns if application bar is configured for auto-hide.
     ///
     /// \returns
-    /// - true if application bar is configured for auto-hide
-    /// - false otherwise
+    /// - \c true if application bar is configured for auto-hide
+    /// - \c false otherwise
     ///
     inline bool IsAutoHide() const;
 
     ///
     /// Sets whether application bar is displayed always on top.
     ///
-    /// \param[in] autoHide Logical variable to control whether auto-hide behaviour is to be enabled (true) or disabled (false).
+    /// \param[in] autoHide Logical variable to control whether auto-hide behaviour is to be enabled (\c true) or disabled (\c false).
     ///
     inline bool SetAutoHide(bool autoHide = true);
 
@@ -155,15 +155,15 @@ public:
     /// Returns if sizing of the application bar is allowed.
     ///
     /// \returns
-    /// - true if sizing of the application bar is allowed
-    /// - false otherwise
+    /// - \c true if sizing of the application bar is allowed
+    /// - \c false otherwise
     ///
     inline bool GetAllowSizing() const;
 
     ///
     /// Sets whether resizing of the application bar is allowed.
     ///
-    /// \param[in] allow Logical variable to control whether resizing is to be enabled (true) or disabled (false).
+    /// \param[in] allow Logical variable to control whether resizing is to be enabled (\c true) or disabled (\c false).
     ///
     inline bool SetAllowSizing(bool allow = true);
 
@@ -171,8 +171,8 @@ public:
     /// Returns if application bar is auto-hidden right now.
     ///
     /// \returns
-    /// - true if application bar is auto-hidden right now
-    /// - false otherwise
+    /// - \c true if application bar is auto-hidden right now
+    /// - \c false otherwise
     inline bool GetAutoHidden() const;
 
     //bool GetAppBarPlacement(LPAPPBARPLACEMENT lpPlacement) const;
@@ -198,7 +198,7 @@ public:
     ///
     /// Shows or hides auto-hide application bar.
     ///
-    /// \param[in] show Logical variable to control whether application bar is be shown (true) or hidden (false).
+    /// \param[in] show Logical variable to control whether application bar is be shown (\c true) or hidden (\c false).
     ///
     void ShowAutoHideAppBar(bool show = true);
 
@@ -236,7 +236,7 @@ protected:
     ///
     /// Derived classes can implement their own. However, overriden virtual method should call the parent's implementation too.
     ///
-    /// \param[in] beginning true when windows arrangement starts and false when arrangement ends.
+    /// \param[in] beginning \c true when windows arrangement starts and \c false when arrangement ends.
     ///
     virtual void OnWindowsArrange(bool beginning);
 
@@ -340,8 +340,8 @@ public:
 /// \param[in] state The state of the application bar
 ///
 /// \returns
-/// - true if the application bar state represents docked state
-/// - false otherwise
+/// - \c true if the application bar state represents docked state
+/// - \c false otherwise
 ///
 inline bool wxAppBarIsDocked(wxAppBarState state)
 {
@@ -355,8 +355,8 @@ inline bool wxAppBarIsDocked(wxAppBarState state)
 /// \param[in] state The state of the application bar
 ///
 /// \returns
-/// - true if the application bar state represents vertically docked state
-/// - false otherwise
+/// - \c true if the application bar state represents vertically docked state
+/// - \c false otherwise
 ///
 inline bool wxAppBarIsDockedVert(wxAppBarState state)
 {
@@ -370,8 +370,8 @@ inline bool wxAppBarIsDockedVert(wxAppBarState state)
 /// \param[in] state The state of the application bar
 ///
 /// \returns
-/// - true if the application bar state represents horizontally docked state
-/// - false otherwise
+/// - \c true if the application bar state represents horizontally docked state
+/// - \c false otherwise
 ///
 inline bool wxAppBarIsDockedHoriz(wxAppBarState state)
 {
