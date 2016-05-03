@@ -37,6 +37,7 @@
     <ClInclude Include="..\include\wxex\comutils.h" />
     <ClInclude Include="..\include\wxex\crypto.h" />
     <ClInclude Include="..\include\wxex\hex.h" />
+    <ClInclude Include="..\include\wxex\persist\auimanager.h" />
     <ClInclude Include="..\include\wxex\xml.h" />
     <ClInclude Include="..\src\stdafx.h" />
   </ItemGroup>

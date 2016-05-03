@@ -17,6 +17,9 @@
       <UniqueIdentifier>{e43059ae-37ac-4b28-84fb-18d1b3972b30}</UniqueIdentifier>
       <Extensions>po;pot</Extensions>
     </Filter>
+    <Filter Include="Header Files\persist">
+      <UniqueIdentifier>{33d4709f-47d3-42c1-9562-bc4743799b49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\stdafx.cpp">
@@ -59,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="..\include\wxex\hex.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wxex\persist\auimanager.h">
+      <Filter>Header Files\persist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
