@@ -23,14 +23,14 @@
 ///
 /// wxExtend Version
 ///
-#define wxEXTEND_VERSION        0x01000000
+#define wxEXTEND_VERSION        0x01000100
 
 #define wxEXTEND_VERSION_MAJ    1
 #define wxEXTEND_VERSION_MIN    0
-#define wxEXTEND_VERSION_REV    0
+#define wxEXTEND_VERSION_REV    1
 #define wxEXTEND_VERSION_BUILD  0
 
-#define wxEXTEND_VERSION_STR    "1.0"
+#define wxEXTEND_VERSION_STR    "1.0.1"
 #define wxEXTEND_BUILD_YEAR_STR "2016"
 
 
