@@ -55,9 +55,20 @@
 /// Debug macros
 ///
 #if wxDEBUG_LEVEL
-#define wxVERIFY(x) wxASSERT((x))
+#define wxVERIFY_MSG(cond, msg)                                           \
+    wxSTATEMENT_MACRO_BEGIN                                               \
+        if ( !(cond) && wxTheAssertHandler &&                             \
+                (wxOnAssert(__FILE__, __LINE__, __WXFUNCTION__,           \
+                            #cond, msg), wxTrapInAssert) )                \
+        {                                                                 \
+            wxTrapInAssert = false;                                       \
+            wxTrap();                                                     \
+        }                                                                 \
+    wxSTATEMENT_MACRO_END
+
+#define wxVERIFY(cond) wxVERIFY_MSG(cond, (const char*)NULL)
 #else
-#define wxVERIFY(x) (x)
+#define wxVERIFY(cond) (cond)
 #endif
 
 
