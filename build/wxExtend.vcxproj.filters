@@ -40,6 +40,9 @@
     <ClCompile Include="..\src\hex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\valhex.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\stdafx.h">
@@ -68,6 +71,9 @@
     </ClInclude>
     <ClInclude Include="..\include\wxex\persist\dialog.h">
       <Filter>Header Files\persist</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wxex\valhex.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

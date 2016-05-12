@@ -29,6 +29,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\src\valhex.cpp" />
     <ClCompile Include="..\src\xml.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +40,7 @@
     <ClInclude Include="..\include\wxex\hex.h" />
     <ClInclude Include="..\include\wxex\persist\auimanager.h" />
     <ClInclude Include="..\include\wxex\persist\dialog.h" />
+    <ClInclude Include="..\include\wxex\valhex.h" />
     <ClInclude Include="..\include\wxex\xml.h" />
     <ClInclude Include="..\src\stdafx.h" />
   </ItemGroup>

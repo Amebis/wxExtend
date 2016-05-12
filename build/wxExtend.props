@@ -2,7 +2,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros">
-    <wxExtendVersion>10</wxExtendVersion>
+    <wxExtendVersion>11</wxExtendVersion>
   </PropertyGroup>
   <PropertyGroup>
     <OutDir>..\..\..\output\$(Platform).$(Configuration)\</OutDir>
@@ -11,6 +11,9 @@
     <ClCompile>
       <PreprocessorDefinitions>WXEXTEND;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
+    <POCompile>
+      <OutputFile>$(OutDir)..\locale\%(Filename)\$(ProjectName)$(wxExtendVersion).mo</OutputFile>
+    </POCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
     <BuildMacro Include="wxExtendVersion">
