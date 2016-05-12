@@ -66,6 +66,9 @@
     <ClInclude Include="..\include\wxex\persist\auimanager.h">
       <Filter>Header Files\persist</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\wxex\persist\dialog.h">
+      <Filter>Header Files\persist</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\locale\wxExtend.pot">
