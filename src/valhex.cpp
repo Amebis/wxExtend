@@ -24,12 +24,16 @@
 // wxHexValidatorBase
 //////////////////////////////////////////////////////////////////////////
 
-wxHexValidatorBase::wxHexValidatorBase(int style) : wxIntegerValidatorBase(style)
+wxHexValidatorBase::wxHexValidatorBase(int style) :
+    m_width(0),
+    wxIntegerValidatorBase(style)
 {
 }
 
 
-wxHexValidatorBase::wxHexValidatorBase(const wxHexValidatorBase& other) : wxIntegerValidatorBase(other)
+wxHexValidatorBase::wxHexValidatorBase(const wxHexValidatorBase& other) :
+    m_width(other.m_width),
+    wxIntegerValidatorBase(other)
 {
 }
 
@@ -59,13 +63,13 @@ bool wxHexValidatorBase::FromString(const wxString &s, wxLongLong_t *value)
 wxString wxHexValidatorBase::ToString(LongestValueType value) const
 {
     const wxStringCharType hexa = (HasFlag((wxNumValidatorStyle)wxNUM_VAL_HEX_LOWERCASE) ? wxT('a') : wxT('A')) - 0xa;
-    int offset = sizeof(LongestValueType)*8 - 4;
+    unsigned int offset = sizeof(LongestValueType)*8 - 4, offset_s = m_width*4 - 4;
     wxULongLong_t m = ((wxULongLong_t)0xf) << offset;
     unsigned int x = 0;
 
     // Skip leading zeros.
-    while (m && !x) {
-        x = (int)((m & (wxULongLong_t)value) >> offset);
+    while (m && !x && offset >= offset_s) {
+        x = (unsigned int)((m & (wxULongLong_t)value) >> offset);
         m >>= 4, offset -= 4;
     }
 
@@ -74,7 +78,7 @@ wxString wxHexValidatorBase::ToString(LongestValueType value) const
 
     // Rest of the digits.
     while (m) {
-        x = (int)((m & (wxULongLong_t)value) >> offset);
+        x = (unsigned int)((m & (wxULongLong_t)value) >> offset);
         m >>= 4, offset -= 4;
         str += (wxStringCharType)((x < 0xa ? wxT('0') : hexa) + x);
     }

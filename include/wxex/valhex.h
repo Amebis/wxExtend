@@ -51,8 +51,14 @@ protected:
 #endif
     wxString ToString(LongestValueType value) const;
 
+protected:
+    void DoSetWidth(unsigned int width) { m_width = width; }
+
 private:
     virtual bool IsCharOk(const wxString& val, int pos, wxChar ch) const;
+
+private:
+    unsigned int m_width;    ///< Preferred width of the string - zero padding (<=1 disables padding)
 };
 
 
@@ -65,8 +71,9 @@ class wxHexValidator : public wxPrivate::wxNumValidator<wxHexValidatorBase, T>
 public:
     typedef wxPrivate::wxNumValidator<wxHexValidatorBase, T> Base;
 
-    wxHexValidator(ValueType *value = NULL, int style = wxNUM_VAL_DEFAULT) : Base(value, style)
+    wxHexValidator(ValueType *value = NULL, int style = wxNUM_VAL_DEFAULT, unsigned int width = 0) : Base(value, style)
     {
+        this->DoSetWidth(width);
         this->DoSetMin(std::numeric_limits<ValueType>::min());
         this->DoSetMax(std::numeric_limits<ValueType>::max());
     }

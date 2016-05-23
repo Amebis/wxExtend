@@ -40,13 +40,13 @@ Component	ComponentId	Directory_	Attributes	Condition	KeyPath
 s$(MSIBUILD_LENGTH_ID)	S38	s$(MSIBUILD_LENGTH_ID)	i2	S255	S$(MSIBUILD_LENGTH_ID)
 Component	Component
 !IF "$(PLAT)" == "Win32"
-compwxExtend.dll.Win32	{239F2FF9-E998-4F81-85A8-DA2C0A5F860B}	$(WXEXTEND_BIN_DIR)	0		filewxExtend.dll.Win32
+compwxExtend.dll.Win32	{7645D753-4A8C-40C6-BD6F-6DDE54F2B8F8}	$(WXEXTEND_BIN_DIR)	0		filewxExtend.dll.Win32
 !ENDIF
 !IF "$(PLAT)" == "x64"
-compwxExtend.dll.x64	{AA798500-8E4F-4554-8611-F2C225046606}	$(WXEXTEND_BIN_DIR)	256		filewxExtend.dll.x64
+compwxExtend.dll.x64	{919135CB-B106-467E-A3DA-CBC463FBB7FF}	$(WXEXTEND_BIN_DIR)	256		filewxExtend.dll.x64
 !ENDIF
 !IF "$(LANG)" == "Sl"
-compwxExtend.mo.sl_SI	{026F2E74-4190-4B49-820B-94141F32F04B}	WXEXTENDLOCSLSIDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.sl_SI
+compwxExtend.mo.sl_SI	{08656BB6-0887-4605-B6D3-20B0444624BA}	WXEXTENDLOCSLSIDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.sl_SI
 !ENDIF
 <<NOKEEP
 
@@ -79,22 +79,22 @@ s$(MSIBUILD_LENGTH_ID)	s$(MSIBUILD_LENGTH_ID)	l255	i4	S$(MSIBUILD_LENGTH_ID)	S20
 File	File
 !IF "$(PLAT)" == "Win32"
 !IF "$(CFG)" == "Release"
-filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~2.DLL|wxExtend11u_vc100.dll	0		0	1536	1
+filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~2.DLL|wxExtend12u_vc100.dll	0		0	1536	1
 !ENDIF
 !IF "$(CFG)" == "Debug"
-filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~4.DLL|wxExtend11ud_vc100.dll	0		0	1536	1
+filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~4.DLL|wxExtend12ud_vc100.dll	0		0	1536	1
 !ENDIF
 !ENDIF
 !IF "$(PLAT)" == "x64"
 !IF "$(CFG)" == "Release"
-filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend11u_vc100_x64.dll	0		0	1536	1
+filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend12u_vc100_x64.dll	0		0	1536	1
 !ENDIF
 !IF "$(CFG)" == "Debug"
-filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend11ud_vc100_x64.dll	0		0	1536	1
+filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend12ud_vc100_x64.dll	0		0	1536	1
 !ENDIF
 !ENDIF
 !IF "$(LANG)" == "Sl"
-filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend11.mo	0		1060	0	1
+filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend12.mo	0		1060	0	1
 !ENDIF
 <<NOKEEP
 
