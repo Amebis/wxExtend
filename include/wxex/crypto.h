@@ -23,6 +23,7 @@
 
 #include <wx/buffer.h>
 #include <wx/ffile.h>
+#include <wx/log.h>
 #include <wx/string.h>
 
 #include <Wincrypt.h>
