@@ -19,6 +19,8 @@
 
 #pragma once
 
+#include "common.h"
+
 #include "wx/string.h"
 #include "wx/buffer.h"
 
@@ -32,6 +34,7 @@
 /// of a buffer of given length
 ///
 /// \param[in] len  Length of the buffer
+///
 /// \returns Maximum encoded representation size (in characters)
 ///
 inline size_t wxHexEncodedSize(size_t len)
@@ -110,6 +113,7 @@ enum wxHexDecodeMode
 /// length
 ///
 /// \param[in] len  Length of the hex encoded string
+///
 /// \returns Maximum decoded representation size (in bytes)
 ///
 inline size_t wxHexDecodedSize(size_t len)

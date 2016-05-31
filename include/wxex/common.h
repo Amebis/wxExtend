@@ -23,17 +23,17 @@
 ///
 /// wxExtend Version
 ///
-#define wxEXTEND_VERSION        0x01020000
+#define wxEXTEND_VERSION        0x01030000
 
 #define wxEXTEND_VERSION_MAJ    1
-#define wxEXTEND_VERSION_MIN    2
+#define wxEXTEND_VERSION_MIN    3
 #define wxEXTEND_VERSION_REV    0
 #define wxEXTEND_VERSION_BUILD  0
 
-#define wxEXTEND_VERSION_STR    "1.2"
+#define wxEXTEND_VERSION_STR    "1.3"
 #define wxEXTEND_BUILD_YEAR_STR "2016"
 
-#define wxExtendVersion         "12"
+#define wxExtendVersion         "13"
 
 
 #if !defined(RC_INVOKED) && !defined(MIDL_PASS)

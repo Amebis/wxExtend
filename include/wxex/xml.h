@@ -19,8 +19,9 @@
 
 #pragma once
 
-#include "crypto.h"
 #include "common.h"
+
+#include "crypto.h"
 
 #include <wx/string.h>
 #include <wx/xml/xml.h>

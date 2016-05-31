@@ -27,6 +27,7 @@
 #include "../include/wxex/comutils.h"
 #include "../include/wxex/crypto.h"
 #include "../include/wxex/hex.h"
+#include "../include/wxex/url.h"
 #include "../include/wxex/valhex.h"
 #include "../include/wxex/xml.h"
 

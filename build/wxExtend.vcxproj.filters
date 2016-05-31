@@ -43,6 +43,9 @@
     <ClCompile Include="..\src\valhex.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\url.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\stdafx.h">
@@ -73,6 +76,9 @@
       <Filter>Header Files\persist</Filter>
     </ClInclude>
     <ClInclude Include="..\include\wxex\valhex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wxex\url.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

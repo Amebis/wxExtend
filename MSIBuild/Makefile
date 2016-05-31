@@ -79,22 +79,22 @@ s$(MSIBUILD_LENGTH_ID)	s$(MSIBUILD_LENGTH_ID)	l255	i4	S$(MSIBUILD_LENGTH_ID)	S20
 File	File
 !IF "$(PLAT)" == "Win32"
 !IF "$(CFG)" == "Release"
-filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~2.DLL|wxExtend12u_vc100.dll	0		0	1536	1
+filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~2.DLL|wxExtend13u_vc100.dll	0		0	1536	1
 !ENDIF
 !IF "$(CFG)" == "Debug"
-filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~4.DLL|wxExtend12ud_vc100.dll	0		0	1536	1
+filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~4.DLL|wxExtend13ud_vc100.dll	0		0	1536	1
 !ENDIF
 !ENDIF
 !IF "$(PLAT)" == "x64"
 !IF "$(CFG)" == "Release"
-filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend12u_vc100_x64.dll	0		0	1536	1
+filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend13u_vc100_x64.dll	0		0	1536	1
 !ENDIF
 !IF "$(CFG)" == "Debug"
-filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend12ud_vc100_x64.dll	0		0	1536	1
+filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend13ud_vc100_x64.dll	0		0	1536	1
 !ENDIF
 !ENDIF
 !IF "$(LANG)" == "Sl"
-filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend12.mo	0		1060	0	1
+filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend13.mo	0		1060	0	1
 !ENDIF
 <<NOKEEP
 
