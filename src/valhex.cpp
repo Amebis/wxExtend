@@ -38,7 +38,7 @@ wxHexValidatorBase::wxHexValidatorBase(const wxHexValidatorBase& other) :
 }
 
 
-bool wxHexValidatorBase::IsMinusOk(const wxString& val, int pos) const
+bool wxHexValidatorBase::IsMinusOk(const wxString& /*val*/, int /*pos*/) const
 {
     // Minus is never OK with hexadecimal numbers.
     return false;
