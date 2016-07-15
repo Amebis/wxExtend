@@ -47,7 +47,11 @@
 /// Public function calling convention
 ///
 #ifdef WXEXTEND
+#ifdef _WINDLL
 #define WXEXTEND_API    __declspec(dllexport)
+#else
+#define WXEXTEND_API
+#endif
 #else
 #define WXEXTEND_API    __declspec(dllimport)
 #endif
