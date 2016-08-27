@@ -39,6 +39,7 @@
     <ClInclude Include="..\include\wxex\comutils.h" />
     <ClInclude Include="..\include\wxex\crypto.h" />
     <ClInclude Include="..\include\wxex\hex.h" />
+    <ClInclude Include="..\include\wxex\object.h" />
     <ClInclude Include="..\include\wxex\persist\auimanager.h" />
     <ClInclude Include="..\include\wxex\persist\dialog.h" />
     <ClInclude Include="..\include\wxex\url.h" />

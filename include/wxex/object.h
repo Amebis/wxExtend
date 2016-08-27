@@ -19,17 +19,37 @@
 
 #pragma once
 
-// Since including <wx/app.h> introduces wrong include order in 3.0.2,
-// include the grand <wx/wx.h> at a cost of longer pre-compilation phase.
-#include <wx/wx.h>
+#include "common.h"
 
-#include "../include/wxex/appbar.h"
-#include "../include/wxex/comutils.h"
-#include "../include/wxex/crypto.h"
-#include "../include/wxex/hex.h"
-#include "../include/wxex/object.h"
-#include "../include/wxex/url.h"
-#include "../include/wxex/valhex.h"
-#include "../include/wxex/xml.h"
+#include <wx/object.h>
 
-#include "../include/wxex/common.h"
+
+///
+/// Helper template for event user data
+///
+template <class T>
+class wxObjectWithData : public wxObject
+{
+public:
+    ///
+    /// Default constructor
+    ///
+    inline wxObjectWithData() {}
+
+    ///
+    /// Construct object with data
+    ///
+    /// \param[in] data  Data to initialize object with
+    ///
+    inline wxObjectWithData(const T &data) : m_data(data) {}
+
+    ///
+    /// Construct object with data
+    ///
+    /// \param[in] data  Data to move to object
+    ///
+    inline wxObjectWithData(T &&data) : m_data(std::move(data)) {}
+
+public:
+    T m_data;   ///< Data
+};
