@@ -47,7 +47,7 @@
     <ClInclude Include="..\src\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <POCompile Include="..\locale\de.po" />
+    <POCompile Include="..\locale\de_DE.po" />
     <POCompile Include="..\locale\ru_RU.po" />
     <POCompile Include="..\locale\sl_SI.po" />
   </ItemGroup>
