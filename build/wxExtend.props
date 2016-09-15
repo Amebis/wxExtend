@@ -12,7 +12,7 @@
       <PreprocessorDefinitions>WXEXTEND;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <POCompile>
-      <OutputFile>%(LocaleRepoDir)$(ProjectName)$(wxExtendVersion).mo</OutputFile>
+      <OutputFile>$(OutDir)..\locale\%(Filename)\$(ProjectName)$(wxExtendVersion).mo</OutputFile>
     </POCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
