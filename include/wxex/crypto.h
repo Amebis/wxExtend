@@ -150,7 +150,7 @@ public:
     inline bool HashAsUTF8(const wxString &str)
     {
         const wxScopedCharBuffer buf(str.ToUTF8());
-        return Hash((const char*)buf.data(), buf.length());
+        return Hash(buf.data(), buf.length());
     }
 
 
@@ -168,7 +168,7 @@ public:
         wxFFile file(fileName, wxT("rb"));
         if (file.IsOpened()) {
             wxMemoryBuffer buf(4*1024);
-            char *data = (char*)buf.GetData();
+            void *data = buf.GetData();
             size_t nBlock = buf.GetBufSize();
             while (!file.Eof())
                 Hash(data, file.Read(data, nBlock));

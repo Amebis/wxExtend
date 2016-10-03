@@ -135,7 +135,7 @@ inline wxString wxURLEncode(const wxString& str)
 ///
 inline wxString wxURLEncode(const wxMemoryBuffer& buf)
 {
-    return wxURLEncode((const char*)buf.GetData(), buf.GetDataLen());
+    return wxURLEncode(reinterpret_cast<const char*>(buf.GetData()), buf.GetDataLen());
 }
 
 

@@ -124,7 +124,7 @@ wxMemoryBuffer WXEXTEND_API wxURLDecode(const char *src, size_t srcLen)
         srcLen = strlen(src);
 
     size_t len = wxURLDecodedSize(srcLen);
-    len = wxURLDecode((char*)buf.GetWriteBuf(len), len, src, srcLen);
+    len = wxURLDecode(reinterpret_cast<char*>(buf.GetWriteBuf(len)), len, src, srcLen);
     if ( len == wxCONV_FAILED )
         len = 0;
 
