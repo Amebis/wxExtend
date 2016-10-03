@@ -38,7 +38,7 @@ inline wxString wxXmlEscapeText(_In_ const wxString& str)
     wxString escaped;
     escaped.reserve(str.length());
 
-    for (wxString::const_iterator i = str.begin(); i != str.end(); ++i) {
+    for (auto i = str.begin(); i != str.end(); ++i) {
         const wxChar c = *i;
         switch (c) {
             case wxS('<'):
@@ -74,7 +74,7 @@ inline wxString wxXmlEscapeAttr(_In_ const wxString& str)
     wxString escaped;
     escaped.reserve(str.length());
 
-    for (wxString::const_iterator i = str.begin(); i != str.end(); ++i) {
+    for (auto i = str.begin(); i != str.end(); ++i) {
         const wxChar c = *i;
         switch (c) {
             case wxS('<'):
