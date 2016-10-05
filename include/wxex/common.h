@@ -39,6 +39,7 @@
 #if !defined(RC_INVOKED) && !defined(MIDL_PASS)
 
 #include <Windows.h>
+#include <wx/config.h>
 #include <wx/debug.h>
 #include <wx/defs.h>
 
@@ -119,6 +120,41 @@ inline bool wxModifyStyleEx(_In_ WXHWND hWnd, _In_ DWORD dwRemove, _In_ DWORD dw
         SetWindowPos(hWnd, NULL, 0, 0, 0, 0, SWP_NOSIZE | SWP_NOMOVE | SWP_NOZORDER | SWP_NOACTIVATE | nFlags);
 
     return true;
+}
+
+
+///
+/// Inizializes wxWidgets localization scheme
+///
+/// The language identifier is read from "Language" configuration string (ll_CC form expected).
+/// The path to folder containing localization catalogue PO files is read from "LocalizationRepositoryPath" configuration string.
+///
+/// \param[inout] locale  Locale to initialize
+///
+/// \returns
+/// - \c true when initialization succeeded
+/// - \c false otherwise
+///
+inline bool wxInitializeLocale(wxLocale &locale)
+{
+    // Read language from configuration.
+    wxLanguage lang_code;
+    wxString lang;
+    if (wxConfigBase::Get()->Read(wxT("Language"), &lang)) {
+        const wxLanguageInfo *lang_info = wxLocale::FindLanguageInfo(lang);
+        lang_code = lang_info ? (wxLanguage)lang_info->Language : wxLANGUAGE_DEFAULT;
+    } else
+        lang_code = wxLANGUAGE_DEFAULT;
+
+    if (wxLocale::IsAvailable(lang_code)) {
+        // Language is "available". Well... Known actually.
+        wxString sPath;
+        if (wxConfigBase::Get()->Read(wxT("LocalizationRepositoryPath"), &sPath))
+            locale.AddCatalogLookupPathPrefix(sPath);
+        return locale.Init(lang_code);
+    }
+
+    return false;
 }
 
 #endif // !defined(RC_INVOKED) && !defined(MIDL_PASS)
