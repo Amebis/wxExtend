@@ -42,6 +42,7 @@
 #include <wx/config.h>
 #include <wx/debug.h>
 #include <wx/defs.h>
+#include <wx/intl.h>
 
 
 ///
@@ -126,8 +127,8 @@ inline bool wxModifyStyleEx(_In_ WXHWND hWnd, _In_ DWORD dwRemove, _In_ DWORD dw
 ///
 /// Inizializes wxWidgets localization scheme
 ///
-/// The language identifier is read from "Language" configuration string (ll_CC form expected).
-/// The path to folder containing localization catalogue PO files is read from "LocalizationRepositoryPath" configuration string.
+/// The language identifier is read from `Language` configuration string ("ll_CC" form expected).
+/// The path to folder containing localization catalogue PO files is read from `LocalizationRepositoryPath` configuration string.
 ///
 /// \param[inout] locale  Locale to initialize
 ///
