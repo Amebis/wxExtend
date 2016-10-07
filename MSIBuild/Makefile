@@ -39,11 +39,13 @@ All :: "$(LANG).$(PLAT).$(CFG).Component-1.idt"
 Component	ComponentId	Directory_	Attributes	Condition	KeyPath
 s$(MSIBUILD_LENGTH_ID)	S38	s$(MSIBUILD_LENGTH_ID)	i2	S255	S$(MSIBUILD_LENGTH_ID)
 Component	Component
+!IFNDEF WXEXTEND_STATIC
 !IF "$(PLAT)" == "Win32"
 compwxExtend.dll.Win32	{7645D753-4A8C-40C6-BD6F-6DDE54F2B8F8}	$(WXEXTEND_BIN_DIR)	0		filewxExtend.dll.Win32
 !ENDIF
 !IF "$(PLAT)" == "x64"
 compwxExtend.dll.x64	{919135CB-B106-467E-A3DA-CBC463FBB7FF}	$(WXEXTEND_BIN_DIR)	256		filewxExtend.dll.x64
+!ENDIF
 !ENDIF
 !IF "$(LANG)" == "ru_RU"
 compwxExtend.mo.ru_RU	{53ED87E7-83E9-44B2-8969-A6B7059466F5}	WXEXTENDLOCRURUDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.ru_RU
@@ -85,6 +87,7 @@ All :: "$(LANG).$(PLAT).$(CFG).File-1.idt"
 File	Component_	FileName	FileSize	Version	Language	Attributes	Sequence
 s$(MSIBUILD_LENGTH_ID)	s$(MSIBUILD_LENGTH_ID)	l255	i4	S$(MSIBUILD_LENGTH_ID)	S20	I2	i2
 File	File
+!IFNDEF WXEXTEND_STATIC
 !IF "$(PLAT)" == "Win32"
 !IF "$(CFG)" == "Release"
 filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~2.DLL|wxExtend13u_vc100.dll	0		0	1536	1
@@ -99,6 +102,7 @@ filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend13u_vc100_x64.dll
 !ENDIF
 !IF "$(CFG)" == "Debug"
 filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend13ud_vc100_x64.dll	0		0	1536	1
+!ENDIF
 !ENDIF
 !ENDIF
 !IF "$(LANG)" == "ru_RU"
