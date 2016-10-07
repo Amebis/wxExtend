@@ -276,6 +276,12 @@ protected:
 };
 
 
+#ifdef __VISUALC__
+// non dll-interface class 'xxx' used as base for dll-interface class 'yyy'
+#pragma warning (push)
+#pragma warning (disable:4275)
+#endif
+
 ///
 /// Dockable application bar frame
 ///
@@ -332,6 +338,10 @@ public:
         long style = wxDEFAULT_DIALOG_STYLE,
         const wxString& name = wxDialogNameStr);
 };
+
+#ifdef __VISUALC__
+#pragma warning(pop)
+#endif
 
 
 ///

@@ -34,6 +34,13 @@ enum wxHexValidatorStyle
 };
 
 
+
+#ifdef __VISUALC__
+// non dll-interface class 'xxx' used as base for dll-interface class 'yyy'
+#pragma warning (push)
+#pragma warning (disable:4275)
+#endif
+
 ///
 /// Base class for hexadecimal validator
 ///
@@ -60,6 +67,10 @@ private:
 private:
     unsigned int m_width;    ///< Preferred width of the string - zero padding (<=1 disables padding)
 };
+
+#ifdef __VISUALC__
+#pragma warning(pop)
+#endif
 
 
 ///
