@@ -33,7 +33,7 @@
 #define wxEXTEND_VERSION_STR    "1.3"
 #define wxEXTEND_BUILD_YEAR_STR "2016"
 
-#define wxExtendVersion         "13"
+#define wxExtendVersion         "14"
 
 
 #if !defined(RC_INVOKED) && !defined(MIDL_PASS)

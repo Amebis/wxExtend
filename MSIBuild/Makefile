@@ -41,17 +41,17 @@ s$(MSIBUILD_LENGTH_ID)	S38	s$(MSIBUILD_LENGTH_ID)	i2	S255	S$(MSIBUILD_LENGTH_ID)
 Component	Component
 !IFNDEF WXEXTEND_STATIC
 !IF "$(PLAT)" == "Win32"
-compwxExtend.dll.Win32	{7645D753-4A8C-40C6-BD6F-6DDE54F2B8F8}	$(WXEXTEND_BIN_DIR)	0		filewxExtend.dll.Win32
+compwxExtend.dll.Win32	{37C6943E-B5D0-4C22-B039-29FEE015D0E8}	$(WXEXTEND_BIN_DIR)	0		filewxExtend.dll.Win32
 !ENDIF
 !IF "$(PLAT)" == "x64"
-compwxExtend.dll.x64	{919135CB-B106-467E-A3DA-CBC463FBB7FF}	$(WXEXTEND_BIN_DIR)	256		filewxExtend.dll.x64
+compwxExtend.dll.x64	{F323428B-B329-4492-943C-0F2387C80DC9}	$(WXEXTEND_BIN_DIR)	256		filewxExtend.dll.x64
 !ENDIF
 !ENDIF
 !IF "$(LANG)" == "ru_RU"
-compwxExtend.mo.ru_RU	{53ED87E7-83E9-44B2-8969-A6B7059466F5}	WXEXTENDLOCRURUDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.ru_RU
+compwxExtend.mo.ru_RU	{3B4C86C3-ABFF-4272-B8E4-2E9B59DC7867}	WXEXTENDLOCRURUDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.ru_RU
 !ENDIF
 !IF "$(LANG)" == "sl_SI"
-compwxExtend.mo.sl_SI	{08656BB6-0887-4605-B6D3-20B0444624BA}	WXEXTENDLOCSLSIDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.sl_SI
+compwxExtend.mo.sl_SI	{E970685D-7997-40C9-A95C-95F1204BD534}	WXEXTENDLOCSLSIDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.sl_SI
 !ENDIF
 <<NOKEEP
 
@@ -90,26 +90,26 @@ File	File
 !IFNDEF WXEXTEND_STATIC
 !IF "$(PLAT)" == "Win32"
 !IF "$(CFG)" == "Release"
-filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~2.DLL|wxExtend13u_vc100.dll	0		0	1536	1
+filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~2.DLL|wxExtend14u_vc100.dll	0		0	1536	1
 !ENDIF
 !IF "$(CFG)" == "Debug"
-filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~4.DLL|wxExtend13ud_vc100.dll	0		0	1536	1
+filewxExtend.dll.Win32	compwxExtend.dll.Win32	WXEXTE~4.DLL|wxExtend14ud_vc100.dll	0		0	1536	1
 !ENDIF
 !ENDIF
 !IF "$(PLAT)" == "x64"
 !IF "$(CFG)" == "Release"
-filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend13u_vc100_x64.dll	0		0	1536	1
+filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend14u_vc100_x64.dll	0		0	1536	1
 !ENDIF
 !IF "$(CFG)" == "Debug"
-filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend13ud_vc100_x64.dll	0		0	1536	1
+filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend14ud_vc100_x64.dll	0		0	1536	1
 !ENDIF
 !ENDIF
 !ENDIF
 !IF "$(LANG)" == "ru_RU"
-filewxExtend.mo.ru_RU	compwxExtend.mo.ru_RU	WXEXTE~1.MO|wxExtend13.mo	0		1060	0	1
+filewxExtend.mo.ru_RU	compwxExtend.mo.ru_RU	WXEXTE~1.MO|wxExtend14.mo	0		1049	0	1
 !ENDIF
 !IF "$(LANG)" == "sl_SI"
-filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend13.mo	0		1060	0	1
+filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend14.mo	0		1060	0	1
 !ENDIF
 <<NOKEEP
 

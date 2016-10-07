@@ -30,6 +30,7 @@
 #include "../include/wxex/object.h"
 #include "../include/wxex/url.h"
 #include "../include/wxex/valhex.h"
+#include "../include/wxex/valnet.h"
 #include "../include/wxex/xml.h"
 
 #include "../include/wxex/common.h"

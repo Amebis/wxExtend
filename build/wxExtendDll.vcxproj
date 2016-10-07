@@ -31,6 +31,7 @@
     </ClCompile>
     <ClCompile Include="..\src\url.cpp" />
     <ClCompile Include="..\src\valhex.cpp" />
+    <ClCompile Include="..\src\valnet.cpp" />
     <ClCompile Include="..\src\xml.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +44,7 @@
     <ClInclude Include="..\include\wxex\persist\dialog.h" />
     <ClInclude Include="..\include\wxex\url.h" />
     <ClInclude Include="..\include\wxex\valhex.h" />
+    <ClInclude Include="..\include\wxex\valnet.h" />
     <ClInclude Include="..\include\wxex\xml.h" />
     <ClInclude Include="..\src\stdafx.h" />
   </ItemGroup>
