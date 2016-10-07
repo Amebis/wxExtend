@@ -8,9 +8,6 @@
     <OutDir>..\..\..\output\$(Platform).$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup>
-    <ClCompile>
-      <PreprocessorDefinitions>WXEXTEND;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
     <POCompile>
       <OutputFile>$(OutDir)..\locale\%(Filename)\$(ProjectName)$(wxExtendVersion).mo</OutputFile>
     </POCompile>
