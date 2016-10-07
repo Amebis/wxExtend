@@ -47,12 +47,8 @@ compwxExtend.dll.Win32	{37C6943E-B5D0-4C22-B039-29FEE015D0E8}	$(WXEXTEND_BIN_DIR
 compwxExtend.dll.x64	{F323428B-B329-4492-943C-0F2387C80DC9}	$(WXEXTEND_BIN_DIR)	256		filewxExtend.dll.x64
 !ENDIF
 !ENDIF
-!IF "$(LANG)" == "ru_RU"
 compwxExtend.mo.ru_RU	{3B4C86C3-ABFF-4272-B8E4-2E9B59DC7867}	WXEXTENDLOCRURUDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.ru_RU
-!ENDIF
-!IF "$(LANG)" == "sl_SI"
 compwxExtend.mo.sl_SI	{E970685D-7997-40C9-A95C-95F1204BD534}	WXEXTENDLOCSLSIDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.sl_SI
-!ENDIF
 <<NOKEEP
 
 
@@ -67,12 +63,8 @@ All :: "$(LANG).$(PLAT).$(CFG).Directory-1.idt"
 Directory	Directory_Parent	DefaultDir
 s$(MSIBUILD_LENGTH_ID)	S$(MSIBUILD_LENGTH_ID)	l255
 Directory	Directory
-!IF "$(LANG)" == "ru_RU"
 WXEXTENDLOCRURUDIR	$(WXEXTEND_LOC_DIR)	ru_RU
-!ENDIF
-!IF "$(LANG)" == "sl_SI"
 WXEXTENDLOCSLSIDIR	$(WXEXTEND_LOC_DIR)	sl_SI
-!ENDIF
 <<NOKEEP
 
 
@@ -105,12 +97,8 @@ filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend14ud_vc100_x64.dl
 !ENDIF
 !ENDIF
 !ENDIF
-!IF "$(LANG)" == "ru_RU"
 filewxExtend.mo.ru_RU	compwxExtend.mo.ru_RU	WXEXTE~1.MO|wxExtend14.mo	0		1049	0	1
-!ENDIF
-!IF "$(LANG)" == "sl_SI"
 filewxExtend.mo.sl_SI	compwxExtend.mo.sl_SI	WXEXTE~1.MO|wxExtend14.mo	0		1060	0	1
-!ENDIF
 <<NOKEEP
 
 
