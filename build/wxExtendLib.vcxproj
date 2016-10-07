@@ -50,9 +50,35 @@
     <ClInclude Include="..\src\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
+    <POCompile Include="..\locale\bg_BG.po" />
+    <POCompile Include="..\locale\ca_ES.po" />
+    <POCompile Include="..\locale\cs_CZ.po" />
+    <POCompile Include="..\locale\cy_UK.po" />
     <POCompile Include="..\locale\de_DE.po" />
+    <POCompile Include="..\locale\el_GR.po" />
+    <POCompile Include="..\locale\es_ES.po" />
+    <POCompile Include="..\locale\eu_ES.po" />
+    <POCompile Include="..\locale\fi_FI.po" />
+    <POCompile Include="..\locale\fr_CA.po" />
+    <POCompile Include="..\locale\fr_FR.po" />
+    <POCompile Include="..\locale\gl_ES.po" />
+    <POCompile Include="..\locale\hr_HR.po" />
+    <POCompile Include="..\locale\hu_HU.po" />
+    <POCompile Include="..\locale\is_IS.po" />
+    <POCompile Include="..\locale\it_IT.po" />
+    <POCompile Include="..\locale\ko_KR.po" />
+    <POCompile Include="..\locale\lt_LT.po" />
+    <POCompile Include="..\locale\nb_NO.po" />
+    <POCompile Include="..\locale\nl_NL.po" />
+    <POCompile Include="..\locale\pl_PL.po" />
+    <POCompile Include="..\locale\pt_PT.po" />
     <POCompile Include="..\locale\ru_RU.po" />
+    <POCompile Include="..\locale\sk_SK.po" />
     <POCompile Include="..\locale\sl_SI.po" />
+    <POCompile Include="..\locale\sr_RS.po" />
+    <POCompile Include="..\locale\sv_SE.po" />
+    <POCompile Include="..\locale\tr_TR.po" />
+    <POCompile Include="..\locale\vi_VN.po" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\locale\wxExtend.pot" />
