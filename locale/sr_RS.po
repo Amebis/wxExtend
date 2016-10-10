@@ -5,6 +5,7 @@ msgstr ""
 "Project-Id-Version: wxExtend\n"
 "POT-Creation-Date: 2016-10-07 12:59+0200\n"
 "PO-Revision-Date: 2016-02-06 09:04+0100\n"
+"Last-Translator: Marko Eremija <marko.eremija@amres.ac.rs>, 2016\n"
 "Language-Team: Serbian (https://www.transifex.com/eduroam_devel/teams/11799/sr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,11 +22,11 @@ msgstr ""
 #: src/valnet.cpp:99
 #, c-format
 msgid "Invalid character in host name found: %c"
-msgstr ""
+msgstr "Neispravan karakter je pronađen u DNS imenu: %c"
 
 #: src/valnet.cpp:99
 msgid "Validation conflict"
-msgstr ""
+msgstr "Konflikt prilikom validacije"
 
 #: include/wxex/appbar.h:981
 msgid ""
@@ -33,7 +34,10 @@ msgid ""
 "Only one auto hidden bar is allowed on each edge.\n"
 "Auto-hide feature is now off."
 msgstr ""
+"Na ovoj ivici već postoji sakriven klizač.\n"
+"Dozvoljen je samo po jedan sakriven klizač na svakoj ivici.\n"
+"Opcija za automatsko sakrivanje je isključena. "
 
 #: include/wxex/appbar.h:981
 msgid "Warning"
-msgstr ""
+msgstr "Upozorenje"
