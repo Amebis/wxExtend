@@ -25,7 +25,7 @@ size_t WXEXTEND_API wxHexEncode(char *dst, size_t dstLen, const void *src_, size
 {
     wxCHECK_MSG( src_, wxCONV_FAILED, wxT("NULL input buffer") );
 
-    const unsigned char *src = static_cast<const unsigned char *>(src_);
+    const unsigned char *src = reinterpret_cast<const unsigned char *>(src_);
 
     static const char bhex[] = "0123456789ABCDEF";
 
@@ -51,7 +51,7 @@ size_t WXEXTEND_API wxHexDecode(void *dst_, size_t dstLen, const char *src, size
 {
     wxCHECK_MSG( src, wxCONV_FAILED, wxT("NULL input buffer") );
 
-    unsigned char *dst = static_cast<unsigned char *>(dst_);
+    unsigned char *dst = reinterpret_cast<unsigned char *>(dst_);
 
     size_t decLen = 0;
 
@@ -66,7 +66,7 @@ size_t WXEXTEND_API wxHexDecode(void *dst_, size_t dstLen, const char *src, size
     const char *p;
     for ( p = src; srcLen; p++, srcLen-- )
     {
-        const unsigned char c = static_cast<unsigned char>(*p);
+        const unsigned char c = *reinterpret_cast<const unsigned char*>(p);
              if ( '0' <= c && c <= '9' ) in = (in << 4) | (c - '0')     , n++;
         else if ( 'A' <= c && c <= 'F' ) in = (in << 4) | (c - 'A' + 10), n++;
         else if ( 'a' <= c && c <= 'f' ) in = (in << 4) | (c - 'a' + 10), n++;
