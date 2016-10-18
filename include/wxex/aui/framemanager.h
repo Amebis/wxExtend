@@ -20,20 +20,20 @@
 
 #pragma once
 
-// Since including <wx/app.h> introduces wrong include order in 3.0.2,
-// include the grand <wx/wx.h> at a cost of longer pre-compilation phase.
-#include <wx/wx.h>
+#include "../common.h"
 
-#include "../include/wxex/aui/framemanager.h"
+#include <wx/aui/framemanager.h>
+#include <wx/string.h>
 
-#include "../include/wxex/appbar.h"
-#include "../include/wxex/comutils.h"
-#include "../include/wxex/crypto.h"
-#include "../include/wxex/hex.h"
-#include "../include/wxex/object.h"
-#include "../include/wxex/url.h"
-#include "../include/wxex/valhex.h"
-#include "../include/wxex/valnet.h"
-#include "../include/wxex/xml.h"
 
-#include "../include/wxex/common.h"
+///
+/// Updates perspective captions with matching captions from panes.
+///
+/// \param[in   ] mgr          wxAUI manager
+/// \param[inout] perspective  Perspective string to update captions in
+///
+/// \returns
+/// - \c true when update succeeded
+/// - \c false otherwise
+///
+bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxString& perspective);

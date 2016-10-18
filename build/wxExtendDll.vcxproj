@@ -22,6 +22,7 @@
     <ClCompile Include="..\src\appbar.cpp" />
     <ClCompile Include="..\src\comutils.cpp" />
     <ClCompile Include="..\src\crypto.cpp" />
+    <ClCompile Include="..\src\framemanager.cpp" />
     <ClCompile Include="..\src\hex.cpp" />
     <ClCompile Include="..\src\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -36,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\wxex\appbar.h" />
+    <ClInclude Include="..\include\wxex\aui\framemanager.h" />
     <ClInclude Include="..\include\wxex\common.h" />
     <ClInclude Include="..\include\wxex\comutils.h" />
     <ClInclude Include="..\include\wxex\crypto.h" />

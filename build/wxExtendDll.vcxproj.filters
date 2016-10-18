@@ -20,6 +20,9 @@
     <Filter Include="Header Files\persist">
       <UniqueIdentifier>{33d4709f-47d3-42c1-9562-bc4743799b49}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\aui">
+      <UniqueIdentifier>{be99b1e7-e013-4c69-8966-6b34932a1711}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\stdafx.cpp">
@@ -47,6 +50,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\valnet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\framemanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,6 +92,9 @@
     </ClInclude>
     <ClInclude Include="..\include\wxex\valnet.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wxex\aui\framemanager.h">
+      <Filter>Header Files\aui</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

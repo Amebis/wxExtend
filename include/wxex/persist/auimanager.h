@@ -22,6 +22,8 @@
 
 #include "../common.h"
 
+#include "../aui/framemanager.h"
+
 #include <wx/persist.h>
 #include <wx/aui/framemanager.h>
 
@@ -67,7 +69,14 @@ public:
     {
         // Load perspective string from configuration.
         wxString persp;
-        return RestoreValue(wxT(wxPERSIST_AUIMGR_PERSPECTIVE), &persp) && GetManager()->LoadPerspective(persp);
+        wxCHECK(RestoreValue(wxT(wxPERSIST_AUIMGR_PERSPECTIVE), &persp), false);
+
+        // Update captions (see http://trac.wxwidgets.org/ticket/12528).
+        wxAuiManager* mgr = GetManager();
+        wxCHECK(wxAuiManagerUpdatePerspectiveCaptions(*mgr, persp), false);
+
+        // Restore perspective.
+        return mgr->LoadPerspective(persp);
     }
 
 protected:
