@@ -176,7 +176,7 @@ public:
 
             return true;
         } else {
-            wxLogError(wxT("Can not open %s file for reading."), fileName.c_str());
+            wxLogError(wxT("Can not open %s file for reading."), fileName);
             return false;
         }
     }
