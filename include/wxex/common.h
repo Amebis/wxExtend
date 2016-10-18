@@ -131,13 +131,14 @@ inline bool wxModifyStyleEx(_In_ WXHWND hWnd, _In_ DWORD dwRemove, _In_ DWORD dw
 /// The language identifier is read from `Language` configuration string ("ll_CC" form expected).
 /// The path to folder containing localization catalogue PO files is read from `LocalizationRepositoryPath` configuration string.
 ///
-/// \param[inout] locale  Locale to initialize
+/// \param[inout] locale    Locale to initialize
+/// \param[out  ] language  Translation language
 ///
 /// \returns
 /// - \c true when initialization succeeded
 /// - \c false otherwise
 ///
-inline bool wxInitializeLocale(wxLocale &locale)
+inline bool wxInitializeLocale(wxLocale &locale, wxLanguage *language = NULL)
 {
     // Read language from configuration.
     wxLanguage lang_code;
@@ -147,6 +148,9 @@ inline bool wxInitializeLocale(wxLocale &locale)
         lang_code = lang_info ? (wxLanguage)lang_info->Language : wxLANGUAGE_DEFAULT;
     } else
         lang_code = wxLANGUAGE_DEFAULT;
+
+    if (language)
+        *language = lang_code;
 
     if (wxLocale::IsAvailable(lang_code)) {
         // Language is "available". Well... Known actually.
