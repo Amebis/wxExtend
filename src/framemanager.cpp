@@ -24,7 +24,6 @@
 bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxString& perspective)
 {
     wxString input = perspective;
-    wxString output;
     wxString part;
 
     // check layout string version
@@ -36,8 +35,10 @@ bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxStr
     part.Trim(false);
     if (part != wxT("layout2"))
         return false;
-    output += part;
-    output += wxT('|');
+
+    wxString result;
+    result.Alloc(500);
+    result = wxT('layout2|');
 
     // replace escaped characters so we can
     // split up the string easily
@@ -60,8 +61,7 @@ bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxStr
 
         if (pane_part.Left(9) == wxT("dock_size"))
         {
-            output += pane_part;
-            output += wxT('|');
+            result += pane_part + wxT('|');
             continue;
         }
 
@@ -79,10 +79,10 @@ bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxStr
         // Update caption.
         pane.caption = p.caption;
 
-        output += mgr.SavePaneInfo(pane);
-        output += wxT('|');
+        // Re-generate and append pane info.
+        result += mgr.SavePaneInfo(pane) + wxT('|');
     }
 
-    perspective = output;
+    perspective = result;
     return true;
 }
