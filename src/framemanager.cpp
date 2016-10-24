@@ -38,7 +38,7 @@ bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxStr
 
     wxString result;
     result.Alloc(500);
-    result = wxT('layout2|');
+    result = wxT("layout2|");
 
     // replace escaped characters so we can
     // split up the string easily
