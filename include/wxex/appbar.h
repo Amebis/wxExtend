@@ -1,6 +1,6 @@
-/*
+ï»¿/*
     Copyright 2015-2016 Amebis
-    Copyright 2016 GÉANT
+    Copyright 2016 GÃ‰ANT
     Based on code written by Jeffrey Richter.
 
     This file is part of wxExtend.
@@ -43,7 +43,7 @@
 /// \param[in] wParam Event identifier. One of the following values
 /// - ABN_FULLSCREENAPP Notifies an appbar when a full-screen application is opening or closing. \p lParam is boolean flag specifying whether a full-screen application is opening or closing. This parameter is TRUE if the application is opening or FALSE if it is closing.
 /// - ABN_POSCHANGED    Notifies an appbar when an event has occurred that may affect the appbar's size and position. Events include changes in the taskbar's size, position, and visibility state, as well as the addition, removal, or resizing of another appbar on the same side of the screen. \p lParam is not used.
-/// - ABN_STATECHANGE   Notifies an appbar that the taskbar's autohide or always-on-top state has changed—that is, the user has selected or cleared the "Always on top" or "Auto hide" check box on the taskbar's property sheet. \p lParam is not used.
+/// - ABN_STATECHANGE   Notifies an appbar that the taskbar's autohide or always-on-top state has changedâ€”that is, the user has selected or cleared the "Always on top" or "Auto hide" check box on the taskbar's property sheet. \p lParam is not used.
 /// \param[in] lParam Event specific. See \p wParam for details.
 ///
 #define WM_AB_NOTIFY                    0x6f00
