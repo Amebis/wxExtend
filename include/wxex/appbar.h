@@ -32,10 +32,23 @@
 #include <ShlObj.h>
 
 
-#define wxABT_AUTOHIDETIMERID       1
-#define wxABT_AUTOHIDETIME          300
-#define wxABT_AUTOHIDETIMERINTERVAL 3000
+/// \addtogroup wxExtend
+/// @{
 
+///
+/// Application bar auto-hide timer ID
+///
+#define wxABT_AUTOHIDETIMERID       1
+
+///
+/// Application bar auto-hide timer timeout
+///
+#define wxABT_AUTOHIDETIME          300
+
+///
+/// Application bar auto-hide timer interval
+///
+#define wxABT_AUTOHIDETIMERINTERVAL 3000
 
 ///
 /// Posted to notify application bar about system changes
@@ -100,16 +113,21 @@ enum wxAppBarFlags {
 template <class W>
 class wxAppBar : public W
 {
-protected:
-    // common part of all ctors
-    void Init();
-
 public:
+    ///
+    /// Creates new application bar
+    ///
     wxAppBar();
+
+    ///
+    /// Destructor
+    ///
     virtual ~wxAppBar();
 
 protected:
+    /// \cond internal
     void PreCreate(wxAppBarState& state, int& flags, const wxSize& size, long& style);
+    /// \endcond
 
 public:
     /// \name Application bar general management
@@ -191,9 +209,14 @@ public:
     /// Restore application bar from the edge of the desktop.
     ///
     /// \param[in] rect The desired coordinates of the restored window. If NULL internally saved coordinates are used.
-    /// \param[in] wnd When the undocked and docked window is different, this parameter denotes the undocked version.
     ///
     void MaximiseFromEdge(const RECT* rect = NULL);
+
+    ///
+    /// Restore application bar from the edge of the desktop.
+    ///
+    /// \param[in] wnd When the undocked and docked window is different, this parameter denotes the undocked version.
+    ///
     void MaximiseFromEdge(wxWindow *wnd);
 
     ///
@@ -251,19 +274,23 @@ protected:
     /// @}
 
 protected:
+    /// \cond internal
     virtual WXLRESULT MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM lParam);
+    /// \endcond
 
 private:
+    /// \cond internal
     inline bool DockAppBar(wxAppBarState state);
     inline bool UndockAppBar();
     inline bool RegisterAutoHide(wxAppBarState state);
     inline bool UnregisterAutoHide(wxAppBarState state);
     inline bool GetDockedRect(wxAppBarState state, LPRECT rect) const;
     inline bool GetAutoHideRect(wxAppBarState state, bool bAutoHidden, LPRECT rect) const;
+    /// \endcond
 
 protected:
-    wxAppBarState m_state;                ///< Current state of the application bar
-    wxAppBarState m_stateDesired;         ///< Desired state of the application bar while moving/resizing
+    wxAppBarState m_state;          ///< Current state of the application bar
+    wxAppBarState m_stateDesired;   ///< Desired state of the application bar while moving/resizing
     int m_flags;                    ///< Flags describing application bar's behaviour
 
     SIZE m_sizeFloat;               ///< Window size when floating (we need it to restore floating size, when we undock)
@@ -289,7 +316,14 @@ protected:
 class WXEXTEND_API wxAppBarFrame : public wxAppBar<wxFrame>
 {
 public:
+    ///
+    /// Creates application bar frame
+    ///
     wxAppBarFrame();
+
+    ///
+    /// Creates application bar frame
+    ///
     wxAppBarFrame(wxWindow *parent,
         wxWindowID id,
         const wxString& title,
@@ -300,6 +334,9 @@ public:
         long style = wxDEFAULT_FRAME_STYLE,
         const wxString& name = wxFrameNameStr);
 
+    ///
+    /// Creates application bar frame
+    ///
     bool Create(wxWindow *parent,
         wxWindowID id,
         const wxString& title,
@@ -318,7 +355,14 @@ public:
 class WXEXTEND_API wxAppBarDialog : public wxAppBar<wxDialog>
 {
 public:
+    ///
+    /// Creates application bar dialog
+    ///
     wxAppBarDialog();
+
+    ///
+    /// Creates application bar dialog
+    ///
     wxAppBarDialog(wxWindow *parent,
         wxWindowID id,
         const wxString& title,
@@ -329,6 +373,9 @@ public:
         long style = wxDEFAULT_DIALOG_STYLE,
         const wxString& name = wxDialogNameStr);
 
+    ///
+    /// Creates application bar dialog
+    ///
     bool Create(wxWindow *parent,
         wxWindowID id,
         const wxString& title,
@@ -460,22 +507,17 @@ inline UINT_PTR wxAppBarGetTaskBarState()
 }
 
 
+/// @}
+
 //////////////////////////////////////////////////////////////////////////
 // wxAppBar
 //////////////////////////////////////////////////////////////////////////
 
 template <class W>
-void wxAppBar<W>::Init()
+wxAppBar<W>::wxAppBar() :
+    m_taskbarList(NULL),
+    m_timerID(0)
 {
-    m_taskbarList = NULL;
-    m_timerID = 0;
-}
-
-
-template <class W>
-wxAppBar<W>::wxAppBar()
-{
-    Init();
 }
 
 
@@ -487,6 +529,7 @@ wxAppBar<W>::~wxAppBar()
 }
 
 
+/// \cond internal
 template <class W>
 void wxAppBar<W>::PreCreate(wxAppBarState& state, int& flags, const wxSize& size, long& style)
 {
@@ -539,6 +582,7 @@ void wxAppBar<W>::PreCreate(wxAppBarState& state, int& flags, const wxSize& size
     } else
         wxFAIL_MSG(wxString::Format(wxT("TaskbarList creation failed 0x%x"), hr));
 }
+/// \endcond
 
 
 template <class W>
@@ -993,6 +1037,7 @@ void wxAppBar<W>::OnAutoHideDenied()
 }
 
 
+/// \cond internal
 template <class W>
 WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM lParam)
 {
@@ -1387,7 +1432,10 @@ WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM l
         return W::MSWWindowProc(message, wParam, lParam);
     }
 }
+/// \endcond
 
+
+/// \cond internal
 
 template <class W>
 inline bool wxAppBar<W>::DockAppBar(wxAppBarState state)
@@ -1571,3 +1619,5 @@ inline bool wxAppBar<W>::GetAutoHideRect(wxAppBarState state, bool bAutoHidden, 
 
     return true;
 }
+
+/// \endcond

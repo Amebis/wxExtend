@@ -25,9 +25,11 @@
 #include "wx/string.h"
 #include "wx/buffer.h"
 
+/// \addtogroup wxExtend
+/// @{
 
 ///
-/// Return if given character should be protected for URL encoding
+/// Test if given character should be protected for URL encoding
 ///
 /// \param[in] chr  ASCII character
 ///
@@ -67,8 +69,7 @@ inline bool wxURLIsProtected(char chr)
 /// Return the size needed for the buffer containing the encoded representation
 /// of a string of given length
 ///
-/// \param[in]  src     Source string to encode
-/// \param[in]  srcLen  Length of \p src string (in bytes)
+/// \param[in] len  Length of string (in bytes)
 ///
 /// \returns Maximum encoded representation size (in characters)
 ///
@@ -89,7 +90,7 @@ inline size_t wxURLEncodedSize(size_t len)
 ///
 /// \returns The length of the encoded data or wxCONV_FAILED if the buffer is not
 /// large enough; to determine the needed size you can either allocate a buffer
-/// of \c{wxURLEncodedSize(srcLen)} size or call the function with NULL string in
+/// of `wxURLEncodedSize(srcLen)` size or call the function with NULL string in
 /// which case the required size will be returned
 ///
 size_t WXEXTEND_API wxURLEncode(char *dst, size_t dstLen, const char *src, size_t srcLen);
@@ -169,7 +170,7 @@ inline size_t wxURLDecodedSize(size_t len)
 ///
 /// \returns The length of the decoded data or wxCONV_FAILED if the buffer is not
 /// large enough; to determine the needed size you can either allocate a buffer
-/// of \c{wxURLDecodedSize(srcLen)} size or call the function with NULL string in
+/// of `wxURLDecodedSize(srcLen)` size or call the function with NULL string in
 /// which case the required size will be returned
 ///
 size_t WXEXTEND_API wxURLDecode(char *dst, size_t dstLen, const char *src, size_t srcLen = wxNO_LEN);
@@ -184,7 +185,7 @@ size_t WXEXTEND_API wxURLDecode(char *dst, size_t dstLen, const char *src, size_
 ///
 /// \returns The length of the decoded data or wxCONV_FAILED if the buffer is not
 /// large enough; to determine the needed size you can either allocate a buffer
-/// of \c{wxURLDecodedSize(srcLen)} size or call the function with NULL string in
+/// of `wxURLDecodedSize(srcLen)` size or call the function with NULL string in
 /// which case the required size will be returned
 ///
 inline size_t wxURLDecode(char *dst, size_t dstLen, const wxString& src)
@@ -220,3 +221,5 @@ inline wxMemoryBuffer wxURLDecode(const wxString& src)
     // strings with embedded NULs
     return wxURLDecode(src.ToAscii(), wxNO_LEN);
 }
+
+/// @}

@@ -27,6 +27,8 @@
 #include <wx/string.h>
 #include <wx/xml/xml.h>
 
+/// \addtogroup wxExtend
+/// @{
 
 ///
 /// Escapes text string for XML insertion
@@ -108,7 +110,6 @@ inline wxString wxXmlEscapeAttr(_In_ const wxString& str)
 }
 
 
-
 ///
 /// Calculates hash of the node and all its children
 ///
@@ -117,3 +118,5 @@ inline wxString wxXmlEscapeAttr(_In_ const wxString& str)
 ///
 ///
 bool WXEXTEND_API wxXmlHashNode(_In_ wxCryptoHash &hash, const wxXmlNode *node);
+
+/// @}

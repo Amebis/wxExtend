@@ -26,6 +26,8 @@
 #include <wx/textctrl.h>
 #include <wx/validate.h>
 
+/// \addtogroup wxExtend
+/// @{
 
 #ifdef __VISUALC__
 // non dll-interface class 'xxx' used as base for dll-interface class 'yyy'
@@ -170,3 +172,5 @@ private:
 #ifdef __VISUALC__
 #pragma warning(pop)
 #endif
+
+/// @}

@@ -29,6 +29,8 @@
 
 #include <Wincrypt.h>
 
+/// \addtogroup wxExtend
+/// @{
 
 ///
 /// Cryptographics Session Base Class
@@ -39,7 +41,15 @@ protected:
     HCRYPTPROV m_h; ///< Session Handle
 
 public:
+    ///
+    /// Creates a new cryptographics session
+    ///
     wxCryptoSession();
+
+
+    ///
+    /// Destructor
+    ///
     virtual ~wxCryptoSession();
 
 
@@ -72,6 +82,9 @@ public:
 class WXEXTEND_API wxCryptoSessionRSAAES : public wxCryptoSession
 {
 public:
+    ///
+    /// Creates a new RSA AES cryptographics session
+    ///
     wxCryptoSessionRSAAES();
 };
 
@@ -85,7 +98,15 @@ protected:
     HCRYPTHASH m_h; ///< Hash Handle
 
 public:
+    ///
+    /// Creates a new cryptographics hash
+    ///
     wxCryptoHash();
+
+
+    ///
+    /// Destructor
+    ///
     virtual ~wxCryptoHash();
 
 
@@ -226,6 +247,9 @@ public:
 class WXEXTEND_API wxCryptoHashSHA1 : public wxCryptoHash
 {
 public:
+    ///
+    /// Creates a new cryptographics SHA-1 hash
+    ///
     wxCryptoHashSHA1(wxCryptoSession &session);
 
 
@@ -247,8 +271,19 @@ public:
 ///
 class WXEXTEND_API wxCryptoKey
 {
+protected:
+    HCRYPTKEY m_h;  ///< Key Handle
+
 public:
+    ///
+    /// Creates a new cryptographics key
+    ///
     wxCryptoKey();
+
+
+    ///
+    /// Destructor
+    ///
     virtual ~wxCryptoKey();
 
 
@@ -274,11 +309,16 @@ public:
     }
 
 
+    ///
+    /// Imports private key
+    ///
     bool ImportPrivate(wxCryptoSession &session, const void *data, size_t size);
-    bool ImportPublic(wxCryptoSession &session, const void *data, size_t size);
 
-protected:
-    HCRYPTKEY m_h;
+
+    ///
+    /// Imports public key
+    ///
+    bool ImportPublic(wxCryptoSession &session, const void *data, size_t size);
 };
 
 
@@ -312,3 +352,5 @@ inline bool wxCryptoVerifySignature(const wxCryptoHash &hash, const wxMemoryBuff
 {
     return wxCryptoVerifySignature(hash, signature.GetData(), signature.GetDataLen(), key);
 }
+
+/// @}

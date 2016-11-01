@@ -21,20 +21,23 @@
 #if !defined(__wxEXTEND_common_h__)
 #define __wxEXTEND_common_h__
 
+/// \addtogroup wxExtend
+/// @{
+
 ///
 /// wxExtend Version
 ///
 #define wxEXTEND_VERSION        0x01050100
 
-#define wxEXTEND_VERSION_MAJ    1
-#define wxEXTEND_VERSION_MIN    5
-#define wxEXTEND_VERSION_REV    1
-#define wxEXTEND_VERSION_BUILD  0
+#define wxEXTEND_VERSION_MAJ    1       ///< wxExtend Major Version
+#define wxEXTEND_VERSION_MIN    5       ///< wxExtend Minor Version
+#define wxEXTEND_VERSION_REV    1       ///< wxExtend Revision
+#define wxEXTEND_VERSION_BUILD  0       ///< wxExtend Build
 
-#define wxEXTEND_VERSION_STR    "1.5.1"
-#define wxEXTEND_BUILD_YEAR_STR "2016"
+#define wxEXTEND_VERSION_STR    "1.5.1" ///< wxExtend Displayable Version
+#define wxEXTEND_BUILD_YEAR_STR "2016"  ///< wxExtend Build Year
 
-#define wxExtendVersion         "15"
+#define wxExtendVersion         "15"    ///< wxExtend API Version
 
 
 #if !defined(RC_INVOKED) && !defined(MIDL_PASS)
@@ -44,7 +47,6 @@
 #include <wx/debug.h>
 #include <wx/defs.h>
 #include <wx/intl.h>
-
 
 ///
 /// Public function calling convention
@@ -61,7 +63,7 @@
 
 
 ///
-/// Debug macros
+/// Test if condition is true. When not true, raise debug assertion with the given message.
 ///
 #if wxDEBUG_LEVEL
 #define wxVERIFY_MSG(cond, msg)                                           \
@@ -74,7 +76,13 @@
             wxTrap();                                                     \
         }                                                                 \
     wxSTATEMENT_MACRO_END
+#endif
 
+
+///
+/// Test if condition is true. When not true, raise debug assertion.
+///
+#if wxDEBUG_LEVEL
 #define wxVERIFY(cond) wxVERIFY_MSG(cond, (const char*)NULL)
 #else
 #define wxVERIFY(cond) (cond)
@@ -164,4 +172,7 @@ inline bool wxInitializeLocale(wxLocale &locale, wxLanguage *language = NULL)
 }
 
 #endif // !defined(RC_INVOKED) && !defined(MIDL_PASS)
+
+/// @}
+
 #endif // !defined(__wxEXTEND_common_h__)

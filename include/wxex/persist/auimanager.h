@@ -28,15 +28,18 @@
 #include <wx/aui/framemanager.h>
 
 
-// ----------------------------------------------------------------------------
-// string constants used by wxPersistentAuiManager
-// ----------------------------------------------------------------------------
+/// \addtogroup wxExtend
+/// @{
 
+///
+/// `wxPersistentAuiManager` kind for persistent storage
+///
 #define wxPERSIST_AUIMGR_KIND "AuiManager"
 
-// names for persistent options
+///
+/// Name of the persistent storage variable for saving Aui manager state
+///
 #define wxPERSIST_AUIMGR_PERSPECTIVE "perspective"
-
 
 ///
 /// Supports saving/restoring wxAuiManager state
@@ -44,27 +47,42 @@
 class wxPersistentAuiManager : public wxPersistentObject
 {
 public:
+    ///
+    /// Constructs a persistent Aui manager object
+    ///
     wxPersistentAuiManager(wxAuiManager *mgr) : wxPersistentObject(mgr)
     {
     }
 
+    ///
+    /// \returns `wxT(wxPERSIST_AUIMGR_KIND)`
+    ///
     virtual wxString GetKind() const
     {
         return wxT(wxPERSIST_AUIMGR_KIND);
     }
 
+    ///
+    /// Returns name of the window
+    ///
     virtual wxString GetName() const
     {
         // Borrow the name of wxAguiManager from its window.
         return GetManager()->GetManagedWindow()->GetName();
     }
 
+    ///
+    /// Saves Aui manager state
+    ///
     virtual void Save() const
     {
         // Save perspective string to configuration.
         SaveValue(wxT(wxPERSIST_AUIMGR_PERSPECTIVE), GetManager()->SavePerspective());
     }
 
+    ///
+    /// Restores Aui manager state
+    ///
     virtual bool Restore()
     {
         // Load perspective string from configuration.
@@ -80,10 +98,12 @@ public:
     }
 
 protected:
+    /// \cond internal
     wxAuiManager *GetManager() const
     {
         return static_cast<wxAuiManager*>(GetObject());
     }
+    /// \endcond
 
 private:
     wxDECLARE_NO_COPY_CLASS(wxPersistentAuiManager);
@@ -97,3 +117,5 @@ inline wxPersistentObject *wxCreatePersistentObject(wxAuiManager *mgr)
 {
     return new wxPersistentAuiManager(mgr);
 }
+
+/// @}

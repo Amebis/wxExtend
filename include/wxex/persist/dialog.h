@@ -27,13 +27,13 @@
 #include <wx/persist/window.h>
 #include <wx/dialog.h>
 
+/// \addtogroup wxExtend
+/// @{
 
-// ----------------------------------------------------------------------------
-// string constants used by wxPersistentDialog
-// ----------------------------------------------------------------------------
-
+///
+/// `wxPersistentDialog` kind for persistent storage
+///
 #define wxPERSIST_DIALOG_KIND "Dialog"
-
 
 ///
 /// Supports saving/restoring wxDialog state
@@ -41,15 +41,24 @@
 class wxPersistentDialog : public wxPersistentWindow<wxDialog>
 {
 public:
+    ///
+    /// Constructs a persistent dialog object
+    ///
     wxPersistentDialog(wxDialog *mgr) : wxPersistentWindow<wxDialog>(mgr)
     {
     }
 
+    ///
+    /// \returns `wxT(wxPERSIST_DIALOG_KIND)`
+    ///
     virtual wxString GetKind() const
     {
         return wxT(wxPERSIST_DIALOG_KIND);
     }
 
+    ///
+    /// Saves dialog state
+    ///
     virtual void Save() const
     {
         const wxDialog * const wnd = Get();
@@ -60,6 +69,9 @@ public:
         SaveValue(wxPERSIST_TLW_Y, pos.y);
     }
 
+    ///
+    /// Restores dialog state
+    ///
     virtual bool Restore()
     {
         wxDialog * const wnd = Get();
@@ -102,3 +114,5 @@ inline wxPersistentObject *wxCreatePersistentObject(wxDialog *mgr)
 {
     return new wxPersistentDialog(mgr);
 }
+
+/// @}

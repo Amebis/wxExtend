@@ -22,6 +22,8 @@
 
 #include "common.h"
 
+/// \addtogroup wxExtend
+/// @{
 
 ///
 /// Create an object of this class on stack to initialize/cleanup the COM automatically.
@@ -32,7 +34,7 @@ public:
     ///
     /// Initialize the COM
     ///
-    /// \param[in] dwCoInit  The concurrency model and initialization options for the thread to pass to \c CoInitializeEx
+    /// \param[in] dwCoInit  The concurrency model and initialization options for the thread to pass to `CoInitializeEx()`
     ///
     wxCoInitializer(DWORD dwCoInit = COINIT_MULTITHREADED);
 
@@ -62,3 +64,5 @@ public:
 private:
     bool m_ok;
 };
+
+/// @}

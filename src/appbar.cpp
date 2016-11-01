@@ -28,13 +28,11 @@
 
 wxAppBarFrame::wxAppBarFrame()
 {
-    Init();
 }
 
 
 wxAppBarFrame::wxAppBarFrame(wxWindow *parent, wxWindowID id, const wxString& title, wxAppBarState state, int flags, const wxPoint& pos, const wxSize& size, long style, const wxString& name)
 {
-    Init();
     Create(parent, id, title, state, flags, pos, size, style, name);
 }
 
@@ -57,13 +55,11 @@ bool wxAppBarFrame::Create(wxWindow *parent, wxWindowID id, const wxString& titl
 
 wxAppBarDialog::wxAppBarDialog()
 {
-    Init();
 }
 
 
 wxAppBarDialog::wxAppBarDialog(wxWindow *parent, wxWindowID id, const wxString& title, wxAppBarState state, int flags, const wxPoint& pos, const wxSize& size, long style, const wxString& name)
 {
-    Init();
     Create(parent, id, title, state, flags, pos, size, style, name);
 }
 

@@ -25,6 +25,8 @@
 #include <wx/aui/framemanager.h>
 #include <wx/string.h>
 
+/// \addtogroup wxExtend
+/// @{
 
 ///
 /// Updates perspective captions with matching captions from panes.
@@ -37,3 +39,5 @@
 /// - \c false otherwise
 ///
 bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxString& perspective);
+
+/// @}

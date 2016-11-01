@@ -30,6 +30,9 @@
 // Encoding Functions
 // ----------------------------------------------------------------------------
 
+/// \addtogroup wxExtend
+/// @{
+
 ///
 /// Return the size needed for the buffer containing the encoded representation
 /// of a buffer of given length
@@ -55,7 +58,7 @@ inline size_t wxHexEncodedSize(size_t len)
 ///
 /// \returns The length of the encoded data or wxCONV_FAILED if the buffer is not
 /// large enough; to determine the needed size you can either allocate a buffer
-/// of \c{wxHexEncodedSize(srcLen)} size or call the function with NULL buffer in
+/// of `wxHexEncodedSize(srcLen)` size or call the function with NULL buffer in
 /// which case the required size will be returned
 ///
 size_t WXEXTEND_API wxHexEncode(char *dst, size_t dstLen, const void *src, size_t srcLen);
@@ -135,7 +138,7 @@ inline size_t wxHexDecodedSize(size_t len)
 /// \param[in]  dstLen  Length of \p dst buffer (in bytes)
 /// \param[in]  src     Source buffer to decode
 /// \param[in]  srcLen  Length of \p src buffer (in characters) or wxNO_LEN for zero terminated strings
-/// \param[in]  mode    Desired behaviour on invalid characters (one of \c wxHexDecodeMode constants)
+/// \param[in]  mode    Desired behaviour on invalid characters (one of `wxHexDecodeMode` constants)
 /// \param[out] posErr  Error offset in source buffer (in characters)
 ///
 /// \returns The length of the decoded data or wxCONV_FAILED if an error occurs
@@ -156,7 +159,7 @@ size_t WXEXTEND_API wxHexDecode(void *dst, size_t dstLen, const char *src, size_
 /// \param[out] dst     Destination buffer to receive decoded data
 /// \param[in]  dstLen  Length of \p dst buffer (in bytes)
 /// \param[in]  src     Source string to decode
-/// \param[in]  mode    Desired behaviour on invalid characters (one of \c wxHexDecodeMode constants)
+/// \param[in]  mode    Desired behaviour on invalid characters (one of `wxHexDecodeMode` constants)
 /// \param[out] posErr  Error offset in source buffer (in characters)
 ///
 /// \returns The length of the decoded data or wxCONV_FAILED if an error occurs
@@ -182,7 +185,7 @@ inline size_t wxHexDecode(void *dst, size_t dstLen, const wxString& src, wxHexDe
 ///
 /// \param[in]  src     Source buffer to decode
 /// \param[in]  srcLen  Length of \p src buffer (in characters) or wxNO_LEN for zero terminated strings
-/// \param[in]  mode    Desired behaviour on invalid characters (one of \c wxHexDecodeMode constants)
+/// \param[in]  mode    Desired behaviour on invalid characters (one of `wxHexDecodeMode` constants)
 /// \param[out] posErr  Error offset in source buffer (in characters)
 ///
 /// \returns Destination buffer with decoded data or an empty buffer if an error occured during decoding
@@ -198,7 +201,7 @@ wxMemoryBuffer WXEXTEND_API wxHexDecode(const char *src, size_t srcLen = wxNO_LE
 /// whitespace or all invalid characters using its \p mode argument
 ///
 /// \param[in]  src     Source string to decode
-/// \param[in]  mode    Desired behaviour on invalid characters (one of \c wxHexDecodeMode constants)
+/// \param[in]  mode    Desired behaviour on invalid characters (one of `wxHexDecodeMode` constants)
 /// \param[out] posErr  Error offset in source buffer (in characters)
 ///
 /// \returns Destination buffer with decoded data or an empty buffer if an error occured during decoding
@@ -209,3 +212,5 @@ inline wxMemoryBuffer wxHexDecode(const wxString& src, wxHexDecodeMode mode = wx
     // strings with embedded NULs
     return wxHexDecode(src.ToAscii(), wxNO_LEN, mode, posErr);
 }
+
+/// @}

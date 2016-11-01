@@ -24,6 +24,8 @@
 
 #include <wx/valnum.h>
 
+/// \addtogroup wxExtend
+/// @{
 
 ///
 /// Bit masks used for hexadecimal validator styles.
@@ -48,22 +50,49 @@ enum wxHexValidatorStyle
 class WXEXTEND_API wxHexValidatorBase : public wxIntegerValidatorBase
 {
 protected:
+    ///
+    /// Constructs new hexadecimal validator
+    ///
     wxHexValidatorBase(int style);
+
+    ///
+    /// Copies a hexadecimal validator
+    ///
     wxHexValidatorBase(const wxHexValidatorBase& other);
 
+    ///
+    /// Tests whether minus is acceptable at given position
+    ///
+    /// \returns Always `false`
+    ///
     bool IsMinusOk(const wxString& val, int pos) const;
 
+    ///
+    /// Converts string to long
+    ///
     static bool FromString(const wxString& s, long *value);
+
 #ifdef wxHAS_LONG_LONG_T_DIFFERENT_FROM_LONG
+    ///
+    /// Converts string to long long
+    ///
     static bool FromString(const wxString &s, wxLongLong_t *value);
 #endif
+
+    ///
+    /// Converts number to string
+    ///
     wxString ToString(LongestValueType value) const;
 
 protected:
+    /// \cond internal
     void DoSetWidth(unsigned int width) { m_width = width; }
+    /// \endcond
 
 private:
+    /// \cond internal
     virtual bool IsCharOk(const wxString& val, int pos, wxChar ch) const;
+    /// \endcond
 
 private:
     unsigned int m_width;    ///< Preferred width of the string - zero padding (<=1 disables padding)
@@ -81,8 +110,11 @@ template <typename T>
 class wxHexValidator : public wxPrivate::wxNumValidator<wxHexValidatorBase, T>
 {
 public:
-    typedef wxPrivate::wxNumValidator<wxHexValidatorBase, T> Base;
+    typedef wxPrivate::wxNumValidator<wxHexValidatorBase, T> Base; ///< Base class type
 
+    ///
+    /// Constructs new hexadecimal validator
+    ///
     wxHexValidator(ValueType *value = NULL, int style = wxNUM_VAL_DEFAULT, unsigned int width = 0) : Base(value, style)
     {
         this->DoSetWidth(width);
@@ -90,8 +122,13 @@ public:
         this->DoSetMax(std::numeric_limits<ValueType>::max());
     }
 
+    ///
+    /// Clones this validator
+    ///
     virtual wxObject *Clone() const { return new wxHexValidator(*this); }
 
 private:
     wxDECLARE_NO_ASSIGN_CLASS(wxHexValidator);
 };
+
+/// @}

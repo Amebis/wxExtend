@@ -88,6 +88,7 @@ wxString wxHexValidatorBase::ToString(LongestValueType value) const
 }
 
 
+/// \cond internal
 bool wxHexValidatorBase::IsCharOk(const wxString& val, int pos, wxChar ch) const
 {
     // We only accept hexadecimal digits here.
@@ -101,3 +102,4 @@ bool wxHexValidatorBase::IsCharOk(const wxString& val, int pos, wxChar ch) const
 
     return IsInRange(value);
 }
+/// \endcond
