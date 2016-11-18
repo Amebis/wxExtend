@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wxExtend\n"
-"POT-Creation-Date: 2016-10-13 11:47+0200\n"
+"POT-Creation-Date: 2016-11-04 14:10+0100\n"
 "PO-Revision-Date: 2016-02-06 09:04+0100\n"
 "Last-Translator: University of Ruse <support@uni-ruse.bg>, 2016\n"
 "Language-Team: Bulgarian (Bulgaria) (https://www.transifex.com/eduroam_devel/teams/11799/bg_BG/)\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: bg_BG\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.9\n"
+"X-Generator: Poedit 1.8.10\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _\n"
 "X-Poedit-SearchPath-0: src\n"
@@ -28,7 +28,7 @@ msgstr "Открит е невалиден символ в името на хо�
 msgid "Validation conflict"
 msgstr "Проверка на конфликт"
 
-#: include/wxex/appbar.h:992
+#: include/wxex/appbar.h:1036
 msgid ""
 "There is already an auto hidden bar on this edge.\n"
 "Only one auto hidden bar is allowed on each edge.\n"
@@ -38,6 +38,6 @@ msgstr ""
 "Във всеки ъгъл е разрешена само една автоматично скриваща се лента.\n"
 "Сега функцията автоматично скриване е изключена."
 
-#: include/wxex/appbar.h:992
+#: include/wxex/appbar.h:1036
 msgid "Warning"
 msgstr "Предупреждение"
