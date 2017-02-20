@@ -87,7 +87,8 @@ public:
     {
         // Load perspective string from configuration.
         wxString persp;
-        wxCHECK(RestoreValue(wxT(wxPERSIST_AUIMGR_PERSPECTIVE), &persp), false);
+        if (!RestoreValue(wxT(wxPERSIST_AUIMGR_PERSPECTIVE), &persp))
+            return false;
 
         // Update captions (see http://trac.wxwidgets.org/ticket/12528).
         wxAuiManager* mgr = GetManager();
