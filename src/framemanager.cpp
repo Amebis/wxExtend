@@ -84,6 +84,11 @@ bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxStr
         pane.min_size  = p.min_size;
         pane.max_size  = p.max_size;
 
+        if ((pane.state & wxAuiPaneInfo::optionResizable) == 0) {
+            // Reset floating size to allow resize on GUI changes across different versions for non-resizeable panes.
+            pane.floating_size = p.floating_size;
+        }
+
         // Re-generate and append pane info.
         result += mgr.SavePaneInfo(pane) + wxT('|');
     }
