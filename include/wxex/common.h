@@ -27,15 +27,15 @@
 ///
 /// wxExtend Version
 ///
-#define wxEXTEND_VERSION        0x01050200
+#define wxEXTEND_VERSION        0x01050300
 
 #define wxEXTEND_VERSION_MAJ    1       ///< wxExtend Major Version
 #define wxEXTEND_VERSION_MIN    5       ///< wxExtend Minor Version
-#define wxEXTEND_VERSION_REV    2       ///< wxExtend Revision
+#define wxEXTEND_VERSION_REV    3       ///< wxExtend Revision
 #define wxEXTEND_VERSION_BUILD  0       ///< wxExtend Build
 
-#define wxEXTEND_VERSION_STR    "1.5.2" ///< wxExtend Displayable Version
-#define wxEXTEND_BUILD_YEAR_STR "2017"  ///< wxExtend Build Year
+#define wxEXTEND_VERSION_STR    "1.5.3" ///< wxExtend Displayable Version
+#define wxEXTEND_BUILD_YEAR_STR "2018"  ///< wxExtend Build Year
 
 #define wxExtendVersion         "15"    ///< wxExtend API Version
 
