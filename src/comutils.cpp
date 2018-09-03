@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright 2015-2017 Amebis
+    Copyright 2015-2018 Amebis
     Copyright 2016 GÉANT
 
     This file is part of wxExtend.
@@ -27,12 +27,15 @@
 
 wxCoInitializer::wxCoInitializer(DWORD dwCoInit)
 {
-    m_ok = SUCCEEDED(::CoInitializeEx(NULL, dwCoInit));
+    HRESULT hr = ::CoInitializeEx(NULL, dwCoInit);
+
+    m_initialized = SUCCEEDED(hr);
+    m_ok          = SUCCEEDED(hr) || hr == RPC_E_CHANGED_MODE;
 }
 
 
 wxCoInitializer::~wxCoInitializer()
 {
-    if (m_ok)
+    if (m_initialized)
         ::CoUninitialize();
 }
