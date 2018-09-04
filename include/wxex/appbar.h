@@ -1,5 +1,5 @@
 ﻿/*
-    Copyright 2015-2017 Amebis
+    Copyright 2015-2018 Amebis
     Copyright 2016 GÉANT
     Based on code written by Jeffrey Richter.
 
@@ -1046,7 +1046,7 @@ WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM l
         WXLRESULT lResult = W::MSWWindowProc(message, wParam, lParam);
 
         // Register our application bar.
-        APPBARDATA abd = { sizeof(abd), m_hWnd, WM_AB_NOTIFY, m_state };
+        APPBARDATA abd = { sizeof(abd), m_hWnd, WM_AB_NOTIFY, static_cast<UINT>(m_state) };
         wxCHECK(::SHAppBarMessage(ABM_NEW, &abd), false);
 
         // Get the state of the Windows taskbar.
@@ -1443,7 +1443,7 @@ inline bool wxAppBar<W>::DockAppBar(wxAppBarState state)
     wxASSERT(wxAppBarIsDocked(state));
 
     // Calculate docked window rect and dock the window there.
-    APPBARDATA abd = { sizeof(abd), m_hWnd, 0, state };
+    APPBARDATA abd = { sizeof(abd), m_hWnd, 0, static_cast<UINT>(state) };
     GetDockedRect(state, &(abd.rc));
     wxCHECK(::SHAppBarMessage(ABM_SETPOS, &abd), false);
     wxCHECK(::SetWindowPos(m_hWnd, wxAppBarGetZWnd(state, m_flags), abd.rc.left, abd.rc.top, abd.rc.right - abd.rc.left, abd.rc.bottom - abd.rc.top, SWP_NOACTIVATE | SWP_DRAWFRAME | SWP_FRAMECHANGED), false);
@@ -1470,7 +1470,7 @@ inline bool wxAppBar<W>::RegisterAutoHide(wxAppBarState state)
     wxASSERT(wxAppBarIsDocked(state));
 
     // Register application bar as auto-hide.
-    APPBARDATA abd = { sizeof(abd), m_hWnd, 0, state, {}, (LPARAM)true };
+    APPBARDATA abd = { sizeof(abd), m_hWnd, 0, static_cast<UINT>(state), {}, (LPARAM)true };
     if (::SHAppBarMessage(ABM_SETAUTOHIDEBAR, &abd)) {
         // Auto-hide succeeded.
         m_flags |=  wxABF_AUTOHIDE;
@@ -1502,7 +1502,7 @@ inline bool wxAppBar<W>::UnregisterAutoHide(wxAppBarState state)
     wxASSERT(wxAppBarIsDocked(state));
 
     // Unregister application bar as auto-hide.
-    APPBARDATA abd = { sizeof(abd), m_hWnd, 0, state, {}, (LPARAM)false };
+    APPBARDATA abd = { sizeof(abd), m_hWnd, 0, static_cast<UINT>(state), {}, (LPARAM)false };
     wxCHECK(::SHAppBarMessage(ABM_SETAUTOHIDEBAR, &abd), false);
     m_flags &= ~wxABF_AUTOHIDDEN;
 
@@ -1523,7 +1523,7 @@ inline bool wxAppBar<W>::GetDockedRect(wxAppBarState state, LPRECT rect) const
     wxASSERT(rect);
 
     // Set dimensions to full screen.
-    APPBARDATA abd = { sizeof(abd), m_hWnd, 0, state, { 0, 0, ::GetSystemMetrics(SM_CXSCREEN), ::GetSystemMetrics(SM_CYSCREEN) } };
+    APPBARDATA abd = { sizeof(abd), m_hWnd, 0, static_cast<UINT>(state), { 0, 0, ::GetSystemMetrics(SM_CXSCREEN), ::GetSystemMetrics(SM_CYSCREEN) } };
     wxCHECK(::SHAppBarMessage(ABM_QUERYPOS, &abd), false);
 
     // Correct our dimensions accordingly.
