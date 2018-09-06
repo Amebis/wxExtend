@@ -51,6 +51,9 @@ compwxExtend.dll.Win32	{8D93D165-26AE-4066-9FBE-C37349BCEBAF}	$(WXEXTEND_BIN_DIR
 !IF "$(PLAT)" == "x64"
 compwxExtend.dll.x64	{5CC39463-FEBE-496F-8EFB-F4F0AC4BCAB4}	$(WXEXTEND_BIN_DIR)	256		filewxExtend.dll.x64
 !ENDIF
+!IF "$(PLAT)" == "ARM64"
+compwxExtend.dll.ARM64	{E1848B00-9E07-45CC-8BB4-5AE36DCB4174}	$(WXEXTEND_BIN_DIR)	256		filewxExtend.dll.ARM64
+!ENDIF
 !ENDIF
 !IF "$(LANG)" == "bg_BG"
 compwxExtend.mo.bg_BG	{08F3D750-73F1-4D53-ADE6-4F4C5AFF24C1}	WXEXTENDLOCBGBGDIR	$(MSIBUILD_COMPONENT_ATTRIB_FILE)		filewxExtend.mo.bg_BG
@@ -269,6 +272,14 @@ filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~6.DLL|wxExtend15u_vc100_x64.dll
 !ENDIF
 !IF "$(CFG)" == "Debug"
 filewxExtend.dll.x64	compwxExtend.dll.x64	WXEXTE~8.DLL|wxExtend15ud_vc100_x64.dll	0		0	1536	1
+!ENDIF
+!ENDIF
+!IF "$(PLAT)" == "ARM64"
+!IF "$(CFG)" == "Release"
+filewxExtend.dll.ARM64	compwxExtend.dll.ARM64	WXEXTE~8.DLL|wxExtend15u_vc100_arm64.dll	0		0	1536	1
+!ENDIF
+!IF "$(CFG)" == "Debug"
+filewxExtend.dll.ARM64	compwxExtend.dll.ARM64	WXEXT~10.DLL|wxExtend15ud_vc100_arm64.dll	0		0	1536	1
 !ENDIF
 !ENDIF
 !ENDIF
