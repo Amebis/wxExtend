@@ -38,7 +38,9 @@
 ///
 /// Supports saving/restoring wxDialog state
 ///
-class wxPersistentDialog : public wxPersistentWindow<wxDialog>
+class wxPersistentDialog :
+    public wxPersistentWindow<wxDialog>,
+    private wxTopLevelWindow::GeometrySerializer
 {
 public:
     ///
@@ -51,7 +53,7 @@ public:
     ///
     /// \returns `wxT(wxPERSIST_DIALOG_KIND)`
     ///
-    virtual wxString GetKind() const
+    virtual wxString GetKind() const wxOVERRIDE
     {
         return wxT(wxPERSIST_DIALOG_KIND);
     }
@@ -59,51 +61,37 @@ public:
     ///
     /// Saves dialog state
     ///
-    virtual void Save() const
+    virtual void Save() const wxOVERRIDE
     {
         const wxDialog * const wnd = Get();
 
         // Code copied from wxPersistentTLW::Save()
-        const wxPoint pos = wnd->GetScreenPosition();
-        SaveValue(wxPERSIST_TLW_X, pos.x);
-        SaveValue(wxPERSIST_TLW_Y, pos.y);
+        wnd->SaveGeometry(*this);
     }
 
     ///
     /// Restores dialog state
     ///
-    virtual bool Restore()
+    virtual bool Restore() wxOVERRIDE
     {
         wxDialog * const wnd = Get();
 
-        // Code copied from wxPersistentTLW::Restore()
-        long
-            x wxDUMMY_INITIALIZE(-1),
-            y wxDUMMY_INITIALIZE(-1);
-        const wxSize size = wnd->GetSize();
-        const bool hasPos = RestoreValue(wxPERSIST_TLW_X, &x) &&
-                            RestoreValue(wxPERSIST_TLW_Y, &y);
-
-        if (hasPos) {
-            // to avoid making the window completely invisible if it had been
-            // shown on a monitor which was disconnected since the last run
-            // (this is pretty common for notebook with external displays)
-            //
-            // NB: we should allow window position to be (slightly) off screen,
-            //     it's not uncommon to position the window so that its upper
-            //     left corner has slightly negative coordinate
-            if (wxDisplay::GetFromPoint(wxPoint(x         , y         )) != wxNOT_FOUND ||
-                wxDisplay::GetFromPoint(wxPoint(x + size.x, y + size.y)) != wxNOT_FOUND)
-            {
-                wnd->Move(x, y, wxSIZE_ALLOW_MINUS_ONE);
-            }
-        }
-
-        return true;
+        return wnd->RestoreToGeometry(*this);
     }
 
 private:
     wxDECLARE_NO_COPY_CLASS(wxPersistentDialog);
+
+private:
+    virtual bool SaveField(const wxString& name, int value) const wxOVERRIDE
+    {
+        return SaveValue(name, value);
+    }
+
+    virtual bool RestoreField(const wxString& name, int* value) wxOVERRIDE
+    {
+        return RestoreValue(name, value);
+    }
 };
 
 

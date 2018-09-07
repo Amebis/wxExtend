@@ -57,7 +57,7 @@ public:
     ///
     /// \returns `wxT(wxPERSIST_AUIMGR_KIND)`
     ///
-    virtual wxString GetKind() const
+    virtual wxString GetKind() const wxOVERRIDE
     {
         return wxT(wxPERSIST_AUIMGR_KIND);
     }
@@ -65,7 +65,7 @@ public:
     ///
     /// Returns name of the window
     ///
-    virtual wxString GetName() const
+    virtual wxString GetName() const wxOVERRIDE
     {
         // Borrow the name of wxAguiManager from its window.
         return GetManager()->GetManagedWindow()->GetName();
@@ -74,7 +74,7 @@ public:
     ///
     /// Saves Aui manager state
     ///
-    virtual void Save() const
+    virtual void Save() const wxOVERRIDE
     {
         // Save perspective string to configuration.
         SaveValue(wxT(wxPERSIST_AUIMGR_PERSPECTIVE), GetManager()->SavePerspective());
@@ -83,7 +83,7 @@ public:
     ///
     /// Restores Aui manager state
     ///
-    virtual bool Restore()
+    virtual bool Restore() wxOVERRIDE
     {
         // Load perspective string from configuration.
         wxString persp;
