@@ -26,6 +26,7 @@
     <ClCompile Include="..\src\stdafx.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\src\tlwgeom.cpp" />
     <ClCompile Include="..\src\url.cpp" />
     <ClCompile Include="..\src\valhex.cpp" />
     <ClCompile Include="..\src\valnet.cpp" />
@@ -40,7 +41,8 @@
     <ClInclude Include="..\include\wxex\hex.h" />
     <ClInclude Include="..\include\wxex\object.h" />
     <ClInclude Include="..\include\wxex\persist\auimanager.h" />
-    <ClInclude Include="..\include\wxex\persist\dialog.h" />
+    <ClInclude Include="..\include\wxex\persist\toplevel.h" />
+    <ClInclude Include="..\include\wxex\private\tlwgeom.h" />
     <ClInclude Include="..\include\wxex\url.h" />
     <ClInclude Include="..\include\wxex\valhex.h" />
     <ClInclude Include="..\include\wxex\valnet.h" />

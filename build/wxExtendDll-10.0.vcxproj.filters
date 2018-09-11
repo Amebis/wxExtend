@@ -23,6 +23,9 @@
     <Filter Include="Header Files\aui">
       <UniqueIdentifier>{be99b1e7-e013-4c69-8966-6b34932a1711}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\private">
+      <UniqueIdentifier>{e7ddefe0-5d58-4fda-943c-717689ad974c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\stdafx.cpp">
@@ -55,6 +58,9 @@
     <ClCompile Include="..\src\framemanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\tlwgeom.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\stdafx.h">
@@ -81,13 +87,13 @@
     <ClInclude Include="..\include\wxex\persist\auimanager.h">
       <Filter>Header Files\persist</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\wxex\persist\dialog.h">
-      <Filter>Header Files\persist</Filter>
-    </ClInclude>
     <ClInclude Include="..\include\wxex\valhex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\wxex\url.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wxex\object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\include\wxex\valnet.h">
@@ -95,6 +101,15 @@
     </ClInclude>
     <ClInclude Include="..\include\wxex\aui\framemanager.h">
       <Filter>Header Files\aui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wxex\object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wxex\private\tlwgeom.h">
+      <Filter>Header Files\private</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\wxex\persist\toplevel.h">
+      <Filter>Header Files\persist</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

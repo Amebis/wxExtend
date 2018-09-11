@@ -26,6 +26,9 @@
 
 #include "../include/wxex/aui/framemanager.h"
 
+#include "../include/wxex/persist/auimanager.h"
+#include "../include/wxex/persist/toplevel.h"
+
 #include "../include/wxex/appbar.h"
 #include "../include/wxex/comutils.h"
 #include "../include/wxex/crypto.h"
@@ -37,3 +40,5 @@
 #include "../include/wxex/xml.h"
 
 #include "../include/wxex/common.h"
+
+#include "../include/wxex/private/tlwgeom.h"
