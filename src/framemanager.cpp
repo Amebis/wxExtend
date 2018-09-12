@@ -45,6 +45,8 @@ bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxStr
     input.Replace(wxT("\\|"), wxT("\a"));
     input.Replace(wxT("\\;"), wxT("\b"));
 
+    wxSize ppi = wxClientDC(mgr.GetManagedWindow()).GetPPI();
+    wxSize ppi_on_save(96, 96);
     while (1)
     {
         wxString pane_part = input.BeforeFirst(wxT('|'));
@@ -59,14 +61,50 @@ bool WXEXTEND_API wxAuiManagerUpdatePerspectiveCaptions(wxAuiManager& mgr, wxStr
         pane_part.Replace(wxT("\a"), wxT("|"));
         pane_part.Replace(wxT("\b"), wxT(";"));
 
-        if (pane_part.Left(9) == wxT("dock_size"))
+        if (pane_part.Left(3) == wxT("ppi"))
         {
-            result += pane_part + wxT('|');
+            wxString value = pane_part.AfterFirst(wxT('='));
+
+            long ppi_horz, ppi_vert;
+            value.BeforeFirst(wxT(',')).ToLong(&ppi_horz);
+            value.AfterFirst(wxT(',')).ToLong(&ppi_vert);
+
+            ppi_on_save.x = ppi_horz;
+            ppi_on_save.y = ppi_vert;
+            result += wxString::Format(wxT("ppi=%d,%d|"),
+                                       ppi.x, ppi.y);
+            continue;
+        }
+        else if (pane_part.Left(9) == wxT("dock_size"))
+        {
+            wxString val_name = pane_part.BeforeFirst(wxT('='));
+            wxString value = pane_part.AfterFirst(wxT('='));
+
+            long dir, layer, row, size;
+            wxString piece = val_name.AfterFirst(wxT('('));
+            piece = piece.BeforeLast(wxT(')'));
+            piece.BeforeFirst(wxT(',')).ToLong(&dir);
+            piece = piece.AfterFirst(wxT(','));
+            piece.BeforeFirst(wxT(',')).ToLong(&layer);
+            piece.AfterFirst(wxT(',')).ToLong(&row);
+            value.ToLong(&size);
+
+            wxAuiDockInfo dock;
+            dock.dock_direction = dir;
+            dock.dock_layer = layer;
+            dock.dock_row = row;
+            dock.size = size == -1          ? -1 :
+                        dock.IsHorizontal() ? wxMulDivInt32(size, ppi.x, ppi_on_save.x) :
+                                              wxMulDivInt32(size, ppi.y, ppi_on_save.y);
+
+            result += wxString::Format(wxT("dock_size(%d,%d,%d)=%d|"),
+                                       dock.dock_direction, dock.dock_layer,
+                                       dock.dock_row, dock.size);
             continue;
         }
 
         wxAuiPaneInfo pane;
-        mgr.LoadPaneInfo(pane_part, pane);
+        mgr.LoadPaneInfo(pane_part, pane, ppi_on_save);
 
         wxAuiPaneInfo& p = mgr.GetPane(pane.name);
         if (!p.IsOk())
