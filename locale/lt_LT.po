@@ -3,30 +3,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wxExtend\n"
-"POT-Creation-Date: 2016-11-04 14:10+0100\n"
+"POT-Creation-Date: 2018-09-19 08:58+0200\n"
 "PO-Revision-Date: 2016-02-06 09:04+0100\n"
-"Last-Translator: Simon Rozman <simon@rozman.si>, 2016\n"
-"Language-Team: Lithuanian (https://www.transifex.com/eduroam_devel/teams/11799/lt/)\n"
+"Last-Translator: Simon Rozman <simon@rozman.si>, 2018\n"
+"Language-Team: Lithuanian (Lithuania) (https://www.transifex.com/amebis/teams/91595/lt_LT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: lt\n"
+"Language: lt_LT\n"
 "Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
-"X-Generator: Poedit 1.8.10\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _\n"
 "X-Poedit-SearchPath-0: src\n"
 "X-Poedit-SearchPath-1: include\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-
-#: src/valnet.cpp:93
-#, c-format
-msgid "Invalid character in host name found: %c"
-msgstr "Kompiuterio varde aptiktas netinkamas simbolis: %c"
-
-#: src/valnet.cpp:93
-msgid "Validation conflict"
-msgstr "Patikra nesėkminga"
 
 #: include/wxex/appbar.h:1036
 msgid ""
@@ -38,3 +29,12 @@ msgstr ""
 #: include/wxex/appbar.h:1036
 msgid "Warning"
 msgstr "Įspėjimas"
+
+#: src/valnet.cpp:93
+#, c-format
+msgid "Invalid character in host name found: %c"
+msgstr "Kompiuterio varde aptiktas netinkamas simbolis: %c"
+
+#: src/valnet.cpp:93
+msgid "Validation conflict"
+msgstr "Patikra nesėkminga"

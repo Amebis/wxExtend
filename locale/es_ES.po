@@ -3,30 +3,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wxExtend\n"
-"POT-Creation-Date: 2016-11-04 14:10+0100\n"
+"POT-Creation-Date: 2018-09-19 08:58+0200\n"
 "PO-Revision-Date: 2016-02-06 09:04+0100\n"
-"Last-Translator: Alberto Martínez Setién, 2016\n"
-"Language-Team: Spanish (https://www.transifex.com/eduroam_devel/teams/11799/es/)\n"
+"Last-Translator: Simon Rozman <simon@rozman.si>, 2018\n"
+"Language-Team: Spanish (Spain) (https://www.transifex.com/amebis/teams/91595/es_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
+"Language: es_ES\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.8.10\n"
+"X-Generator: Poedit 2.1.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _\n"
 "X-Poedit-SearchPath-0: src\n"
 "X-Poedit-SearchPath-1: include\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-
-#: src/valnet.cpp:93
-#, c-format
-msgid "Invalid character in host name found: %c"
-msgstr "Carácter no válido en el nombre: %c"
-
-#: src/valnet.cpp:93
-msgid "Validation conflict"
-msgstr "Conflicto de validación"
 
 #: include/wxex/appbar.h:1036
 msgid ""
@@ -41,3 +32,12 @@ msgstr ""
 #: include/wxex/appbar.h:1036
 msgid "Warning"
 msgstr "Advertencia"
+
+#: src/valnet.cpp:93
+#, c-format
+msgid "Invalid character in host name found: %c"
+msgstr "Carácter no válido en el nombre: %c"
+
+#: src/valnet.cpp:93
+msgid "Validation conflict"
+msgstr "Conflicto de validación"
