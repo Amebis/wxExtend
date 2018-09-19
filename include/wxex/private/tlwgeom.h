@@ -289,10 +289,13 @@ private:
         wxASSERT(dpiVert);
 
 #if wxUSE_DYNLIB_CLASS
-        typedef HRESULT(WINAPI *GetDpiForWindow_t)(HWND);
+        typedef UINT(WINAPI *GetDpiForWindow_t)(HWND);
+        static bool s_checkedGetDpiForWindow = false;
         static GetDpiForWindow_t s_pfnGetDpiForWindow = NULL;
-        if (!s_pfnGetDpiForWindow && s_dllUser32.IsLoaded())
-            s_pfnGetDpiForWindow = (GetDpiForWindow_t)s_dllUser32.GetSymbol(wxT("GetDpiForWindow"));
+        if (!s_checkedGetDpiForWindow && s_dllUser32.IsLoaded()) {
+            s_pfnGetDpiForWindow = (GetDpiForWindow_t)s_dllUser32.RawGetSymbol(wxT("GetDpiForWindow"));
+            s_checkedGetDpiForWindow = true;
+        }
 
         if (s_pfnGetDpiForWindow) {
             *dpiHorz = *dpiVert = s_pfnGetDpiForWindow(hWnd);
