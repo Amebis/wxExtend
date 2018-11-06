@@ -24,5 +24,5 @@
 
 #if wxUSE_DYNLIB_CLASS
 wxDynamicLibrary wxTLWGeometryEx::s_dllUser32(wxT("user32.dll"));
-wxDynamicLibrary wxTLWGeometryEx::s_dllShCore(wxT("shcore.dll"));
+wxDynamicLibrary wxTLWGeometryEx::s_dllShCore(wxT("shcore.dll"), wxDL_DEFAULT | wxDL_QUIET);
 #endif
