@@ -29,6 +29,7 @@
 
 #include <Windows.h>
 #include <Windowsx.h>
+#include <shellapi.h>
 #include <ShlObj.h>
 
 
