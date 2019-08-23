@@ -142,7 +142,7 @@ public:
     /// - \c true if hashing succeeded
     /// - \c false otherwise
     ///
-    bool Hash(const void *data, size_t size);
+    _Success_(return != 0) bool Hash(_In_reads_bytes_(size) const void *data, _In_ size_t size);
 
 
     ///
@@ -154,7 +154,7 @@ public:
     /// - \c true if hashing succeeded
     /// - \c false otherwise
     ///
-    inline bool Hash(const wxMemoryBuffer &data)
+    inline _Success_(return != 0) bool Hash(_In_ const wxMemoryBuffer &data)
     {
         return Hash(data.GetData(), data.GetDataLen());
     }
@@ -169,7 +169,7 @@ public:
     /// - \c true if hashing succeeded
     /// - \c false otherwise
     ///
-    inline bool HashAsUTF8(const wxString &str)
+    inline _Success_(return != 0) bool HashAsUTF8(_In_ const wxString &str)
     {
         const wxScopedCharBuffer buf(str.ToUTF8());
         return Hash(buf.data(), buf.length());
@@ -185,7 +185,7 @@ public:
     /// - \c true if hashing succeeded
     /// - \c false otherwise
     ///
-    inline bool HashFile(const wxString &fileName)
+    inline _Success_(return != 0) bool HashFile(_In_ const wxString &fileName)
     {
         wxFFile file(fileName, wxT("rb"));
         if (file.IsOpened()) {
@@ -212,19 +212,19 @@ public:
     /// - \c true if succeeded
     /// - \c false otherwise
     ///
-    virtual bool GetValue(wxMemoryBuffer &hash);
+    virtual _Success_(return != 0) bool GetValue(_Out_ wxMemoryBuffer &hash);
 
 
     ///
     /// Signs the hash using session key
     ///
-    /// \param[out] signature  Digital signature
+    /// \param[inout] signature  Digital signature
     ///
     /// \returns
     /// - \c true if signing succeeded
     /// - \c false otherwise
     ///
-    bool Sign(wxMemoryBuffer &signature);
+    _Success_(return != 0) bool Sign(_Inout_ wxMemoryBuffer &signature);
 
 
     ///
@@ -262,7 +262,7 @@ public:
     /// - \c true if succeeded
     /// - \c false otherwise
     ///
-    virtual bool GetValue(wxMemoryBuffer &hash);
+    virtual _Success_(return != 0) bool GetValue(_Out_ wxMemoryBuffer &hash);
 };
 
 
@@ -312,13 +312,13 @@ public:
     ///
     /// Imports private key
     ///
-    bool ImportPrivate(wxCryptoSession &session, const void *data, size_t size);
+    _Success_(return != 0) bool ImportPrivate(_Inout_ wxCryptoSession &session, _In_reads_bytes_(size) const void *data, _In_ size_t size);
 
 
     ///
     /// Imports public key
     ///
-    bool ImportPublic(wxCryptoSession &session, const void *data, size_t size);
+    _Success_(return != 0) bool ImportPublic(_Inout_ wxCryptoSession &session, _In_reads_bytes_(size) const void *data, _In_ size_t size);
 };
 
 
@@ -334,7 +334,7 @@ public:
 /// - \c true if verification succeeded and the hash matches
 /// - \c false otherwise
 ///
-bool WXEXTEND_API wxCryptoVerifySignature(const wxCryptoHash &hash, const void *signature_data, size_t signature_size, const wxCryptoKey &key);
+_Success_(return != 0) bool WXEXTEND_API wxCryptoVerifySignature(_In_ const wxCryptoHash &hash, _In_reads_bytes_(signature_size) const void *signature_data, _In_ size_t signature_size, _In_ const wxCryptoKey &key);
 
 
 ///
@@ -348,7 +348,7 @@ bool WXEXTEND_API wxCryptoVerifySignature(const wxCryptoHash &hash, const void *
 /// - \c true if verification succeeded and the hash matches
 /// - \c false otherwise
 ///
-inline bool wxCryptoVerifySignature(const wxCryptoHash &hash, const wxMemoryBuffer &signature, const wxCryptoKey &key)
+inline _Success_(return != 0) bool wxCryptoVerifySignature(_In_ const wxCryptoHash &hash, _In_ const wxMemoryBuffer &signature, _In_ const wxCryptoKey &key)
 {
     return wxCryptoVerifySignature(hash, signature.GetData(), signature.GetDataLen(), key);
 }

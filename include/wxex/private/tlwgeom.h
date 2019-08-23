@@ -178,6 +178,7 @@ public:
 
         HMONITOR hMonitor = ::MonitorFromWindow(hWnd, MONITOR_DEFAULTTONEAREST);
         wxASSERT_MSG(hMonitor, wxT("error locating monitor"));
+        _Analysis_assume_(hMonitor);
         if (!::GetMonitorInfo(hMonitor, &m_mntinfo))
         {
             wxLogLastError(wxS("GetMonitorInfo"));
@@ -206,6 +207,7 @@ public:
         // Get monitor to restore window to.
         HMONITOR hMonitor = ::MonitorFromRect(&m_mntinfo.rcWork, MONITOR_DEFAULTTONEAREST);
         wxASSERT_MSG(hMonitor, wxT("error locating monitor"));
+        _Analysis_assume_(hMonitor);
         MONITORINFO mntinfo;
         mntinfo.cbSize = sizeof(mntinfo);
         if (!::GetMonitorInfo(hMonitor, &mntinfo))
@@ -283,7 +285,7 @@ public:
     }
 
 private:
-    static bool GetDPI(HWND hWnd, UINT *dpiHorz, UINT *dpiVert)
+    static bool GetDPI(_In_ HWND hWnd, _Out_ UINT *dpiHorz, _Out_ UINT *dpiVert)
     {
         wxASSERT(dpiHorz);
         wxASSERT(dpiVert);
@@ -307,7 +309,7 @@ private:
         return false;
     }
 
-    static bool GetDPI(HMONITOR hMonitor, UINT *dpiHorz, UINT *dpiVert)
+    static bool GetDPI(_In_ HMONITOR hMonitor, _Out_ UINT *dpiHorz, _Out_ UINT *dpiVert)
     {
         wxASSERT(dpiHorz);
         wxASSERT(dpiVert);

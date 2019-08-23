@@ -65,6 +65,7 @@ wxCryptoHash::~wxCryptoHash()
 }
 
 
+_Use_decl_annotations_
 bool wxCryptoHash::Hash(const void *data, size_t size)
 {
     wxASSERT_MSG(m_h, wxT("object uninitialized"));
@@ -79,6 +80,7 @@ bool wxCryptoHash::Hash(const void *data, size_t size)
 }
 
 
+_Use_decl_annotations_
 bool wxCryptoHash::GetValue(wxMemoryBuffer &hash)
 {
     wxASSERT_MSG(m_h, wxT("object uninitialized"));
@@ -106,6 +108,7 @@ bool wxCryptoHash::GetValue(wxMemoryBuffer &hash)
 }
 
 
+_Use_decl_annotations_
 bool wxCryptoHash::Sign(wxMemoryBuffer &signature)
 {
     // Try with the current buffer size first.
@@ -146,6 +149,7 @@ wxCryptoHashSHA1::wxCryptoHashSHA1(wxCryptoSession &session)
 }
 
 
+_Use_decl_annotations_
 bool wxCryptoHashSHA1::GetValue(wxMemoryBuffer &hash)
 {
     wxASSERT_MSG(m_h, wxT("object uninitialized"));
@@ -182,6 +186,7 @@ wxCryptoKey::~wxCryptoKey()
 }
 
 
+_Use_decl_annotations_
 bool wxCryptoKey::ImportPrivate(wxCryptoSession &session, const void *data, size_t size)
 {
     wxASSERT_MSG(!m_h, wxT("object initialized"));
@@ -209,6 +214,7 @@ bool wxCryptoKey::ImportPrivate(wxCryptoSession &session, const void *data, size
 }
 
 
+_Use_decl_annotations_
 bool wxCryptoKey::ImportPublic(wxCryptoSession &session, const void *data, size_t size)
 {
     wxASSERT_MSG(!m_h, wxT("object initialized"));
@@ -237,6 +243,7 @@ bool wxCryptoKey::ImportPublic(wxCryptoSession &session, const void *data, size_
 // wxCryptoVerifySignature
 //////////////////////////////////////////////////////////////////////////
 
+_Use_decl_annotations_
 bool WXEXTEND_API wxCryptoVerifySignature(const wxCryptoHash &hash, const void *signature_data, size_t signature_size, const wxCryptoKey &key)
 {
     wxASSERT_MSG(hash.IsOk()                      , wxT("invalid hash"));

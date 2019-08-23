@@ -281,12 +281,12 @@ protected:
 
 private:
     /// \cond internal
-    inline bool DockAppBar(wxAppBarState state);
-    inline bool UndockAppBar();
-    inline bool RegisterAutoHide(wxAppBarState state);
-    inline bool UnregisterAutoHide(wxAppBarState state);
-    inline bool GetDockedRect(wxAppBarState state, LPRECT rect) const;
-    inline bool GetAutoHideRect(wxAppBarState state, bool bAutoHidden, LPRECT rect) const;
+    inline _Success_(return != 0) bool DockAppBar(_In_ wxAppBarState state);
+    inline _Success_(return != 0) bool UndockAppBar();
+    inline _Success_(return != 0) bool RegisterAutoHide(_In_ wxAppBarState state);
+    inline _Success_(return != 0) bool UnregisterAutoHide(_In_ wxAppBarState state);
+    inline _Success_(return != 0) bool GetDockedRect(_In_ wxAppBarState state, _Out_ LPRECT rect) const;
+    inline _Success_(return != 0) bool GetAutoHideRect(_In_ wxAppBarState state, _In_ bool bAutoHidden, _Out_ LPRECT rect) const;
     /// \endcond
 
 protected:
@@ -516,9 +516,19 @@ inline UINT_PTR wxAppBarGetTaskBarState()
 
 template <class W>
 wxAppBar<W>::wxAppBar() :
-    m_taskbarList(NULL),
-    m_timerID(0)
+    m_state(wxABS_UNKNOWN),
+    m_stateDesired(wxABS_UNKNOWN),
+    m_flags(0),
+    m_stateTaskBar(0),
+    m_timerID(0),
+    m_taskbarList(NULL)
 {
+    m_sizeFloat .cx = -1;
+    m_sizeFloat .cy = -1;
+    m_sizeDocked.cx = -1;
+    m_sizeDocked.cy = -1;
+    m_sizeMin   .cx = -1;
+    m_sizeMin   .cy = -1;
 }
 
 
@@ -926,6 +936,9 @@ void wxAppBar<W>::ShowAutoHideAppBar(bool show)
         GetAutoHideRect(m_state, bHidden, &rcStart);
 
         if (bFullDragOn && (rcStart.left != rcEnd.left || rcStart.top != rcEnd.top || rcStart.right != rcEnd.right || rcStart.bottom != rcEnd.bottom)) {
+            #pragma warning(push)
+            #pragma warning(disable: 28159)
+
             // Get our starting and ending time.
             DWORD dwTimeStart = ::GetTickCount();
             DWORD dwTimeElapsed;
@@ -949,6 +962,8 @@ void wxAppBar<W>::ShowAutoHideAppBar(bool show)
                 wxVERIFY(::SetWindowPos(m_hWnd, NULL, rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top, SWP_NOZORDER | SWP_NOACTIVATE));
                 wxVERIFY(::UpdateWindow(m_hWnd));
             }
+
+            #pragma warning(pop)
         }
     }
 
@@ -1112,15 +1127,16 @@ WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM l
         if (m_state != m_stateDesired && wxAppBarIsDocked(m_stateDesired)) {
             wxASSERT(lParam);
             LPWINDOWPOS lpwndpos = (LPWINDOWPOS)lParam;
-
-            // When about to get docked, fix position and size to avoid Aero Snap interfering with window size.
-            RECT rect;
-            GetDockedRect(m_stateDesired, &rect);
-            lpwndpos->x  = rect.left;
-            lpwndpos->y  = rect.top;
-            lpwndpos->cx = rect.right  - rect.left;
-            lpwndpos->cy = rect.bottom - rect.top;
-            lpwndpos->flags &= ~(SWP_NOMOVE | SWP_NOSIZE);
+            if (lpwndpos) {
+                // When about to get docked, fix position and size to avoid Aero Snap interfering with window size.
+                RECT rect;
+                GetDockedRect(m_stateDesired, &rect);
+                lpwndpos->x  = rect.left;
+                lpwndpos->y  = rect.top;
+                lpwndpos->cx = rect.right  - rect.left;
+                lpwndpos->cy = rect.bottom - rect.top;
+                lpwndpos->flags &= ~(SWP_NOMOVE | SWP_NOSIZE);
+            }
         }
 
         return W::MSWWindowProc(message, wParam, lParam);
@@ -1439,6 +1455,7 @@ WXLRESULT wxAppBar<W>::MSWWindowProc(WXUINT message, WXWPARAM wParam, WXLPARAM l
 /// \cond internal
 
 template <class W>
+_Use_decl_annotations_
 inline bool wxAppBar<W>::DockAppBar(wxAppBarState state)
 {
     wxASSERT(wxAppBarIsDocked(state));
@@ -1454,6 +1471,7 @@ inline bool wxAppBar<W>::DockAppBar(wxAppBarState state)
 
 
 template <class W>
+_Use_decl_annotations_
 inline bool wxAppBar<W>::UndockAppBar()
 {
     // Free application bar's space to undock.
@@ -1466,6 +1484,7 @@ inline bool wxAppBar<W>::UndockAppBar()
 
 
 template <class W>
+_Use_decl_annotations_
 inline bool wxAppBar<W>::RegisterAutoHide(wxAppBarState state)
 {
     wxASSERT(wxAppBarIsDocked(state));
@@ -1498,6 +1517,7 @@ inline bool wxAppBar<W>::RegisterAutoHide(wxAppBarState state)
 
 
 template <class W>
+_Use_decl_annotations_
 inline bool wxAppBar<W>::UnregisterAutoHide(wxAppBarState state)
 {
     wxASSERT(wxAppBarIsDocked(state));
@@ -1518,6 +1538,7 @@ inline bool wxAppBar<W>::UnregisterAutoHide(wxAppBarState state)
 
 
 template <class W>
+_Use_decl_annotations_
 inline bool wxAppBar<W>::GetDockedRect(wxAppBarState state, LPRECT rect) const
 {
     wxASSERT(wxAppBarIsDocked(state));
@@ -1568,6 +1589,7 @@ inline bool wxAppBar<W>::GetDockedRect(wxAppBarState state, LPRECT rect) const
 
 
 template <class W>
+_Use_decl_annotations_
 inline bool wxAppBar<W>::GetAutoHideRect(wxAppBarState state, bool bAutoHidden, LPRECT rect) const
 {
     wxASSERT(wxAppBarIsDocked(state));

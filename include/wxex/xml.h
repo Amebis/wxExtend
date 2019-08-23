@@ -117,6 +117,6 @@ inline wxString wxXmlEscapeAttr(_In_ const wxString& str)
 /// \param[in] node  Root node
 ///
 ///
-bool WXEXTEND_API wxXmlHashNode(_In_ wxCryptoHash &hash, const wxXmlNode *node);
+bool WXEXTEND_API wxXmlHashNode(_In_ wxCryptoHash &hash, _In_ const wxXmlNode *node);
 
 /// @}

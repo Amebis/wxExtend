@@ -21,7 +21,8 @@
 #include "stdafx.h"
 
 
-bool WXEXTEND_API wxXmlHashNode(_In_ wxCryptoHash &hash, const wxXmlNode *node)
+_Use_decl_annotations_
+bool WXEXTEND_API wxXmlHashNode(wxCryptoHash &hash, const wxXmlNode *node)
 {
     wxASSERT_MSG(node, wxT("invalid parameter"));
 
