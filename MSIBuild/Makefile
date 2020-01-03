@@ -1,6 +1,6 @@
 #
-#    Copyright 1991-2018 Amebis
-#    Copyright 2016 GÉANT
+#    Copyright 1991-2020 Amebis
+#    Copyright 2016 GÃ‰ANT
 #
 #    This file is part of ZRCola.
 #

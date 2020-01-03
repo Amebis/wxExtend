@@ -1,6 +1,6 @@
 /*
-    Copyright 2015-2018 Amebis
-    Copyright 2016 GÉANT
+    Copyright 2015-2020 Amebis
+    Copyright 2016 GÃ‰ANT
 
     This file is part of wxExtend.
 

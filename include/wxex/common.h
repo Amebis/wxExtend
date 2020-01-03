@@ -1,5 +1,5 @@
 /*
-    Copyright 2015-2018 Amebis
+    Copyright 2015-2020 Amebis
     Copyright 2016 GÉANT
 
     This file is part of wxExtend.
@@ -35,7 +35,7 @@
 #define wxEXTEND_VERSION_BUILD  0       ///< wxExtend Build
 
 #define wxEXTEND_VERSION_STR    "1.5.3" ///< wxExtend Displayable Version
-#define wxEXTEND_BUILD_YEAR_STR "2018"  ///< wxExtend Build Year
+#define wxEXTEND_BUILD_YEAR_STR "2020"  ///< wxExtend Build Year
 
 #define wxExtendVersion         "15"    ///< wxExtend API Version
 
