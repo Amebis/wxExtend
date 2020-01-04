@@ -209,14 +209,14 @@ public:
     ///
     /// \param[in] rect The desired coordinates of the restored window. If NULL internally saved coordinates are used.
     ///
-    void MaximiseFromEdge(const RECT* rect = NULL);
+    void MaximiseFromEdge(_In_opt_ const RECT* rect = NULL);
 
     ///
     /// Restore application bar from the edge of the desktop.
     ///
     /// \param[in] wnd When the undocked and docked window is different, this parameter denotes the undocked version.
     ///
-    void MaximiseFromEdge(wxWindow *wnd);
+    void MaximiseFromEdge(_In_ wxWindow *wnd);
 
     ///
     /// Shows or hides auto-hide application bar.
@@ -834,7 +834,7 @@ void wxAppBar<W>::MinimiseToEdge(wxAppBarState edge, wxWindow *wnd)
 
 
 template <class W>
-void wxAppBar<W>::MaximiseFromEdge(const RECT* rect)
+void wxAppBar<W>::MaximiseFromEdge(_In_opt_ const RECT* rect)
 {
     wxASSERT(::IsWindowVisible(m_hWnd));
 
@@ -877,7 +877,7 @@ void wxAppBar<W>::MaximiseFromEdge(const RECT* rect)
 
 
 template <class W>
-void wxAppBar<W>::MaximiseFromEdge(wxWindow *wnd)
+void wxAppBar<W>::MaximiseFromEdge(_In_ wxWindow *wnd)
 {
     wxASSERT(wnd);
     wxASSERT(::IsWindowVisible(m_hWnd));
