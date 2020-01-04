@@ -146,6 +146,7 @@ inline bool wxModifyStyleEx(_In_ WXHWND hWnd, _In_ DWORD dwRemove, _In_ DWORD dw
 /// - \c true when initialization succeeded
 /// - \c false otherwise
 ///
+#pragma warning(suppress: 26812) // wxLanguage is unscoped
 inline bool wxInitializeLocale(wxLocale &locale, wxLanguage *language = NULL)
 {
     // Read language from configuration.
