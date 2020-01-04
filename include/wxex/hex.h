@@ -104,11 +104,11 @@ inline wxString wxHexEncode(const wxMemoryBuffer& buf)
 /// Elements of this enum specify the possible behaviours of wxHexDecode()
 /// when an invalid character is encountered.
 ///
-enum wxHexDecodeMode
+enum class wxHexDecodeMode
 {
-    wxHexDecodeMode_Strict,     ///< Normal behaviour: stop at any invalid characters
-    wxHexDecodeMode_SkipWS,     ///< Skip whitespace characters
-    wxHexDecodeMode_Relaxed,    ///< The most lenient behaviour: simply ignore all invalid characters
+    Strict,     ///< Normal behaviour: stop at any invalid characters
+    SkipWS,     ///< Skip whitespace characters
+    Relaxed,    ///< The most lenient behaviour: simply ignore all invalid characters
 };
 
 
@@ -146,7 +146,7 @@ inline size_t wxHexDecodedSize(size_t len)
 /// latter case the \p posErr is filled with the position where the decoding
 /// stopped if it is not NULL
 ///
-size_t WXEXTEND_API wxHexDecode(void *dst, size_t dstLen, const char *src, size_t srcLen = wxNO_LEN, wxHexDecodeMode mode = wxHexDecodeMode_Strict, size_t *posErr = NULL);
+size_t WXEXTEND_API wxHexDecode(void *dst, size_t dstLen, const char *src, size_t srcLen = wxNO_LEN, wxHexDecodeMode mode = wxHexDecodeMode::Strict, size_t *posErr = NULL);
 
 
 ///
@@ -167,7 +167,7 @@ size_t WXEXTEND_API wxHexDecode(void *dst, size_t dstLen, const char *src, size_
 /// latter case the \p posErr is filled with the position where the decoding
 /// stopped if it is not NULL
 ///
-inline size_t wxHexDecode(void *dst, size_t dstLen, const wxString& src, wxHexDecodeMode mode = wxHexDecodeMode_Strict, size_t *posErr = NULL)
+inline size_t wxHexDecode(void *dst, size_t dstLen, const wxString& src, wxHexDecodeMode mode = wxHexDecodeMode::Strict, size_t *posErr = NULL)
 {
     // don't use str.length() here as the ASCII buffer is shorter than it is for
     // strings with embedded NULs
@@ -190,7 +190,7 @@ inline size_t wxHexDecode(void *dst, size_t dstLen, const wxString& src, wxHexDe
 ///
 /// \returns Destination buffer with decoded data or an empty buffer if an error occured during decoding
 ///
-wxMemoryBuffer WXEXTEND_API wxHexDecode(const char *src, size_t srcLen = wxNO_LEN, wxHexDecodeMode mode = wxHexDecodeMode_Strict, size_t *posErr = NULL);
+wxMemoryBuffer WXEXTEND_API wxHexDecode(const char *src, size_t srcLen = wxNO_LEN, wxHexDecodeMode mode = wxHexDecodeMode::Strict, size_t *posErr = NULL);
 
 
 ///
@@ -206,7 +206,7 @@ wxMemoryBuffer WXEXTEND_API wxHexDecode(const char *src, size_t srcLen = wxNO_LE
 ///
 /// \returns Destination buffer with decoded data or an empty buffer if an error occured during decoding
 ///
-inline wxMemoryBuffer wxHexDecode(const wxString& src, wxHexDecodeMode mode = wxHexDecodeMode_Strict, size_t *posErr = NULL)
+inline wxMemoryBuffer wxHexDecode(const wxString& src, wxHexDecodeMode mode = wxHexDecodeMode::Strict, size_t *posErr = NULL)
 {
     // don't use str.length() here as the ASCII buffer is shorter than it for
     // strings with embedded NULs

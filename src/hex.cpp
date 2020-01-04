@@ -71,8 +71,8 @@ size_t WXEXTEND_API wxHexDecode(void *dst_, size_t dstLen, const char *src, size
         else if ( 'A' <= c && c <= 'F' ) in = (in << 4) | (c - 'A' + 10), n++;
         else if ( 'a' <= c && c <= 'f' ) in = (in << 4) | (c - 'a' + 10), n++;
         else {
-            if ( mode == wxHexDecodeMode_Relaxed ||
-                 mode == wxHexDecodeMode_SkipWS && isspace(c) )
+            if ( mode == wxHexDecodeMode::Relaxed ||
+                 mode == wxHexDecodeMode::SkipWS && isspace(c) )
                 continue;
 
             if ( posErr )
