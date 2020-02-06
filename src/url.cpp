@@ -18,7 +18,7 @@
     along with wxExtend. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "stdafx.h"
+#include "pch.h"
 
 
 size_t WXEXTEND_API wxURLEncode(char *dst, size_t dstLen, const char *src, size_t srcLen)

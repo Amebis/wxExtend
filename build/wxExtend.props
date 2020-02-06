@@ -23,7 +23,7 @@
     <ClCompile Include="..\src\crypto.cpp" />
     <ClCompile Include="..\src\framemanager.cpp" />
     <ClCompile Include="..\src\hex.cpp" />
-    <ClCompile Include="..\src\stdafx.cpp">
+    <ClCompile Include="..\src\pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="..\src\tlwgeom.cpp" />
@@ -47,7 +47,7 @@
     <ClInclude Include="..\include\wxex\valhex.h" />
     <ClInclude Include="..\include\wxex\valnet.h" />
     <ClInclude Include="..\include\wxex\xml.h" />
-    <ClInclude Include="..\src\stdafx.h" />
+    <ClInclude Include="..\src\pch.h" />
   </ItemGroup>
   <ItemGroup>
     <POCompile Include="..\locale\bg_BG.po" />

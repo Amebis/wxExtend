@@ -18,7 +18,7 @@
     along with wxExtend. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include "stdafx.h"
+#include "pch.h"
 
 
 //////////////////////////////////////////////////////////////////////
