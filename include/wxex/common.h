@@ -46,7 +46,7 @@
 
 #include <codeanalysis\warnings.h>
 #ifndef WXWIDGETS_CODE_ANALYSIS_WARNINGS
-#define WXWIDGETS_CODE_ANALYSIS_WARNINGS ALL_CODE_ANALYSIS_WARNINGS 26812
+#define WXWIDGETS_CODE_ANALYSIS_WARNINGS ALL_CODE_ANALYSIS_WARNINGS 26812 26814
 #endif
 
 #pragma warning(push)
@@ -129,8 +129,8 @@ inline bool wxModifyStyleEx(_In_ WXHWND hWnd, _In_ DWORD dwRemove, _In_ DWORD dw
 {
     wxASSERT(IsWindow(hWnd));
 
-    DWORD dwStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
-    DWORD dwNewStyle = (dwStyle & ~dwRemove) | dwAdd;
+    const DWORD dwStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
+    const DWORD dwNewStyle = (dwStyle & ~dwRemove) | dwAdd;
     if(dwStyle == dwNewStyle)
         return false;
 
@@ -159,13 +159,12 @@ inline bool wxModifyStyleEx(_In_ WXHWND hWnd, _In_ DWORD dwRemove, _In_ DWORD dw
 inline bool wxInitializeLocale(wxLocale &locale, wxLanguage *language = NULL)
 {
     // Read language from configuration.
-    wxLanguage lang_code;
+    wxLanguage lang_code = wxLANGUAGE_DEFAULT;
     wxString lang;
     if (wxConfigBase::Get()->Read(wxT("Language"), &lang)) {
         const wxLanguageInfo *lang_info = wxLocale::FindLanguageInfo(lang);
         lang_code = lang_info ? (wxLanguage)lang_info->Language : wxLANGUAGE_DEFAULT;
-    } else
-        lang_code = wxLANGUAGE_DEFAULT;
+    }
 
     if (language)
         *language = lang_code;

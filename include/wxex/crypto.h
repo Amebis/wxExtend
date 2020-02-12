@@ -64,7 +64,7 @@ public:
     /// - \c true if creation succeeded
     /// - \c false otherwise
     ///
-    inline bool IsOk() const
+    inline bool IsOk() const noexcept
     {
         return m_h != NULL;
     }
@@ -73,7 +73,7 @@ public:
     ///
     /// \returns Session handle to be used in native API calls.
     ///
-    inline operator HCRYPTPROV() const
+    inline operator HCRYPTPROV() const noexcept
     {
         return m_h;
     }
@@ -121,7 +121,7 @@ public:
     /// - \c true if creation succeeded
     /// - \c false otherwise
     ///
-    inline bool IsOk() const
+    inline bool IsOk() const noexcept
     {
         return m_h != NULL;
     }
@@ -130,7 +130,7 @@ public:
     ///
     /// \returns Hash handle to be used in native API calls.
     ///
-    inline operator HCRYPTHASH() const
+    inline operator HCRYPTHASH() const noexcept
     {
         return m_h;
     }
@@ -195,7 +195,7 @@ public:
         if (file.IsOpened()) {
             wxMemoryBuffer buf(4*1024);
             void *data = buf.GetData();
-            size_t nBlock = buf.GetBufSize();
+            const size_t nBlock = buf.GetBufSize();
             while (!file.Eof())
                 Hash(data, file.Read(data, nBlock));
 
@@ -298,7 +298,7 @@ public:
     /// - \c true if creation succeeded
     /// - \c false otherwise
     ///
-    inline bool IsOk() const
+    inline bool IsOk() const noexcept
     {
         return m_h != NULL;
     }
@@ -307,7 +307,7 @@ public:
     ///
     /// \returns Key handle to be used in native API calls.
     ///
-    inline operator HCRYPTKEY() const
+    inline operator HCRYPTKEY() const noexcept
     {
         return m_h;
     }

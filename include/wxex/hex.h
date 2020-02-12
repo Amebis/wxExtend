@@ -45,7 +45,7 @@
 ///
 /// \returns Maximum encoded representation size (in characters)
 ///
-inline size_t wxHexEncodedSize(size_t len)
+inline constexpr size_t wxHexEncodedSize(size_t len) noexcept
 {
     return 2*len;
 }
@@ -124,7 +124,7 @@ enum class wxHexDecodeMode
 ///
 /// \returns Maximum decoded representation size (in bytes)
 ///
-inline size_t wxHexDecodedSize(size_t len)
+inline constexpr size_t wxHexDecodedSize(size_t len) noexcept
 {
     return (len + 1)/2;
 }
