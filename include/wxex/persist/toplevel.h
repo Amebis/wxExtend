@@ -23,10 +23,14 @@
 #include "../common.h"
 #include "../private/tlwgeom.h"
 
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: WXWIDGETS_CODE_ANALYSIS_WARNINGS)
 #include <wx/persist.h>
 #include <wx/persist/toplevel.h>
 #include <wx/persist/window.h>
 #include <wx/toplevel.h>
+#pragma warning(pop)
 
 /// \addtogroup wxExtend
 /// @{

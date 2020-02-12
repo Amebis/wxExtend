@@ -23,9 +23,13 @@
 
 #include "common.h"
 
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: WXWIDGETS_CODE_ANALYSIS_WARNINGS)
 #include <wx/dialog.h>
 #include <wx/frame.h>
 #include <wx/string.h>
+#pragma warning(pop)
 
 #include <Windows.h>
 #include <Windowsx.h>

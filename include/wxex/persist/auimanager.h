@@ -24,8 +24,12 @@
 
 #include "../aui/framemanager.h"
 
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: WXWIDGETS_CODE_ANALYSIS_WARNINGS)
 #include <wx/persist.h>
 #include <wx/aui/framemanager.h>
+#pragma warning(pop)
 
 
 /// \addtogroup wxExtend

@@ -43,10 +43,19 @@
 #if !defined(RC_INVOKED) && !defined(MIDL_PASS)
 
 #include <Windows.h>
+
+#include <codeanalysis\warnings.h>
+#ifndef WXWIDGETS_CODE_ANALYSIS_WARNINGS
+#define WXWIDGETS_CODE_ANALYSIS_WARNINGS ALL_CODE_ANALYSIS_WARNINGS 26812
+#endif
+
+#pragma warning(push)
+#pragma warning(disable: WXWIDGETS_CODE_ANALYSIS_WARNINGS)
 #include <wx/config.h>
 #include <wx/debug.h>
 #include <wx/defs.h>
 #include <wx/intl.h>
+#pragma warning(pop)
 
 ///
 /// Public function calling convention

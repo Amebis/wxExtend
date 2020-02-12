@@ -22,7 +22,11 @@
 
 #include "common.h"
 
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: WXWIDGETS_CODE_ANALYSIS_WARNINGS)
 #include <wx/object.h>
+#pragma warning(pop)
 
 
 ///

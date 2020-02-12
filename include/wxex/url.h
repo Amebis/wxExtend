@@ -22,8 +22,12 @@
 
 #include "common.h"
 
-#include "wx/string.h"
-#include "wx/buffer.h"
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: WXWIDGETS_CODE_ANALYSIS_WARNINGS)
+#include <wx/string.h>
+#include <wx/buffer.h>
+#pragma warning(pop)
 
 /// \addtogroup wxExtend
 /// @{

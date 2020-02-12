@@ -20,8 +20,12 @@
 
 #pragma once
 
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: WXWIDGETS_CODE_ANALYSIS_WARNINGS)
 #include <wx/dynlib.h>
 #include <wx/private/tlwgeom.h>
+#pragma warning(pop)
 
 #ifndef USER_DEFAULT_SCREEN_DPI
 #define USER_DEFAULT_SCREEN_DPI 96

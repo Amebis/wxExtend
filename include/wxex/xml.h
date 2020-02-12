@@ -24,8 +24,12 @@
 
 #include "crypto.h"
 
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: WXWIDGETS_CODE_ANALYSIS_WARNINGS)
 #include <wx/string.h>
 #include <wx/xml/xml.h>
+#pragma warning(pop)
 
 /// \addtogroup wxExtend
 /// @{

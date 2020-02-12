@@ -22,10 +22,14 @@
 
 #include "common.h"
 
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: WXWIDGETS_CODE_ANALYSIS_WARNINGS)
 #include <wx/buffer.h>
 #include <wx/ffile.h>
 #include <wx/log.h>
 #include <wx/string.h>
+#pragma warning(pop)
 
 #include <Wincrypt.h>
 

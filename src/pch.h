@@ -22,7 +22,11 @@
 
 // Since including <wx/app.h> introduces wrong include order in 3.0.2,
 // include the grand <wx/wx.h> at a cost of longer pre-compilation phase.
+#include <codeanalysis\warnings.h>
+#pragma warning(push)
+#pragma warning(disable: ALL_CODE_ANALYSIS_WARNINGS 26812)
 #include <wx/wx.h>
+#pragma warning(pop)
 
 #include "../include/wxex/aui/framemanager.h"
 
