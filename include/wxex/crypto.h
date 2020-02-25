@@ -270,6 +270,35 @@ public:
 };
 
 
+#if (NTDDI_VERSION > NTDDI_WINXPSP2)
+
+///
+/// SHA-256 Cryptographics Hash
+///
+class WXEXTEND_API wxCryptoHashSHA256 : public wxCryptoHash
+{
+public:
+    ///
+    /// Creates a new cryptographics SHA-256 hash
+    ///
+    wxCryptoHashSHA256(wxCryptoSession &session);
+
+
+    ///
+    /// Finish hashing and return hash data.
+    ///
+    /// \param[out] hash  Hash data
+    ///
+    /// \returns
+    /// - \c true if succeeded
+    /// - \c false otherwise
+    ///
+    virtual _Success_(return != 0) bool GetValue(_Out_ wxMemoryBuffer &hash);
+};
+
+#endif
+
+
 ///
 /// Cryptographics Key Base
 ///
