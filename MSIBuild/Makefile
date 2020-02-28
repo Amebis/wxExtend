@@ -18,7 +18,7 @@
 #    along with ZRCola. If not, see <http://www.gnu.org/licenses/>.
 #
 
-!INCLUDE "..\..\..\include\MSIBuildCfg.mak"
+!INCLUDE "..\..\..\include\$(PKG)MSIBuildCfg.mak"
 
 !IFNDEF MSIBUILD_LANGID
 !ERROR Parameter MSIBUILD_LANGID is undefined.
@@ -44,9 +44,9 @@
 ######################################################################
 # Component
 
-All :: "$(LANG).$(PLAT).$(CFG).Component-1.idt"
+All :: "$(PKG)$(LANG).$(PLAT).$(CFG).Component-1.idt"
 
-"$(LANG).$(PLAT).$(CFG).Component-1.idt" : "Makefile" "..\..\..\include\MSIBuildCfg.mak"
+"$(PKG)$(LANG).$(PLAT).$(CFG).Component-1.idt" : "Makefile" "..\..\..\include\$(PKG)MSIBuildCfg.mak"
 	-if exist $@ del /f /q $@
 	move /y << $@ > NUL
 Component	ComponentId	Directory_	Attributes	Condition	KeyPath
@@ -64,9 +64,9 @@ compwxExtend.mo.$(LANG)	{08F3D750-73F1-4D53-$(MSIBUILD_LANG_GUID)-4F4C5AFF24C1}	
 ######################################################################
 # Directory
 
-All :: "$(LANG).$(PLAT).$(CFG).Directory-1.idt"
+All :: "$(PKG)$(LANG).$(PLAT).$(CFG).Directory-1.idt"
 
-"$(LANG).$(PLAT).$(CFG).Directory-1.idt" : "Makefile" "..\..\..\include\MSIBuildCfg.mak"
+"$(PKG)$(LANG).$(PLAT).$(CFG).Directory-1.idt" : "Makefile" "..\..\..\include\$(PKG)MSIBuildCfg.mak"
 	-if exist $@ del /f /q $@
 	move /y << $@ > NUL
 Directory	Directory_Parent	DefaultDir
@@ -81,9 +81,9 @@ WXEXTENDLOC$(MSIBUILD_LANG_GUID)DIR	$(WXEXTEND_LOC_DIR)	$(LANG)
 ######################################################################
 # File
 
-All :: "$(LANG).$(PLAT).$(CFG).File-1.idt"
+All :: "$(PKG)$(LANG).$(PLAT).$(CFG).File-1.idt"
 
-"$(LANG).$(PLAT).$(CFG).File-1.idt" : "Makefile" "..\..\..\include\MSIBuildCfg.mak"
+"$(PKG)$(LANG).$(PLAT).$(CFG).File-1.idt" : "Makefile" "..\..\..\include\$(PKG)MSIBuildCfg.mak"
 	-if exist $@ del /f /q $@
 	move /y << $@ > NUL
 File	Component_	FileName	FileSize	Version	Language	Attributes	Sequence
