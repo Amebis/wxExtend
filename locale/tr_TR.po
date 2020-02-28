@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wxExtend\n"
-"POT-Creation-Date: 2018-09-19 08:58+0200\n"
+"POT-Creation-Date: 2019-08-12 13:39+0200\n"
 "PO-Revision-Date: 2018-09-19 08:19+0000\n"
 "Last-Translator: Simon Rozman <simon@rozman.si>, 2018\n"
 "Language-Team: Turkish (Turkey) (https://www.transifex.com/amebis/teams/91595/tr_TR/)\n"
@@ -14,21 +14,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: _\n"
 "X-Poedit-SearchPath-0: src\n"
 "X-Poedit-SearchPath-1: include\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
-#: include/wxex/appbar.h:1036
+#: include/wxex/appbar.h:1037
 msgid ""
 "There is already an auto hidden bar on this edge.\n"
 "Only one auto hidden bar is allowed on each edge.\n"
 "Auto-hide feature is now off."
 msgstr ""
 
-#: include/wxex/appbar.h:1036
+#: include/wxex/appbar.h:1037
 msgid "Warning"
 msgstr "Uyarı"
 
