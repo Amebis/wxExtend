@@ -87,8 +87,9 @@ bool wxCryptoHash::Hash(const void *data, size_t size)
 {
     wxASSERT_MSG(m_h, wxT("object uninitialized"));
     wxASSERT_MSG(data || !size, wxT("invalid parameter"));
+    wxASSERT_MSG(size <= MAXDWORD, wxT("4 GiB exceeded"));
 
-    if (!::CryptHashData(m_h, (const BYTE*)data, size, 0)) {
+    if (!::CryptHashData(m_h, (const BYTE*)data, (DWORD)size, 0)) {
         wxLogLastError(wxT("CryptHashData"));
         return false;
     }
@@ -209,10 +210,11 @@ bool wxCryptoKey::ImportPrivate(wxCryptoSession &session, const void *data, size
     wxASSERT_MSG(!m_h, wxT("object initialized"));
     wxASSERT_MSG(session.IsOk(), wxT("invalid session"));
     wxASSERT_MSG(data || !size, wxT("invalid parameter"));
+    wxASSERT_MSG(size <= MAXDWORD, wxT("4 GiB exceeded"));
 
     PUBLICKEYSTRUC *key_data = NULL;
     DWORD key_size = 0;
-    if (!::CryptDecodeObjectEx(X509_ASN_ENCODING, PKCS_RSA_PRIVATE_KEY, (const BYTE*)data, size, CRYPT_DECODE_ALLOC_FLAG, NULL, &key_data, &key_size)) {
+    if (!::CryptDecodeObjectEx(X509_ASN_ENCODING, PKCS_RSA_PRIVATE_KEY, (const BYTE*)data, (DWORD)size, CRYPT_DECODE_ALLOC_FLAG, NULL, &key_data, &key_size)) {
         wxLogLastError(wxT("CryptDecodeObjectEx(PKCS_RSA_PRIVATE_KEY)"));
         return false;
     }
@@ -237,10 +239,11 @@ bool wxCryptoKey::ImportPublic(wxCryptoSession &session, const void *data, size_
     wxASSERT_MSG(!m_h, wxT("object initialized"));
     wxASSERT_MSG(session.IsOk(), wxT("invalid session"));
     wxASSERT_MSG(data || !size, wxT("invalid parameter"));
+    wxASSERT_MSG(size <= MAXDWORD, wxT("4 GiB exceeded"));
 
     CERT_PUBLIC_KEY_INFO *keyinfo_data = NULL;
     DWORD keyinfo_size = 0;
-    if (!::CryptDecodeObjectEx(X509_ASN_ENCODING, X509_PUBLIC_KEY_INFO, (const BYTE*)data, size, CRYPT_DECODE_ALLOC_FLAG, NULL, &keyinfo_data, &keyinfo_size)) {
+    if (!::CryptDecodeObjectEx(X509_ASN_ENCODING, X509_PUBLIC_KEY_INFO, (const BYTE*)data, (DWORD)size, CRYPT_DECODE_ALLOC_FLAG, NULL, &keyinfo_data, &keyinfo_size)) {
         wxLogLastError(wxT("CryptDecodeObjectEx(X509_PUBLIC_KEY_INFO)"));
         return false;
     }
@@ -265,6 +268,7 @@ bool WXEXTEND_API wxCryptoVerifySignature(const wxCryptoHash &hash, const void *
 {
     wxASSERT_MSG(hash.IsOk()                      , wxT("invalid hash"));
     wxASSERT_MSG(signature_data || !signature_size, wxT("invalid parameter"));
+    wxASSERT_MSG(signature_size <= MAXDWORD       , wxT("4 GiB exceeded"));
     wxASSERT_MSG(key.IsOk()                       , wxT("invalid key"));
 
     // Reverse byte order, for consistent OpenSSL experience.
@@ -273,7 +277,7 @@ bool WXEXTEND_API wxCryptoVerifySignature(const wxCryptoHash &hash, const void *
     for (size_t i = 0, j  = signature_size - 1; i < signature_size; i++, j--)
         data[i] = ((const BYTE*)signature_data)[j];
 
-    if (!::CryptVerifySignature(hash, data, signature_size, key, NULL, 0)) {
+    if (!::CryptVerifySignature(hash, data, (DWORD)signature_size, key, NULL, 0)) {
         wxLogLastError(wxT("CryptVerifySignature"));
         return false;
     }

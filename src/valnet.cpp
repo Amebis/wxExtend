@@ -89,7 +89,8 @@ bool wxHostNameValidator::Parse(const wxString &val_in, size_t i_start, size_t i
         } else {
             // Invalid character found.
             ctrl->SetFocus();
-            ctrl->SetSelection(i, i + 1);
+            if (i + 1 <= 0x7fffffff)
+                ctrl->SetSelection((long)i, (long)(i + 1));
             wxMessageBox(wxString::Format(_("Invalid character in host name found: %c"), buf[i]), _("Validation conflict"), wxOK | wxICON_EXCLAMATION, parent);
             return false;
         }
