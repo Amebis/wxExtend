@@ -47,7 +47,6 @@
 All :: "$(PKG)$(LANG).$(PLAT).$(CFG).Component-1.idt"
 
 "$(PKG)$(LANG).$(PLAT).$(CFG).Component-1.idt" : "Makefile" "..\..\..\include\$(PKG)MSIBuildCfg.mak"
-	-if exist $@ del /f /q $@
 	move /y << $@ > NUL
 Component	ComponentId	Directory_	Attributes	Condition	KeyPath
 s$(MSIBUILD_LENGTH_ID)	S38	s$(MSIBUILD_LENGTH_ID)	i2	S255	S$(MSIBUILD_LENGTH_ID)
@@ -67,7 +66,6 @@ compwxExtend.mo.$(LANG)	{08F3D750-73F1-4D53-$(MSIBUILD_LANG_GUID)-4F4C5AFF24C1}	
 All :: "$(PKG)$(LANG).$(PLAT).$(CFG).Directory-1.idt"
 
 "$(PKG)$(LANG).$(PLAT).$(CFG).Directory-1.idt" : "Makefile" "..\..\..\include\$(PKG)MSIBuildCfg.mak"
-	-if exist $@ del /f /q $@
 	move /y << $@ > NUL
 Directory	Directory_Parent	DefaultDir
 s$(MSIBUILD_LENGTH_ID)	S$(MSIBUILD_LENGTH_ID)	l255
@@ -84,7 +82,6 @@ WXEXTENDLOC$(MSIBUILD_LANG_GUID)DIR	$(WXEXTEND_LOC_DIR)	$(LANG)
 All :: "$(PKG)$(LANG).$(PLAT).$(CFG).File-1.idt"
 
 "$(PKG)$(LANG).$(PLAT).$(CFG).File-1.idt" : "Makefile" "..\..\..\include\$(PKG)MSIBuildCfg.mak"
-	-if exist $@ del /f /q $@
 	move /y << $@ > NUL
 File	Component_	FileName	FileSize	Version	Language	Attributes	Sequence
 s$(MSIBUILD_LENGTH_ID)	s$(MSIBUILD_LENGTH_ID)	l255	i4	S$(MSIBUILD_LENGTH_ID)	S20	I2	i2
