@@ -26,6 +26,7 @@ bool WXEXTEND_API wxXmlHashNode(wxCryptoHash &hash, const wxXmlNode *node)
 {
     wxASSERT_MSG(node, wxT("invalid parameter"));
 
+    #pragma warning(suppress: 26812) // wxXmlNodeType is unscoped.
     switch (node->GetType()) {
     case wxXML_ELEMENT_NODE:
         {
