@@ -42,6 +42,7 @@
 
 #if !defined(RC_INVOKED) && !defined(MIDL_PASS)
 
+#define _WINSOCKAPI_    // Prevent inclusion of winsock.h in windows.h.
 #include <Windows.h>
 
 #include <codeanalysis\warnings.h>

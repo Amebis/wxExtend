@@ -31,7 +31,6 @@
 #include <wx/string.h>
 #pragma warning(pop)
 
-#include <Windows.h>
 #include <Windowsx.h>
 #include <shellapi.h>
 #include <ShlObj.h>
