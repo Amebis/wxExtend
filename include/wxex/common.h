@@ -21,7 +21,7 @@
 #define wxEXTEND_VERSION_BUILD  0       ///< wxExtend Build
 
 #define wxEXTEND_VERSION_STR    "1.5.3" ///< wxExtend Displayable Version
-#define wxEXTEND_BUILD_YEAR_STR "2020"  ///< wxExtend Build Year
+#define wxEXTEND_BUILD_YEAR_STR "2021"  ///< wxExtend Build Year
 
 #define wxExtendVersion         "15"    ///< wxExtend API Version
 
