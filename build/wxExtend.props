@@ -4,19 +4,11 @@
   <PropertyGroup Label="UserMacros">
     <wxExtendVersion>15</wxExtendVersion>
   </PropertyGroup>
-  <PropertyGroup>
-    <OutDir>..\..\..\output\$(Platform).$(Configuration)\</OutDir>
-  </PropertyGroup>
   <ItemDefinitionGroup>
     <POCompile>
       <OutputFile>$(OutDir)..\locale\%(Filename)\$(ProjectName)$(wxExtendVersion).mo</OutputFile>
     </POCompile>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <BuildMacro Include="wxExtendVersion">
-      <Value>$(wxExtendVersion)</Value>
-    </BuildMacro>
-  </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\appbar.cpp" />
     <ClCompile Include="..\src\comutils.cpp" />
