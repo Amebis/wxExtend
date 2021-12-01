@@ -5,8 +5,4 @@
     <Import Project="..\..\..\include\$(Configuration).props" />
     <Import Project="wxExtend.props" />
   </ImportGroup>
-  <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
-  <ItemDefinitionGroup />
-  <ItemGroup />
 </Project>
