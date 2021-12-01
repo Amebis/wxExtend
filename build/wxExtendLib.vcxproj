@@ -50,7 +50,9 @@
   <ImportGroup Label="ExtensionSettings" />
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="wxExtendLib.props" />
+    <Import Project="..\..\..\include\$(Platform).props" />
+    <Import Project="..\..\..\include\$(Configuration).props" />
+    <Import Project="wxExtend.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -55,9 +55,6 @@
     <Import Project="wxExtend.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup>
-    <OutDir>..\..\..\output\$(Platform).$(Configuration)\</OutDir>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>$(ProjectName)$(wxExtendVersion)ud_vc$(PlatformToolsetVersion)</TargetName>
   </PropertyGroup>
