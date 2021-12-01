@@ -4,6 +4,9 @@
   <PropertyGroup Label="UserMacros">
     <wxExtendVersion>15</wxExtendVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <OutDir>..\..\..\output\$(Platform).$(Configuration)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <POCompile>
       <OutputFile>$(OutDir)..\locale\%(Filename)\$(ProjectName)$(wxExtendVersion).mo</OutputFile>
