@@ -1,6 +1,6 @@
 ﻿/*
     ​​​SPDX-License-Identifier: GPL-3.0-or-later
-    Copyright © 2015-2021 Amebis
+    Copyright © 2015-2022 Amebis
     Copyright © 2016 GÉANT
 */
 
@@ -21,7 +21,7 @@
 #define wxEXTEND_VERSION_BUILD  0       ///< wxExtend Build
 
 #define wxEXTEND_VERSION_STR    "1.5.3" ///< wxExtend Displayable Version
-#define wxEXTEND_BUILD_YEAR_STR "2021"  ///< wxExtend Build Year
+#define wxEXTEND_BUILD_YEAR_STR "2022"  ///< wxExtend Build Year
 
 #define wxExtendVersion         "15"    ///< wxExtend API Version
 
