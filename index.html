@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.3"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>wxExtend: Main Page</title>
+<title>wxExtend: wxExtend</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,14 +62,53 @@ $(function() {
 </iframe>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">wxExtend Documentation</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">wxExtend </div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> Provides additional classes for wxWidgets</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Building</h1>
+<p >Requires:</p><ul>
+<li>Microsoft Visual Studio 2017-2019</li>
+<li><code>..\..\include</code> folder with the following files to customize building process for individual applications (optional):<ul>
+<li><code>Debug.props</code></li>
+<li><code>Release.props</code></li>
+<li><code>ARM64.props</code></li>
+<li><code>x64.props</code></li>
+<li><code>Win32.props</code></li>
+</ul>
+</li>
+<li>wxWidgets with <code>WXWIN%</code> environment pointing to its root. Build wxWidgets with:</li>
+</ul>
+<div class="fragment"><div class="line">&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsamd64_x86.bat&quot;</div>
+<div class="line">cd /d &quot;%WXWIN%\build\msw&quot;</div>
+<div class="line">nmake /f makefile.vc /ls RUNTIME_LIBS=static  SHARED=0 TARGET_CPU=X86 COMPILER_VERSION=142 &amp;&amp; nmake /f makefile.vc /ls RUNTIME_LIBS=static  SHARED=0 TARGET_CPU=X86 COMPILER_VERSION=142 BUILD=release</div>
+<div class="line">nmake /f makefile.vc /ls RUNTIME_LIBS=dynamic SHARED=0 TARGET_CPU=X86 COMPILER_VERSION=142 &amp;&amp; nmake /f makefile.vc /ls RUNTIME_LIBS=dynamic SHARED=0 TARGET_CPU=X86 COMPILER_VERSION=142 BUILD=release</div>
+</div><!-- fragment --><div class="fragment"><div class="line">&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat&quot;</div>
+<div class="line">cd /d &quot;%WXWIN%\build\msw&quot;</div>
+<div class="line">nmake /f makefile.vc /ls RUNTIME_LIBS=static  SHARED=0 TARGET_CPU=X64 COMPILER_VERSION=142 &amp;&amp; nmake /f makefile.vc /ls RUNTIME_LIBS=static  SHARED=0 TARGET_CPU=X64 COMPILER_VERSION=142 BUILD=release</div>
+<div class="line">nmake /f makefile.vc /ls RUNTIME_LIBS=dynamic SHARED=0 TARGET_CPU=X64 COMPILER_VERSION=142 &amp;&amp; nmake /f makefile.vc /ls RUNTIME_LIBS=dynamic SHARED=0 TARGET_CPU=X64 COMPILER_VERSION=142 BUILD=release</div>
+</div><!-- fragment --><div class="fragment"><div class="line">&quot;C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvarsamd64_arm64.bat&quot;</div>
+<div class="line">cd /d &quot;%WXWIN%\build\msw&quot;</div>
+<div class="line">nmake /f makefile.vc /ls RUNTIME_LIBS=static  SHARED=0 TARGET_CPU=ARM64 USE_OPENGL=0 COMPILER_VERSION=142 &amp;&amp; nmake /f makefile.vc /ls RUNTIME_LIBS=static  SHARED=0 TARGET_CPU=ARM64 USE_OPENGL=0 COMPILER_VERSION=142 BUILD=release</div>
+<div class="line">nmake /f makefile.vc /ls RUNTIME_LIBS=dynamic SHARED=0 TARGET_CPU=ARM64 USE_OPENGL=0 COMPILER_VERSION=142 &amp;&amp; nmake /f makefile.vc /ls RUNTIME_LIBS=dynamic SHARED=0 TARGET_CPU=ARM64 USE_OPENGL=0 COMPILER_VERSION=142 BUILD=release</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
+Usage</h1>
+<ol type="1">
+<li>Clone the repository into your solution folder.</li>
+<li>Add the appropriate <code>build\wxExtend&lt;variant&gt;.vcxproj</code> to your solution.</li>
+<li>Add wxExtend's <code>include</code> folder to <em>Additional Include Directories</em> in your project's C/C++ settings.</li>
+<li>Add a new reference to wxExtend project from your project's common properties.</li>
+<li>Include <code>.h</code> files from wxExtend as needed.</li>
+</ol>
+<p >An auto-generated documentation is <a href="http://amebis.github.io/wxExtend/">here</a>.</p>
+<p >More examples and use-cases can be found in <a href="https://github.com/Amebis/GEANTLink">GÉANTLink</a> and <a href="https://github.com/Amebis/ZRCola">ZRCola</a> projects source code. They make use of this library. </p>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Feb 17 2022 12:50:26 for wxExtend by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
+Generated on Thu Feb 17 2022 13:05:57 for wxExtend by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.3
 </small></address>
 </body>
 </html>
