@@ -17,19 +17,14 @@
 #define USER_DEFAULT_SCREEN_DPI 96
 #endif
 
-/// \addtogroup wxExtend
-/// @{
+/// \cond internal
 
-///
-/// `wxPersistentDialog` kind for persistent storage
-///
 #define wxPERSIST_TLW_MONITOR_X "xmon"
 #define wxPERSIST_TLW_MONITOR_Y "ymon"
 #define wxPERSIST_TLW_MONITOR_W "wmon"
 #define wxPERSIST_TLW_MONITOR_H "hmon"
 #define wxPERSIST_TLW_DPI_HORZ  "xdpi"
 #define wxPERSIST_TLW_DPI_VERT  "ydpi"
-
 
 class wxTLWGeometryEx : public wxTLWGeometryBase
 {
@@ -339,3 +334,5 @@ private:
     static wxDynamicLibrary s_dllShCore;
 #endif
 };
+
+/// \endcond
