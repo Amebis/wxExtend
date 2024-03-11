@@ -26,7 +26,7 @@
 #define wxExtendVersion         "15"    ///< wxExtend API Version
 
 
-#if !defined(RC_INVOKED) && !defined(MIDL_PASS)
+#if !defined(RC_INVOKED) && !defined(__midl)
 
 #define _WINSOCKAPI_    // Prevent inclusion of winsock.h in windows.h.
 #include <Windows.h>
@@ -167,7 +167,7 @@ inline bool wxInitializeLocale(wxLocale &locale, wxLanguage *language = NULL)
     return false;
 }
 
-#endif // !defined(RC_INVOKED) && !defined(MIDL_PASS)
+#endif // !defined(RC_INVOKED) && !defined(__midl)
 
 /// @}
 
