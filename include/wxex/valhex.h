@@ -104,11 +104,11 @@ public:
     ///
     /// Constructs new hexadecimal validator
     ///
-    wxHexValidator(ValueType *value = NULL, int style = wxNUM_VAL_DEFAULT, unsigned int width = 0) : Base(value, style)
+    wxHexValidator(T *value = NULL, int style = wxNUM_VAL_DEFAULT, unsigned int width = 0) : Base(value, style)
     {
         this->DoSetWidth(width);
-        this->DoSetMin(std::numeric_limits<ValueType>::min());
-        this->DoSetMax(std::numeric_limits<ValueType>::max());
+        this->DoSetMin(std::numeric_limits<T>::min());
+        this->DoSetMax(std::numeric_limits<T>::max());
     }
 
     ///
